@@ -514,7 +514,7 @@ body{
 	color: #fff;
 	border-radius: 30px;
 	position: absolute;
-	left: 0;
+	right:20;
 	bottom: -43px;
 	z-index: 33;
 	font-size: 13px;
@@ -526,11 +526,13 @@ body{
 	-webkit-transition: all 0.3s ease 0s;
 	-moz-transition: all 0.3s ease 0s;
 	transition: all 0.3s ease 0s;
+  direction: rtl;
 }
 .courses .teacher-info:hover .title{
 	transform:translateX(0px);
 	opacity:1;
 	visibility:visible;
+  direction: rtl;
 }
 .courses .teacher-info .title::before {
 	content: "";
@@ -539,6 +541,7 @@ body{
 	border-left: 10px solid transparent;
 	position: absolute;
 	top: -10px;
+  direction: rtl;
 }
 /* Price */
 .courses .price {
