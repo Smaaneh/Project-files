@@ -490,6 +490,7 @@ body{
 }
 .courses .name-price .teacher-info {
 	display: inline-block;
+  text-align: right;
 }
 .courses .teacher-info img {
 	width: 60px;
@@ -553,6 +554,7 @@ body{
 	float: right;
 	border-radius: 50px;
 	right: 0;
+  text-align: right;
 }
 .courses .price::before {
 	position: ;
@@ -564,6 +566,7 @@ body{
 	border-bottom: 15px solid transparent;
 	border-top: 15px solid transparent;
 	display: none;
+  text-align: right;
 }
 .courses .course-body .c-title {
 	font-size: 18px;
