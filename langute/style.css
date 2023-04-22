@@ -572,10 +572,12 @@ body{
 	font-size: 18px;
 	text-align: left;
 	margin: 5px 0 15px;
+  text-align: right;
 }
 .courses .course-body .c-title a {
 	color: #252525;
 	font-weight: 700;
+  text-align: right;
 }
 .courses .course-body p {
   font-family: 'Vazir';
@@ -607,6 +609,8 @@ body{
 /* Course Info */
 .courses .course-info {
 	margin-top: 4px;
+direction: rtl;
+  text-align: right;
 }
 .courses .course-info span {
 	display: inline-block;
