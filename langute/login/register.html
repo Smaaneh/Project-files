@@ -2,7 +2,7 @@
 <html lang="fa">
 <head>
 
-	<title>صفحه ورود</title>
+	<title>صفحه عضویت</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,7 +25,27 @@
 
 			<!-- input form -->
 			<form class="login100-form validate-form">
-				<span class="login100-form-title">ورود به ناحیه کاربری</span>
+				<span class="login100-form-title">عضویت در سایت</span>
+
+        <!-- enter name-->
+				<div class="wrap-input100 validate-input" data-validate = "لطفا نام خود را وارد کنید">
+					<input class="input100" type="text" name="name" placeholder="نام">
+					<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+				</div>
+				<!-- / enter name -->
+
+        <!-- enter LastName-->
+        <div class="wrap-input100 validate-input" data-validate = "لطفا نام خانوادگی خود را وارد کنید">
+          <input class="input100" type="text" name="lastname" placeholder="نام خانوادگی">
+          <span class="focus-input100"></span>
+            <span class="symbol-input100">
+              <i class="fa fa-user" aria-hidden="true"></i>
+            </span>
+        </div>
+        <!-- / enter Lastname -->
 
 				<!-- enter email-->
 				<div class="wrap-input100 validate-input" data-validate = "لطفا پست الکترونیک خود را وارد کنید!">
@@ -49,25 +69,9 @@
 
 				<!-- login button-->
 				<div class="container-login100-form-btn">
-					<button class="login100-form-btn">ورود</button>
+					<button class="login100-form-btn">عضویت</button>
 				</div>
 				<!-- / login button -->
-
-				<!-- restore password -->
-				<div class="text-center p-t-12">
-					<a class="txt2" href="#">
-						بازگردانی رمز عبور!
-					</a>
-				</div>
-				<!-- / restore password-->
-				<!-- register-->
-				<div class="text-center p-t-136">
-					<a class="txt2" href="register.html">
-						<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true" ></i>
-						هنوز ثبت نام نکرده اید ؟
-					</a>
-				</div>
-				<!-- / register-->
 			</form>
 			<!-- / input form -->
 
