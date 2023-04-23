@@ -275,6 +275,7 @@ body{
 	right: 0;
 	border-radius: 100%;
 	border-radius: 0px;
+  text-align: center;
 }
 .header .search-form button:hover{
 	opacity:0.8;
