@@ -204,6 +204,35 @@ body{
 	color: #777;
 	background: transparent;
 }
+
+
+/* login */
+.header .login {
+	position: absolute;
+	right: 0;
+	top: 20px;
+
+}
+.header .login .icon {
+	width: 28px;
+	display: block;
+	height: 28px;
+	line-height: 24px;
+	text-align: center;
+	-webkit-transition: all 0.3s ease 0s;
+	-moz-transition: all 0.3s ease 0s;
+	transition: all 0.3s ease 0s;
+	color: #555;
+	border: 1px solid #ccc;
+	border-radius: 100%;
+}
+.header .login .icon:hover{
+	background:#06C46B;
+	color:#fff;
+	border-color:transparent;
+
+}
+
 /* Search form */
 .header .search-area {
 	position: absolute;
