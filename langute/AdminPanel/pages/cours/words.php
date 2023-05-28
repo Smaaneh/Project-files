@@ -240,11 +240,11 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="word">لغت</label>
-                    <input type="text" class="form-control" id="word" name="word" placeholder="نام استاد را وارد کنید">
+                    <input type="text" class="form-control" id="word" name="word" placeholder="کلمه خود را وارد کنید">
                   </div>
                   <div class="form-group">
                     <label for="translation">ترجمه</label>
-                    <input type="text" class="form-control" id="translation" name="translation" placeholder="نام خانوادگی استاد را وارد کنید">
+                    <input type="text" class="form-control" id="translation" name="translation" placeholder="ترجمه را وارد کنید">
                   </div>
                   <div class="form-group">
                     <label for="image">آپلود عکس</label>
