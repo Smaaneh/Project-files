@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>افزودن کلمه جدید</title>
   <!-- Tell the browser to be responsive to screen width -->
@@ -235,47 +235,48 @@
                 <h3 class="card-title">فرم افزودن لغت</h3>
               </div>
               <!-- /.card-header -->
-              <!-- form start -->
-              <form role="form" method="post" enctype="multipart/form-data">
-                <div class="card-body">
-                  <div class="form-group">
-                    <label for="word">لغت</label>
-                    <input type="text" class="form-control" id="word" name="word" placeholder="کلمه خود را وارد کنید">
-                  </div>
-                  <div class="form-group">
-                    <label for="translation">ترجمه</label>
-                    <input type="text" class="form-control" id="translation" name="translation" placeholder="ترجمه را وارد کنید">
-                  </div>
-                  <div class="form-group">
-                    <label for="image">آپلود عکس</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="image" name="image">
-                        <label class="custom-file-label" for="image">عکس مناسب کلمه</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div>
-                    </div>
-                  </div>
+<!-- form start -->
+<form role="form" method="post" enctype="multipart/form-data">
+    <div class="card-body">
+        <div class="form-group">
+            <label for="word">لغت</label>
+            <input type="text" class="form-control" id="word" name="word" placeholder="کلمه خود را وارد کنید">
+        </div>
+        <div class="form-group">
+            <label for="translation">ترجمه</label>
+            <input type="text" class="form-control" id="translation" name="translation" placeholder="ترجمه را وارد کنید">
+        </div>
+        <div class="form-group">
+            <label for="image">آپلود عکس</label>
+            <div class="input-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="image" name="image">
+                    <label class="custom-file-label" for="image">عکس مناسب کلمه</label>
                 </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-success" name="submit">ثبت</button>
+                <div class="input-group-append">
+                    <span class="input-group-text" id="">Upload</span>
                 </div>
-              </form>
             </div>
-            <!-- /.card -->
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-              </div>
-              <!-- /.card-body -->
-    </section>
-    <!-- /.content -->
+        </div>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer text-center">
+        <button type="submit" class="btn btn-success" name="submit">ثبت</button>
+    </div>
+</form>
+</div>
+<!-- /.card -->
+</div>
+<!-- /.card-body -->
+</div>
+<!-- /.card -->
+</div>
+</div>
+<!-- /.card-body -->
+</section>
+<!-- /.content -->
 </body>
+
 </html>
 
 <?php
@@ -283,7 +284,6 @@ $servername = "localhost";
 $username = "root";
 $password = "123";
 $dbname = "langute";
-
 // اتصال به دیتابیس
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -295,43 +295,43 @@ if ($conn->connect_error) {
 // دریافت داده‌ها از فرم و ذخیره در دیتابیس
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // بررسی پر بودن تمام فیلدها
-    if (empty($_POST["word"]) || empty($_POST["translation"]) || empty($_FILES["picture"]["name"])) {
-        echo "لطفاً تمام فیلدها را پر کنید.";
+    if (empty($_POST["word"]) || empty($_POST["translation"]) || empty($_FILES["image"]["name"])) {
+        echo '<div class="alert alert-warning text-center mb-3">لطفاً تمام فیلدها را پر کنید.</div>';
     } else {
         $word = $_POST["word"];
         $translation = $_POST["translation"];
-        $picture = $_FILES["picture"]["name"];
+        $image = $_FILES["image"]["name"];
 
         // محدودیت‌های مربوط به عکس
-        $targetDir = "../../../images/uploads/word";
-        $targetFile = $targetDir . basename($_FILES["picture"]["name"]);
+        $targetDir = "../../../images/uploads/word/";
+        $targetFile = $targetDir . basename($_FILES["image"]["name"]);
         $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
         $maxFileSize = 5 * 1024 * 1024; // حداکثر سایز عکس: 5MB
 
         // بررسی پسوند عکس
         $allowedExtensions = array("jpg", "jpeg", "png");
         if (!in_array($imageFileType, $allowedExtensions)) {
-            echo "فقط فایل‌های با پسوند JPG، JPEG و PNG مجاز هستند.";
+            echo '<div class="alert alert-danger text-center mb-3">فقط فایل‌های با پسوند JPG، JPEG و PNG مجاز هستند.</div>';
         }
         // بررسی سایز عکس
-        elseif ($_FILES["picture"]["size"] > $maxFileSize) {
-            echo "سایز فایل عکس باید کمتر از 5MB باشد.";
+        elseif ($_FILES["image"]["size"] > $maxFileSize) {
+            echo '<div class="alert alert-danger text-center mb-3">سایز فایل عکس باید کمتر از 5MB باشد.</div>';
         }
         // آپلود عکس
-        elseif (move_uploaded_file($_FILES["picture"]["tmp_name"], $targetFile)) {
+        elseif (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
             // استفاده از prepared statement برای جلوگیری از حمله‌های اینجکشن
             $stmt = $conn->prepare("INSERT INTO vocabulary (word, translation, picture) VALUES (?, ?, ?)");
             $stmt->bind_param("sss", $word, $translation, $targetFile);
 
             if ($stmt->execute()) {
-                echo "اطلاعات با موفقیت ذخیره شدند.";
+                echo '<div class="alert alert-success text-center mb-3">اطلاعات با موفقیت ذخیره شدند.</div>';
             } else {
-                echo "خطا در ذخیره اطلاعات: " . $stmt->error;
+                echo '<div class="alert alert-danger text-center mb-3">خطا در ذخیره اطلاعات: ' . $stmt->error . '</div>';
             }
 
             $stmt->close();
         } else {
-            echo "خطا در آپلود عکس.";
+            echo '<div class="alert alert-danger text-center mb-3">خطا در آپلود عکس.</div>';
         }
     }
 }
