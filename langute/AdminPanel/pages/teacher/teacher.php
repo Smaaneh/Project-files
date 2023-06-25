@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
+  <?php
+      header('Content-Type: text/html; charset=utf-8');
+      ?>
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>مدیریت | استادان</title>
   <!-- Tell the browser to be responsive to screen width -->
@@ -230,7 +233,6 @@ $servername = "localhost"; // آدرس سرور پایگاه داده
 $username = "root"; // نام کاربری پایگاه داده
 $password = "123"; // رمز عبور پایگاه داده
 $dbname = "langute"; // نام پایگاه داده
-
 // ایجاد اتصال به پایگاه داده
 $conn = new mysqli($servername, $username, $password, $dbname);
 
