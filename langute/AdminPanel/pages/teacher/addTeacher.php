@@ -237,25 +237,25 @@
             <!-- /.card-header -->
             <!-- form start -->
             <form role="form" method="post" enctype="multipart/form-data">
-              <div class="card-body">
+            <div class="card-body">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">نام</label>
-                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="نام استاد را وارد کنید">
+                  <label for="name">نام</label>
+                  <input type="text" class="form-control" id="name" name="name" placeholder="نام استاد را وارد کنید">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">نام خانوادگی</label>
-                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="نام خانوادگی استاد را وارد کنید">
+                  <label for="Lname">نام خانوادگی</label>
+                  <input type="text" class="form-control" id="Lname" name="Lname" placeholder="نام خانوادگی استاد را وارد کنید">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">تخصص</label>
-                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="تخصص استاد را وارد کنید">
+                  <label for="expertise">تخصص</label>
+                  <input type="text" class="form-control" id="expertise" name="expertise" placeholder="تخصص استاد را وارد کنید">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputFile">آپلود عکس</label>
+                  <label for="image">آپلود عکس</label>
                   <div class="input-group">
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="exampleInputFile">
-                      <label class="custom-file-label" for="exampleInputFile">عکس استاد را انتخاب کنید</label>
+                      <input type="file" class="custom-file-input" id="image" name="image">
+                      <label class="custom-file-label" for="image">عکس استاد را انتخاب کنید</label>
                     </div>
                     <div class="input-group-append">
                       <span class="input-group-text" id="">Upload</span>
@@ -264,8 +264,8 @@
                 </div>
               </div>
               <!-- /.card-body -->
-              <div class="card-footer">
-                <button type="submit" class="btn btn-success">ثبت</button>
+              <div class="card-footer text-center">
+              <button type="submit" class="btn btn-success" name="submit">ثبت</button>
               </div>
             </form>
           </div>
