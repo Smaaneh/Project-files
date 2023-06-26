@@ -279,6 +279,19 @@
             <!-- /.card-body -->
   </section>
   <!-- /.content -->
+  <!-- php code -->
+  <?php
+$servername = "localhost";
+$username = "root";
+$password = "123";
+$dbname = "langute";
+// اتصال به دیتابیس
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// بررسی اتصال
+if ($conn->connect_error) {
+    die("خطا در اتصال به دیتابیس: " . $conn->connect_error);
+}
 
 
 <!-- **************************************************** -->
