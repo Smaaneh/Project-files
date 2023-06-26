@@ -252,7 +252,7 @@ $result = $conn->query($sql);
   <div class="row">
     <div class="col-12">
       <div class="card">
-        <a class="btn btn-success btn-lg" href="addTeacher.html">افزودن استاد جدید +</a>
+        <a class="btn btn-success btn-lg" href="addTeacher.php">افزودن استاد جدید +</a>
         <div class="card-header">
           <h3 class="card-title">اسامی استادان سایت لنگوته</h3>
         </div>
