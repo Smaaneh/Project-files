@@ -292,6 +292,52 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("خطا در اتصال به دیتابیس: " . $conn->connect_error);
 }
+// دریافت داده‌ها از فرم و ذخیره در دیتابیس
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // بررسی پر بودن تمام فیلدها
+  if (empty($_POST["name"]) || empty($_POST["Lname"]) || empty($_POST["expertise"])|| empty($_FILES["image"]["name"])) {
+   echo '<div class="alert alert-warning text-center mb-3">لطفاً تمام فیلدها را پر کنید.</div>';
+ } else {
+   $name = $_POST["name"];
+   $Lname = $_POST["Lname"];
+   $expertise = $_POST["expertise"];
+   $image = $_FILES["image"]["name"];
+  // محدودیت‌های مربوط به عکس
+  $targetDir = "../../../images/uploads/teacher/";
+  $targetFile = $targetDir . basename($_FILES["image"]["name"]);
+  $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+  $maxFileSize = 5 * 1024 * 1024; // حداکثر سایز عکس: 5MB
+ 
+  // بررسی پسوند عکس
+  $allowedExtensions = array("jpg", "jpeg", "png");
+  if (!in_array($imageFileType, $allowedExtensions)) {
+      echo '<div class="alert alert-danger text-center mb-3">فقط فایل‌های با پسوند JPG، JPEG و PNG مجاز هستند.</div>';
+  }
+  // بررسی سایز عکس
+  elseif ($_FILES["image"]["size"] > $maxFileSize) {
+      echo '<div class="alert alert-danger text-center mb-3">سایز فایل عکس باید کمتر از 5MB باشد.</div>';
+  }
+  // آپلود عکس
+  elseif (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
+    // استفاده از prepared statement برای جلوگیری از حمله‌های اینجکشن
+    $stmt = $conn->prepare("INSERT INTO teacher (name,last_name,expertise,Picture) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssss", $name, $Lname, $expertise ,$targetFile);
+ 
+    if ($stmt->execute()) {
+        echo '<div class="alert alert-success text-center mb-3">اطلاعات با موفقیت ذخیره شدند.</div>';
+    } else {
+        echo '<div class="alert alert-danger text-center mb-3">خطا در ذخیره اطلاعات: ' . $stmt->error . '</div>';
+    }
+ 
+    $stmt->close();
+ } else {
+    echo '<div class="alert alert-danger text-center mb-3">خطا در آپلود عکس.</div>';
+ }
+ }
+ }
+ 
+ $conn->close();
+  ?>
 
 
 <!-- **************************************************** -->
