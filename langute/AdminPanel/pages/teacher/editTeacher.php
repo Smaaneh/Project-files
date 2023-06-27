@@ -220,7 +220,28 @@ if ($conn->connect_error) {
 }
 // دریافت شناسه استاد برای ویرایش
 $id = $_GET['id'];
-?>
+
+// دریافت اطلاعات استاد قبل از ویرایش
+$sql = "SELECT * FROM teacher WHERE id = $id";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $name = $row['name'];
+    $last_name = $row['last_name'];
+    $expertise = $row['expertise'];
+} else {
+    echo "<script>alert('رکورد مورد نظر یافت نشد.')</script>";
+    exit();
+}
+
+// در صورتی که فرم ویرایش ارسال شده باشد
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // دریافت اطلاعات از فرم
+    $new_name = $_POST['name'];
+    $new_last_name = $_POST['last_name'];
+    $new_expertise = $_POST['expertise'];
+    ?>
+
 <!-- **************************************************** -->
 <footer class="main-footer">
 <div class="float-right d-none d-sm-block">
