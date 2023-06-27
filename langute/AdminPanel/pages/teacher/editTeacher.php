@@ -253,6 +253,68 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // بستن اتصال به پایگاه داده
 $conn->close();
 ?>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>ویرایش استاد</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-left">
+                        <li class="breadcrumb-item"><a href="../HomeAdmin.html">خانه</a></li>
+                        <li class="breadcrumb-item"><a href="teacher.php">استادان</a></li>
+                        <li class="breadcrumb-item active">ویرایش استاد</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section><!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">فرم ویرایش استاد</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . '?id=' . $id; ?>" enctype="multipart/form-data">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="name">نام</label>
+                                <input type="text" class="form-control" id="name" name="name" value="<?php echo $name; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="last_name">نام خانوادگی</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" value="<?php echo $last_name; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="expertise">تخصص</label>
+                                <input type="text" class="form-control" id="expertise" name="expertise" value="<?php echo $expertise; ?>" required>
+                                </div>
+                            <div class="form-group">
+                                <label for="teacher_image">عکس استاد</label>
+                                <input type="file" class="form-control" id="teacher_image" name="teacher_image">
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">ثبت تغییرات</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
 
 <!-- **************************************************** -->
 <footer class="main-footer">
