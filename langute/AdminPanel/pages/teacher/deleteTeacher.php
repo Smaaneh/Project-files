@@ -28,6 +28,8 @@ if ($result->num_rows > 0) {
     $sql = "DELETE FROM teacher WHERE id = $id";
     if ($conn->query($sql) === TRUE) {
         echo "<script>alert('استاد $name $last_name حذف شد.')</script>";
+        echo "<script>window.location.href = 'teacher.php';</script>";
+        
     } else {
         echo "<script>alert('خطا در حذف رکورد.')</script>";
     }
