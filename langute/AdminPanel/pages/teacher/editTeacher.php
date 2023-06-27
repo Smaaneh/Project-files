@@ -218,6 +218,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
 // دریافت شناسه استاد برای ویرایش
 $id = $_GET['id'];
 
@@ -240,8 +241,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_name = $_POST['name'];
     $new_last_name = $_POST['last_name'];
     $new_expertise = $_POST['expertise'];
-    // به روزرسانی رکورد استاد در جدول teacher
-    $update_sql = "UPDATE teacher SET name = '$new_name', last_name = '$new_last_name', expertise = '$new_expertise' WHERE id = $id";
+
+    // اعتبارسنجی فقط برای عکس
+    if ($_FILES['teacher_image']['error'] === UPLOAD_ERR_OK) {
+        $file_tmp = $_FILES['teacher_image']['tmp_name'];
+        $file_size = $_FILES['teacher_image']['size'];
+        $file_type = $_FILES['teacher_image']['type'];
+
+        // چک کردن اندازه و نوع فایل
+        if ($file_size > 5242880) { // حداکثر حجم 5 مگابایت
+            echo "<script>alert('حجم تصویر باید کمتر از 5 مگابایت باشد.')</script>";
+            echo "<script>window.location.href = 'teacher.php';</script>";
+            exit();
+        }
+        if ($file_type !== 'image/jpeg' && $file_type !== 'image/png') {
+            echo "<script>alert('فرمت تصویر باید JPEG یا PNG باشد.')</script>";
+            echo "<script>window.location.href = 'teacher.php';</script>";
+            exit();
+        }
+
+        // ذخیره تصویر در مسیر مورد نظر
+        $target_dir = "images/";
+        $target_file = $target_dir . basename($_FILES['teacher_image']['name']);
+        move_uploaded_file($file_tmp, $target_file);
+
+        // به روزرسانی رکورد استاد در جدول teacher
+        $update_sql = "UPDATE teacher SET name = '$new_name', last_name = '$new_last_name', expertise = '$new_expertise', image = '$target_file' WHERE id = $id";
+    } else {
+        // فقط به روزرسانی بدون تغییر تصویر
+        $update_sql = "UPDATE teacher SET name = '$new_name', last_name = '$new_last_name', expertise = '$new_expertise' WHERE id = $id";
+    }
+
     if ($conn->query($update_sql) === TRUE) {
         echo "<script>alert('ویرایش استاد با موفقیت انجام شد.')</script>";
         echo "<script>window.location.href = 'teacher.php';</script>";
@@ -253,6 +283,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // بستن اتصال به پایگاه داده
 $conn->close();
 ?>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -294,7 +325,7 @@ $conn->close();
                             <div class="form-group">
                                 <label for="expertise">تخصص</label>
                                 <input type="text" class="form-control" id="expertise" name="expertise" value="<?php echo $expertise; ?>" required>
-                                </div>
+                            </div>
                             <div class="form-group">
                                 <label for="teacher_image">عکس استاد</label>
                                 <input type="file" class="form-control" id="teacher_image" name="teacher_image">
