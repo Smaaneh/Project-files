@@ -240,7 +240,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_name = $_POST['name'];
     $new_last_name = $_POST['last_name'];
     $new_expertise = $_POST['expertise'];
-    ?>
+    // به روزرسانی رکورد استاد در جدول teacher
+    $update_sql = "UPDATE teacher SET name = '$new_name', last_name = '$new_last_name', expertise = '$new_expertise' WHERE id = $id";
+    if ($conn->query($update_sql) === TRUE) {
+        echo "<script>alert('ویرایش استاد با موفقیت انجام شد.')</script>";
+        echo "<script>window.location.href = 'teacher.php';</script>";
+    } else {
+        echo "<script>alert('خطا در ویرایش رکورد.')</script>";
+    }
+}
+
+// بستن اتصال به پایگاه داده
+$conn->close();
+?>
 
 <!-- **************************************************** -->
 <footer class="main-footer">
