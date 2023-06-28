@@ -138,94 +138,19 @@
   <!--/ End Breadcrumb -->
 
   <!--/ End Slider Area -->
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <h1 class="text-center">English Flash Cards lesson 1</h1>
-      </div>
-    </div>
-
-    <div class="row mt-5">
-      <div class="col-md-6 offset-md-3">
-        <div id="flashcards" class="card-deck">
-          <div class="card">
-            <img class="card-img-top" src="images/words/gol.jpg" alt="Word 1">
-            <div class="card-body">
-              <h5 class="card-title">Flower</h5>
-              <p class="card-text">گل</p>
-            </div>
-          </div>
-          <div class="card">
-            <img class="card-img-top" src="word2.jpg" alt="Word 2">
-            <div class="card-body">
-              <h5 class="card-title">home</h5>
-              <p class="card-text">خانه</p>
-            </div>
-          </div>
-          <div class="card">
-            <img class="card-img-top" src="word3.jpg" alt="Word 3">
-            <div class="card-body">
-              <h5 class="card-title">Word 3</h5>
-              <p class="card-text">Definition 3</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row mt-5">
-      <div class="col-md-6 offset-md-3">
-        <div class="text-center">
-          <button id="prevBtn" class="btn btn-primary mr-2">Previous</button>
-          <button id="nextBtn" class="btn btn-primary">Next</button>
-        </div>
-      </div>
+<!-- main word -->
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h1 class="text-center">English Vocabulary</h1>
     </div>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script>
-    var flashcards = [
-      { word: "Word 1", definition: "Definition 1", image: "word1.jpg" },
-      { word: "Word 2", definition: "Definition 2", image: "word2.jpg" },
-      { word: "Word 3", definition: "Definition 3", image: "word3.jpg" }
-    ];
-
-    var currentCardIndex = 0;
-
-    function showNextCard() {
-      currentCardIndex = (currentCardIndex + 1) % flashcards.length;
-      showCard();
-    }
-
-    function showPreviousCard() {
-      currentCardIndex = (currentCardIndex - 1 + flashcards.length) % flashcards.length;
-      showCard();
-    }
-
-    function showCard() {
-      var card = flashcards[currentCardIndex];
-      $(".card-img").attr("src", card.image);
-      $(".card-title").text(card.word);
-      $(".card-text").text(card.definition);
-    }
-
-    $(document).ready(function() {
-      showCard();
-
-      $("#nextBtn").click(function() {
-        showNextCard();
-      });
-
-      $("#prevBtn").click(function() {
-        showPreviousCard();
-      });
-    });
-  </script>
-
-
-
+  <div class="row mt-5">
+    <div class="col-md-6 offset-md-3">
+      <div id="swiper-container" class="swiper-container">
+        <div class="swiper-wrapper">
+<!--/ End main word -->
   		<!-- Footer -->
   		<footer class="footer section">
   			<!-- Footer Top -->
