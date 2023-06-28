@@ -215,7 +215,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-left">
             <li class="breadcrumb-item"><a href="../HomeAdmin.html">خانه</a></li>
-            <li class="breadcrumb-item"><a href="teacher.html">استادان</a></li>
+            <li class="breadcrumb-item"><a href="teacher.php">استادان</a></li>
             <li class="breadcrumb-item active">افزودن استاد</li>
           </ol>
         </div>
@@ -236,26 +236,26 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form role="form">
+            <form role="form" method="post" enctype="multipart/form-data">
               <div class="card-body">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">نام</label>
-                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="نام استاد را وارد کنید">
+                  <label for="name">نام</label>
+                  <input type="text" class="form-control" id="name" name="name" placeholder="نام استاد را وارد کنید">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">نام خانوادگی</label>
-                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="نام خانوادگی استاد را وارد کنید">
+                  <label for="Lname">نام خانوادگی</label>
+                  <input type="text" class="form-control" id="Lname" name="Lname" placeholder="نام خانوادگی استاد را وارد کنید">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">تخصص</label>
-                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="تخصص استاد را وارد کنید">
+                  <label for="expertise">تخصص</label>
+                  <input type="text" class="form-control" id="expertise" name="expertise" placeholder="تخصص استاد را وارد کنید">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputFile">آپلود عکس</label>
+                  <label for="image">آپلود عکس</label>
                   <div class="input-group">
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="exampleInputFile">
-                      <label class="custom-file-label" for="exampleInputFile">عکس استاد را انتخاب کنید</label>
+                      <input type="file" class="custom-file-input" id="image" name="image">
+                      <label class="custom-file-label" for="image">عکس استاد را انتخاب کنید</label>
                     </div>
                     <div class="input-group-append">
                       <span class="input-group-text" id="">Upload</span>
@@ -264,21 +264,87 @@
                 </div>
               </div>
               <!-- /.card-body -->
-              <div class="card-footer">
-                <button type="submit" class="btn btn-success">ثبت</button>
+              <div class="card-footer text-center">
+                <button type="submit" class="btn btn-success" name="submit">ثبت</button>
               </div>
             </form>
           </div>
           <!-- /.card -->
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
         </div>
-            </div>
-            <!-- /.card-body -->
+        <!-- /.col-md-12 -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
   </section>
   <!-- /.content -->
+
+  <!-- php code -->
+  <?php
+  $servername = "localhost";
+  $username = "root";
+  $password = "123";
+  $dbname = "langute";
+  
+  // اتصال به دیتابیس
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  
+  // بررسی اتصال
+  if ($conn->connect_error) {
+    die("خطا در اتصال به دیتابیس: " . $conn->connect_error);
+  }
+  
+  // دریافت داده‌ها از فرم و ذخیره در دیتابیس
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // بررسی پر بودن تمام فیلدها
+    if (empty($_POST["name"]) || empty($_POST["Lname"]) || empty($_POST["expertise"]) || empty($_FILES["image"]["name"])) {
+      echo '<div class="alert alert-warning text-center mb-3">لطفاً تمام فیلدها را پر کنید.</div>';
+    } else {
+      $name = $_POST["name"];
+      $Lname = $_POST["Lname"];
+      $expertise = $_POST["expertise"];
+      $image = $_FILES["image"]["name"];
+  
+      // محدودیت‌های مربوط به عکس
+      $targetDir = "../../../images/uploads/teacher/";
+      $targetFile = $targetDir . basename($_FILES["image"]["name"]);
+      $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+      $maxFileSize = 5 * 1024 * 1024; // حداکثر سایز عکس: 5MB
+  
+      // بررسی پسوند عکس
+      $allowedExtensions = array("jpg", "jpeg", "png");
+      if (!in_array($imageFileType, $allowedExtensions)) {
+        echo '<div class="alert alert-danger text-center mb-3">فقط فایل‌های با پسوند JPG، JPEG و PNG مجاز هستند.</div>';
+      }
+      // بررسی سایز عکس
+      elseif ($_FILES["image"]["size"] > $maxFileSize) {
+        echo '<div class="alert alert-danger text-center mb-3">سایز فایل عکس باید کمتر از 5MB باشد.</div>';
+      }
+      // آپلود عکس
+      elseif (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
+        // استفاده از prepared statement برای جلوگیری از حمله‌های اینجکشن
+        $stmt = $conn->prepare("INSERT INTO teacher (name, last_name, expertise, Picture) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $name, $Lname, $expertise, $targetFile);
+  
+        if ($stmt->execute()) {
+          echo '<div class="alert alert-success text-center mb-3">اطلاعات با موفقیت ذخیره شدند.</div>';
+        } else {
+          echo '<div class="alert alert-danger text-center mb-3">خطا در ذخیره اطلاعات: ' . $stmt->error . '</div>';
+        }
+  
+        $stmt->close();
+      } else {
+        echo '<div class="alert alert-danger text-center mb-3">خطا در آپلود عکس.</div>';
+      }
+    }
+  }
+  
+  $conn->close();
+  ?>
+</div>
+<!-- /.content-wrapper -->
+
+
 
 
 <!-- **************************************************** -->

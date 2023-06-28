@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html>
-  <?php
-      header('Content-Type: text/html; charset=utf-8');
-      ?>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>مدیریت | استادان</title>
+  <title>مدیریت | ویرایش استاد</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -159,7 +156,7 @@
               </a>
             </li>
             <li class="nav-item">
-               <a href="../azmon.html" class="nav-link">
+               <a href="azmon.html" class="nav-link">
                    <i class="nav-icon fa fa-dashboard"></i>
                  <p>
                   آزمون
@@ -205,8 +202,8 @@
     </div>
     <!-- /.sidebar -->
   </aside>
-<!-- **************************************************** -->
 
+<!-- **************************************************** -->
 <?php
 // اطلاعات اتصال به پایگاه داده
 $servername = "localhost"; // آدرس سرور پایگاه داده
@@ -222,10 +219,69 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// دریافت اطلاعات از جدول teacher
-$sql = "SELECT * FROM teacher";
-$result = $conn->query($sql);
+// دریافت شناسه استاد برای ویرایش
+$id = $_GET['id'];
 
+// دریافت اطلاعات استاد قبل از ویرایش
+$sql = "SELECT * FROM teacher WHERE id = $id";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $name = $row['name'];
+    $last_name = $row['last_name'];
+    $expertise = $row['expertise'];
+} else {
+    echo "<script>alert('رکورد مورد نظر یافت نشد.')</script>";
+    exit();
+}
+
+// در صورتی که فرم ویرایش ارسال شده باشد
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // دریافت اطلاعات از فرم
+    $new_name = $_POST['name'];
+    $new_last_name = $_POST['last_name'];
+    $new_expertise = $_POST['expertise'];
+
+    // اعتبارسنجی فقط برای عکس
+    if ($_FILES['teacher_image']['error'] === UPLOAD_ERR_OK) {
+        $file_tmp = $_FILES['teacher_image']['tmp_name'];
+        $file_size = $_FILES['teacher_image']['size'];
+        $file_type = $_FILES['teacher_image']['type'];
+
+        // چک کردن اندازه و نوع فایل
+        if ($file_size > 5242880) { // حداکثر حجم 5 مگابایت
+            echo "<script>alert('حجم تصویر باید کمتر از 5 مگابایت باشد.')</script>";
+            echo "<script>window.location.href = 'teacher.php';</script>";
+            exit();
+        }
+        if ($file_type !== 'image/jpeg' && $file_type !== 'image/png') {
+            echo "<script>alert('فرمت تصویر باید JPEG یا PNG باشد.')</script>";
+            echo "<script>window.location.href = 'teacher.php';</script>";
+            exit();
+        }
+
+        // ذخیره تصویر در مسیر مورد نظر
+        $target_dir = "images/";
+        $target_file = $target_dir . basename($_FILES['teacher_image']['name']);
+        move_uploaded_file($file_tmp, $target_file);
+
+        // به روزرسانی رکورد استاد در جدول teacher
+        $update_sql = "UPDATE teacher SET name = '$new_name', last_name = '$new_last_name', expertise = '$new_expertise', image = '$target_file' WHERE id = $id";
+    } else {
+        // فقط به روزرسانی بدون تغییر تصویر
+        $update_sql = "UPDATE teacher SET name = '$new_name', last_name = '$new_last_name', expertise = '$new_expertise' WHERE id = $id";
+    }
+
+    if ($conn->query($update_sql) === TRUE) {
+        echo "<script>alert('ویرایش استاد با موفقیت انجام شد.')</script>";
+        echo "<script>window.location.href = 'teacher.php';</script>";
+    } else {
+        echo "<script>alert('خطا در ویرایش رکورد.')</script>";
+    }
+}
+
+// بستن اتصال به پایگاه داده
+$conn->close();
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -235,67 +291,51 @@ $result = $conn->query($sql);
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>مدیریت استادان</h1>
+                    <h1>ویرایش استاد</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="../HomeAdmin.html">خانه</a></li>
-                        <li class="breadcrumb-item active">استادان</li>
+                        <li class="breadcrumb-item"><a href="teacher.php">استادان</a></li>
+                        <li class="breadcrumb-item active">ویرایش استاد</li>
                     </ol>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
+    </section><!-- Main content -->
     <section class="content">
         <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <a class="btn btn-success btn-lg" href="addTeacher.php">افزودن استاد جدید +</a>
+            <div class="col-md-12">
+                <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">اسامی استادان سایت لنگوته</h3>
+                        <h3 class="card-title">فرم ویرایش استاد</h3>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body">
-                        <table id="example1" class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>نام</th>
-                                    <th>نام خانوادگی</th>
-                                    <th>تخصص</th>
-                                    <th>عملیات</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                // نمایش رکوردهای جدول teacher
-                                if ($result->num_rows > 0) {
-                                    while ($row = $result->fetch_assoc()) {
-                                        echo "<tr>";
-                                        echo "<td>" . $row['name'] . "</td>";
-                                        echo "<td>" . $row['last_name'] . "</td>";
-                                        echo "<td>" . $row['expertise'] . "</td>";
-                                        echo "<td><a href='editTeacher.php?id=" . $row['id'] . "' class='btn btn-block btn-info btn-sm'>ویرایش</a></td>";
-                                        echo "<td><a href='deleteTeacher.php?id=" . $row['id'] . "' class='btn btn-block btn-danger btn-sm' onclick='confirmDelete(" . $row['id'] . ");'>حذف</a></td>";
-                                        echo "</tr>";
-                                    }
-                                } else {
-                                    echo "<tr><td colspan='4'>هیچ رکوردی یافت نشد</td></tr>";
-                                }
-                                ?>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>نام</th>
-                                    <th>نام خانوادگی</th>
-                                    <th>تخصص</th>
-                                    <th>عملیات</th>
-                                </tr>
-                            </tfoot>
-                        </table>
-</div>
-                    <!-- /.card-body -->
+                    <!-- form start -->
+                    <form role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . '?id=' . $id; ?>" enctype="multipart/form-data">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="name">نام</label>
+                                <input type="text" class="form-control" id="name" name="name" value="<?php echo $name; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="last_name">نام خانوادگی</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" value="<?php echo $last_name; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="expertise">تخصص</label>
+                                <input type="text" class="form-control" id="expertise" name="expertise" value="<?php echo $expertise; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="teacher_image">عکس استاد</label>
+                                <input type="file" class="form-control" id="teacher_image" name="teacher_image">
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">ثبت تغییرات</button>
+                        </div>
+                    </form>
                 </div>
                 <!-- /.card -->
             </div>
@@ -307,36 +347,20 @@ $result = $conn->query($sql);
 </div>
 <!-- /.content-wrapper -->
 
-<script>
-    function confirmDelete(id) {
-        var result = confirm("آیا میخواهید این استاد حذف شود؟");
-        if (result) {
-            // اگر کاربر تایید کرد، ارسال درخواست حذف به صفحه deleteTeacher.php
-            window.location.href = "deleteTeacher.php?id=" + id;
-        } else {
-            console.log("حذف رکورد لغو شد.");
-        }
-    }
-</script>
+<!-- **************************************************** -->
+<footer class="main-footer">
+<div class="float-right d-none d-sm-block">
+ صفحه ادمین لنگوته
+</div>
 
-<?php
-// بستن اتصال به پایگاه داده
-$conn->close();
-?>
-  <!-- ******************************************************* -->
-    <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-     صفحه ادمین لنگوته
-    </div>
+<strong>CopyLeft &copy; 2018<a href="http://github.com/smaaneh/">سمانه محمدی و نرگس افراز</a>.</strong>
+</footer>
 
-    <strong>CopyLeft &copy; 2018<a href="http://github.com/smaaneh/">سمانه محمدی و نرگس افراز</a>.</strong>
-  </footer>
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 
@@ -344,44 +368,11 @@ $conn->close();
 <script src="../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables -->
-<script src="../../plugins/datatables/jquery.dataTables.js"></script>
-<script src="../../plugins/datatables/dataTables.bootstrap4.js"></script>
-<!-- SlimScroll -->
-<script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
-<!-- page script -->
-<script>
-  $(function () {
-    $("#example1").DataTable({
-        "language": {
-            "paginate": {
-                "next": "بعدی",
-                "previous" : "قبلی"
-            }
-        },
-        "info" : false,
-    });
-    $('#example2').DataTable({
-        "language": {
-            "paginate": {
-                "next": "بعدی",
-                "previous" : "قبلی"
-            }
-        },
-      "info" : false,
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "autoWidth": false
-    });
-  });
-</script>
 </body>
 </html>
