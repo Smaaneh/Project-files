@@ -21,75 +21,76 @@
 <body>
 	<div class="limiter">
 		<div class="container-login100" style="background-color:#05C46B;">
-			<div class="wrap-login100">
-
+		  <div class="wrap-login100">
+	  
 			<!-- input form -->
-			<form class="login100-form validate-form">
-				<span class="login100-form-title">عضویت در سایت</span>
-        <!-- enter email-->
-				<div class="wrap-input100 validate-input" data-validate = "لطفا نام خودرا وارد کنید">
-					<input class="input100" type="text" name="name" placeholder="نام">
-					<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-user" aria-hidden="true" style="color: #05C46B;"></i>
-						</span>
-				</div>
-				<!-- / enter email -->
-        <!-- enter email-->
-				<div class="wrap-input100 validate-input" data-validate = "لطفا نام خانوادگی خود را وارد کنید">
-					<input class="input100" type="text" name="email" placeholder="نام خانوادگی">
-					<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-user" aria-hidden="true" style="color: #05C46B;"></i>
-						</span>
-				</div>
-				<!-- / enter email -->
-
-				<!-- enter email-->
-				<div class="wrap-input100 validate-input" data-validate = "لطفا پست الکترونیک خود را وارد کنید!">
-					<input class="input100" type="text" name="email" placeholder="پست الکترونیک">
-					<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true" style="color: #05C46B;"></i>
-						</span>
-				</div>
-				<!-- / enter email -->
-
-				<!-- enter password-->
-				<div class="wrap-input100 validate-input" data-validate = "لطفا رمز عبور را وارد کنید!">
-					<input class="input100" type="password" name="pass" placeholder="رمز عبور">
-					<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true" style="color: #05C46B;"></i>
-						</span>
-				</div>
-				<!-- / enter password-->
-
-				<!-- register button-->
-				<div class="container-login100-form-btn">
-					<button class="login100-form-btn" style="background-color: #05C46B;">عضویت</button>
-				</div>
-				<!-- / register button -->
-				<!-- login-->
-					<div class="text-center p-t-50">
-						<a class="txt2" href="login.html">
-						<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true" ></i>قبلا ثبت نام کرده اید؟
-						</a>
-					</div>
-				<!-- / login-->
-
+			<form class="login100-form validate-form" action="register.php" method="POST">
+			  <span class="login100-form-title">عضویت در سایت</span>
+			  <!-- enter name -->
+			  <div class="wrap-input100 validate-input" data-validate="لطفاً نام خود را وارد کنید">
+				<input class="input100" type="text" name="name" placeholder="نام">
+				<span class="focus-input100"></span>
+				<span class="symbol-input100">
+				  <i class="fa fa-user" aria-hidden="true" style="color: #05C46B;"></i>
+				</span>
+			  </div>
+			  <!-- / enter name -->
+			  <!-- enter last name -->
+			  <div class="wrap-input100 validate-input" data-validate="لطفاً نام خانوادگی خود را وارد کنید">
+				<input class="input100" type="text" name="last_name" placeholder="نام خانوادگی">
+				<span class="focus-input100"></span>
+				<span class="symbol-input100">
+				  <i class="fa fa-user" aria-hidden="true" style="color: #05C46B;"></i>
+				</span>
+			  </div>
+			  <!-- / enter last name -->
+	  
+			  <!-- enter email -->
+			  <div class="wrap-input100 validate-input" data-validate="لطفاً پست الکترونیک خود را وارد کنید!">
+				<input class="input100" type="email" name="email" placeholder="پست الکترونیک">
+				<span class="focus-input100"></span>
+				<span class="symbol-input100">
+				  <i class="fa fa-envelope" aria-hidden="true" style="color: #05C46B;"></i>
+				</span>
+			  </div>
+			  <!-- / enter email -->
+	  
+			  <!-- enter password -->
+			  <div class="wrap-input100 validate-input" data-validate="لطفاً رمز عبور را وارد کنید!">
+				<input class="input100" type="password" name="password" placeholder="رمز عبور">
+				<span class="focus-input100"></span>
+				<span class="symbol-input100">
+				  <i class="fa fa-lock" aria-hidden="true" style="color: #05C46B;"></i>
+				</span>
+			  </div>
+			  <!-- / enter password -->
+	  
+			  <!-- register button -->
+			  <div class="container-login100-form-btn">
+				<button class="login100-form-btn" style="background-color: #05C46B;" type="submit">عضویت</button>
+			  </div>
+			  <!-- / register button -->
+	  
+			  <!-- login -->
+			  <div class="text-center p-t-50">
+				<a class="txt2" href="login.html">
+				  <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>قبلاً ثبت نام کرده اید؟
+				</a>
+			  </div>
+			  <!-- / login -->
+	  
 			</form>
 			<!-- / input form -->
-
+	  
 			<!-- form image -->
 			<div class="login100-pic js-tilt" data-tilt>
-				<img src="pics/img-01.png" alt="IMG">
+			  <img src="pics/img-01.png" alt="IMG">
 			</div>
 			<!-- / form image -->
-
-			</div>
+	  
+		  </div>
 		</div>
-	</div>
+	  </div>
 
 
 	<!-- scripts -->
