@@ -246,6 +246,17 @@
             <label for="translation">ترجمه</label>
             <input type="text" class="form-control" id="translation" name="translation" placeholder="ترجمه را وارد کنید">
         </div>
+          <!-- select -->
+    <div class="form-group">
+      <label>درس مد نظر خود را انتخاب کنید</label>
+      <select class="form-control" name="cours">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+</select>
+    </div>
+  <!-- uplod pic -->
         <div class="form-group">
             <label for="image">آپلود عکس</label>
             <div class="input-group">
@@ -295,11 +306,12 @@ if ($conn->connect_error) {
 // دریافت داده‌ها از فرم و ذخیره در دیتابیس
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // بررسی پر بودن تمام فیلدها
-    if (empty($_POST["word"]) || empty($_POST["translation"]) || empty($_FILES["image"]["name"])) {
-        echo '<div class="alert alert-warning text-center mb-3">لطفاً تمام فیلدها را پر کنید.</div>';
-    } else {
+    if (empty($_POST["word"]) || empty($_POST["translation"]) || empty($_POST["cours"]) || empty($_FILES["image"]["name"])) {
+      echo '<div class="alert alert-warning text-center mb-3">لطفاً تمام فیلدها را پر کنید.</div>';
+  } else {
         $word = $_POST["word"];
         $translation = $_POST["translation"];
+        $cours = $_POST["cours"];
         $image = $_FILES["image"]["name"];
 
         // محدودیت‌های مربوط به عکس
@@ -320,8 +332,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // آپلود عکس
         elseif (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
             // استفاده از prepared statement برای جلوگیری از حمله‌های اینجکشن
-            $stmt = $conn->prepare("INSERT INTO vocabulary (word, translation, picture) VALUES (?, ?, ?)");
-            $stmt->bind_param("sss", $word, $translation, $targetFile);
+            $stmt = $conn->prepare("INSERT INTO vocabulary (word, translation, lesson_id, picture) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssss", $word, $translation, $cours, $targetFile);
 
             if ($stmt->execute()) {
                 echo '<div class="alert alert-success text-center mb-3">اطلاعات با موفقیت ذخیره شدند.</div>';
@@ -339,9 +351,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $conn->close();
 ?>
 
-
-
-
+</div>
+<!-- /.content-wrapper -->
 <footer class="main-footer">
 <div class="float-right d-none d-sm-block">
  صفحه ادمین لنگوته
