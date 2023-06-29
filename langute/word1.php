@@ -157,6 +157,7 @@ if ($conn->connect_error) {
 $sql = "SELECT * FROM vocabulary WHERE lesson_id = 1";
 $result = $conn->query($sql);
 ?>
+
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-6 offset-md-3">
@@ -168,6 +169,45 @@ $result = $conn->query($sql);
     <div class="col-md-6 offset-md-3">
       <div id="swiper-container" class="swiper-container">
         <div class="swiper-wrapper">
+          <?php
+          if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+              echo '<div class="swiper-slide">';
+              echo '<img class="card-img-top" src="' . $row["picture"] . '" alt="' . $row["word"] . '">';
+              echo '<div class="card-body">';
+              echo '<h5 class="card-title">' . $row["word"] . '</h5>';
+              echo '<p class="card-text">' . $row["translation"] . '</p>';
+              echo '</div>';
+              echo '</div>';
+            }
+          } else {
+            echo '<div class="swiper-slide">';
+            echo '<p class="text-center">هیچ واژه‌ای یافت نشد.</p>';
+            echo '</div>';
+          }
+          ?>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+  var swiper = new Swiper('#swiper-container', {
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>
+
+<?php
+// بستن اتصال به دیتابیس
+$conn->close();
+?>
 <!--/ End main word -->
   		<!-- Footer -->
   		<footer class="footer section">
