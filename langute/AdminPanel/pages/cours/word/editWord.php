@@ -275,6 +275,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "<script>alert('خطا در ویرایش رکورد.')</script>";
             }
         }
+        // بستن اتصال به پایگاه داده
+$conn->close();
 ?>
 <!-- **************************************************** -->
 <footer class="main-footer">
