@@ -300,6 +300,23 @@ $result = $conn->query($sql);
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<script>
+    function confirmDelete(id) {
+        var result = confirm("آیا میخواهید این کلمه حذف شود؟");
+        if (result) {
+            // اگر کاربر تایید کرد، ارسال درخواست حذف به صفحه deleteWord.php
+            window.location.href = "deleteWord.php?id=" + id;
+        } else {
+            console.log("حذف رکورد لغو شد.");
+        }
+    }
+</script>
+
+<?php
+// بستن اتصال به پایگاه داده
+$conn->close();
+?>
+
 <!-- **************************************************** -->
 <footer class="main-footer">
 <div class="float-right d-none d-sm-block">
