@@ -220,6 +220,25 @@ if ($conn->connect_error) {
 
 // دریافت شناسه کلمه برای ویرایش
 $id = $_GET['id'];
+// دریافت اطلاعات کلمه قبل از ویرایش
+$sql = "SELECT * FROM vocabulary WHERE id = $id";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $word = $row['word'];
+    $translation = $row['translation'];
+    $lesson_id = $row['lesson_id'];
+} else {
+    echo "<script>alert('رکورد مورد نظر یافت نشد.')</script>";
+    exit();
+}
+
+// در صورتی که فرم ویرایش ارسال شده باشد
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // دریافت اطلاعات از فرم
+    $new_word = $_POST['word'];
+    $new_translation = $_POST['translation'];
+    $new_lesson_id = $_POST['lesson_id'];
 ?>
 <!-- **************************************************** -->
 <footer class="main-footer">
