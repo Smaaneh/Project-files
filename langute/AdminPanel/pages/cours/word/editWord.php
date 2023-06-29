@@ -261,6 +261,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $target_dir = "images/";
         $target_file = $target_dir . basename($_FILES['word_image']['name']);
         move_uploaded_file($file_tmp, $target_file);
+                // به روزرسانی رکورد کلمه در جدول vocabulary
+                $update_sql = "UPDATE vocabulary SET word = '$new_word', translation = '$new_translation', lesson_id = '$new_lesson_id', image = '$target_file' WHERE id = $id";
+            } else {
+                // فقط به روزرسانی بدون تغییر تصویر
+                $update_sql = "UPDATE vocabulary SET word = '$new_word', translation = '$new_translation', lesson_id = '$new_lesson_id' WHERE id = $id";
+            }
+        
+            if ($conn->query($update_sql) === TRUE) {
+                echo "<script>alert('ویرایش واژه با موفقیت انجام شد.')</script>";
+                echo "<script>window.location.href = 'word.php';</script>";
+            } else {
+                echo "<script>alert('خطا در ویرایش رکورد.')</script>";
+            }
+        }
 ?>
 <!-- **************************************************** -->
 <footer class="main-footer">
