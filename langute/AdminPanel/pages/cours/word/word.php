@@ -262,6 +262,43 @@ $result = $conn->query($sql);
                                 </tr>
                             </thead>
                             <tbody>
+                            <?php
+                                // نمایش رکوردهای جدول vocabulary
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo "<tr>";
+                                        echo "<td>" . $row['word'] . "</td>";
+                                        echo "<td>" . $row['translation'] . "</td>";
+                                        echo "<td>" . $row['lesson_id'] . "</td>";
+                                        echo "<td><a href='editWord.php?id=" . $row['id'] . "' class='btn btn-block btn-info btn-sm'>ویرایش</a></td>";
+                                        echo "<td><a href='deleteWord.php?id=" . $row['id'] . "' class='btn btn-block btn-danger btn-sm' onclick='confirmDelete(" . $row['id'] . ");'>حذف</a></td>";
+                                        echo "</tr>";
+                                    }
+                                } else {
+                                    echo "<tr><td colspan='4'>هیچ رکوردی یافت نشد</td></tr>";
+                                }
+                                ?>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>لغت</th>
+                                    <th>ترجمه</th>
+                                    <th>شماره درس</th>
+                                    <th>عملیات</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+</div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
 <!-- /.content-wrapper -->
 <!-- **************************************************** -->
 <footer class="main-footer">
