@@ -239,6 +239,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_word = $_POST['word'];
     $new_translation = $_POST['translation'];
     $new_lesson_id = $_POST['lesson_id'];
+     // اعتبارسنجی فقط برای عکس
+     if ($_FILES['word_image']['error'] === UPLOAD_ERR_OK) {
+        $file_tmp = $_FILES['word_image']['tmp_name'];
+        $file_size = $_FILES['word_image']['size'];
+        $file_type = $_FILES['word_image']['type'];
+
+        // چک کردن اندازه و نوع فایل
+        if ($file_size > 5242880) { // حداکثر حجم 5 مگابایت
+            echo "<script>alert('حجم تصویر باید کمتر از 5 مگابایت باشد.')</script>";
+            echo "<script>window.location.href = 'word.php';</script>";
+            exit();
+        }
+        if ($file_type !== 'image/jpeg' && $file_type !== 'image/png') {
+            echo "<script>alert('فرمت تصویر باید JPEG یا PNG باشد.')</script>";
+            echo "<script>window.location.href = 'word.php';</script>";
+            exit();
+        }
+
+        // ذخیره تصویر در مسیر مورد نظر
+        $target_dir = "images/";
+        $target_file = $target_dir . basename($_FILES['word_image']['name']);
+        move_uploaded_file($file_tmp, $target_file);
 ?>
 <!-- **************************************************** -->
 <footer class="main-footer">
