@@ -296,6 +296,58 @@ $conn->close();
                 </div>
             </div>
         </div><!-- /.container-fluid -->
+        </section><!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">فرم ویرایش لغت</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . '?id=' . $id; ?>" enctype="multipart/form-data">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="word">لغت</label>
+                                <input type="text" class="form-control" id="word" name="word" value="<?php echo $word; ?>" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="translation">ترجمه</label>
+                                <input type="text" class="form-control" id="translation" name="translation" value="<?php echo $translation; ?>" required>
+                            </div>
+                                      <!-- select -->
+                                      <div class="form-group">
+                                        <label>درس مد نظر خود را انتخاب کنید</label>
+                                        <select class="form-control" name="lesson_id">
+                                            <option value="1" <?php if ($lesson_id == 1) echo 'selected'; ?>>1</option>
+                                            <option value="2" <?php if ($lesson_id == 2) echo 'selected'; ?>>2</option>
+                                            <option value="3" <?php if ($lesson_id == 3) echo 'selected'; ?>>3</option>
+                                            <option value="4" <?php if ($lesson_id == 4) echo 'selected'; ?>>4</option>
+                                        </select>
+                                    </div>
+                                <!-- /select -->
+                            <div class="form-group">
+                                <label for="word_image">تصویر کلمه</label>
+                                <input type="file" class="form-control" id="word_image" name="word_image">
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">ثبت تغییرات</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
 <!-- **************************************************** -->
 <footer class="main-footer">
 <div class="float-right d-none d-sm-block">
