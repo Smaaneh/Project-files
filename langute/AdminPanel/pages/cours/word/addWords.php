@@ -12,16 +12,16 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- DataTables -->
-  <link rel="stylesheet" href="../../plugins/datatables/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="../../../plugins/datatables/dataTables.bootstrap4.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../../../dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
   <!-- bootstrap rtl -->
-  <link rel="stylesheet" href="../../dist/css/bootstrap-rtl.min.css">
+  <link rel="stylesheet" href="../../../dist/css/bootstrap-rtl.min.css">
   <!-- template rtl version -->
-  <link rel="stylesheet" href="../../dist/css/custom-style.css">
+  <link rel="stylesheet" href="../../../dist/css/custom-style.css">
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -53,7 +53,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="../HomeAdmin.html" class="brand-link">
-      <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="../../../dist/img/AdminLTELogo.png" alt="Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">پنل مدیریت</span>
     </a>
@@ -315,7 +315,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $image = $_FILES["image"]["name"];
 
         // محدودیت‌های مربوط به عکس
-        $targetDir = "../../../images/uploads/word/";
+        $targetDir = "../../../../images/uploads/word/";
         $targetFile = $targetDir . basename($_FILES["image"]["name"]);
         $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
         $maxFileSize = 5 * 1024 * 1024; // حداکثر سایز عکس: 5MB
@@ -330,7 +330,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo '<div class="alert alert-danger text-center mb-3">سایز فایل عکس باید کمتر از 5MB باشد.</div>';
         }
         // آپلود عکس
-        elseif (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
             // استفاده از prepared statement برای جلوگیری از حمله‌های اینجکشن
             $stmt = $conn->prepare("INSERT INTO vocabulary (word, translation, lesson_id, picture) VALUES (?, ?, ?, ?)");
             $stmt->bind_param("ssss", $word, $translation, $cours, $targetFile);
@@ -361,23 +361,17 @@ $conn->close();
 <strong>CopyLeft &copy; 2018<a href="http://github.com/smaaneh/">سمانه محمدی و نرگس افراز</a>.</strong>
 </footer>
 
-<!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
-  <!-- Control sidebar content goes here -->
-</aside>
-<!-- /.control-sidebar -->
-</div>
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
+<script src="../../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- FastClick -->
-<script src="../../plugins/fastclick/fastclick.js"></script>
+<script src="../../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
+<script src="../../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
+<script src="../../../dist/js/demo.js"></script>
 </body>
 </html>
