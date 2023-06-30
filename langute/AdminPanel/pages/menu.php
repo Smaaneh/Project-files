@@ -24,25 +24,25 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="../index.html" class="nav-link">
+                  <a href="cours\word\word.php" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>واژگان</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="../index2.html" class="nav-link">
+                  <a href="cours\grammer\grammer.php" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>گرامر</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="../index3.html" class="nav-link">
+                  <a href="cours\Conversation\Conversation.php" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>مکالمه</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="../index3.html" class="nav-link">
+                  <a href="cours\speeck\speeck.php" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>گفتار</p>
                   </a>
