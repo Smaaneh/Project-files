@@ -94,7 +94,7 @@
               </a>
             </li>
            <li class="nav-item">
-              <a href="teacher/teacher.html" class="nav-link">
+              <a href="teacher/teacher.php" class="nav-link">
                   <i class="nav-icon fa fa-user"></i>
                 <p>
                   استادان
@@ -102,7 +102,7 @@
               </a>
             </li>
             <li class="nav-item">
-               <a href="azmon.html" class="nav-link">
+               <a href="azmon\azmon.php" class="nav-link">
                    <i class="nav-icon fa fa-dashboard"></i>
                  <p>
                   آزمون
