@@ -215,7 +215,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-left">
               <li class="breadcrumb-item"><a href="../HomeAdmin.html">خانه</a></li>
-              <li class="breadcrumb-item"><a href="grammer.php">مدیریت گفتار</a></li>
+              <li class="breadcrumb-item"><a href="speak.php">مدیریت گفتار</a></li>
               <li class="breadcrumb-item active">افزودن گفتار</li>
             </ol>
           </div>
@@ -321,7 +321,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $video = $_FILES["video"]["name"];
 
       // محدودیت‌های مربوط به ویدیو
-      $targetDir = "../../../../videos/uploads/grammer/";
+      $targetDir = "../../../../videos/uploads/speak/";
       $targetFile = $targetDir . basename($_FILES["video"]["name"]);
       $videoFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
       $maxFileSize = 500 * 1024 * 1024; // حداکثر سایز ویدیو: 500
@@ -339,7 +339,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       else {
           if (move_uploaded_file($_FILES["video"]["tmp_name"], $targetFile)) {
               // استفاده از prepared statement برای جلوگیری از حمله‌های اینجکشن
-              $stmt = $conn->prepare("INSERT INTO grammar (Title, caption, lesson_id, video) VALUES (?, ?, ?, ?)");
+              $stmt = $conn->prepare("INSERT INTO speak (Title, caption, lesson_id, video) VALUES (?, ?, ?, ?)");
               $stmt->bind_param("ssss", $Title, $caption, $cours, $targetFile);
 
               if ($stmt->execute()) {
