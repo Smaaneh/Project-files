@@ -16,17 +16,17 @@ if ($conn->connect_error) {
 $id = $_GET['id'];
 
 // دریافت عنوان قبل از حذف
-$sql = "SELECT Title FROM grammar WHERE id = $id";
+$sql = "SELECT Title FROM speak WHERE id = $id";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $Title = $row['Title'];
 
-    // حذف رکورد مربوطه از جدول grammar
-    $sql = "DELETE FROM grammar WHERE id = $id";
+    // حذف رکورد مربوطه از جدول speak
+    $sql = "DELETE FROM speak WHERE id = $id";
     if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('گرامر $Title حذف شد.')</script>";
-        echo "<script>window.location.href = 'grammer.php';</script>";
+        echo "<script>alert('گفتار $Title حذف شد.')</script>";
+        echo "<script>window.location.href = 'speak.php';</script>";
         
     } else {
         echo "<script>alert('خطا در حذف رکورد.')</script>";
