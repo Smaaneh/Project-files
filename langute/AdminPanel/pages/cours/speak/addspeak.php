@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>افزودن گرامر جدید</title>
+  <title>افزودن گفتار جدید</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -210,13 +210,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>افزود گرامر</h1>
+            <h1>افزودن گفتار</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-left">
               <li class="breadcrumb-item"><a href="../HomeAdmin.html">خانه</a></li>
-              <li class="breadcrumb-item"><a href="grammer.php">مدیریت گرامر</a></li>
-              <li class="breadcrumb-item active">افزودن گرامر</li>
+              <li class="breadcrumb-item"><a href="grammer.php">مدیریت گفتار</a></li>
+              <li class="breadcrumb-item active">افزودن گفتار</li>
             </ol>
           </div>
         </div>
@@ -231,7 +231,7 @@
                 <!-- general form elements -->
                 <div class="card card-success">
                     <div class="card-header">
-                        <h3 class="card-title">فرم افزودن گرامر</h3>
+                        <h3 class="card-title">فرم افزودن گفتار</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -263,7 +263,7 @@
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="video" name="video">
-                                        <label class="custom-file-label" for="video">فیلم مناسب گرامر</label>
+                                        <label class="custom-file-label" for="video">فیلم مناسب گفتار</label>
                                     </div>
                                     <div class="input-group-append">
                                         <span class="input-group-text" id="">Upload</span>
