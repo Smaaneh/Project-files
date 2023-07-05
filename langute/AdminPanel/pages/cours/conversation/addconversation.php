@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>افزودن گرامر جدید</title>
+  <title>افزودن مکالمه جدید</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -210,13 +210,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>افزود گرامر</h1>
+            <h1>افزود مکالمه</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-left">
               <li class="breadcrumb-item"><a href="../HomeAdmin.html">خانه</a></li>
-              <li class="breadcrumb-item"><a href="grammer.php">مدیریت گرامر</a></li>
-              <li class="breadcrumb-item active">افزودن گرامر</li>
+              <li class="breadcrumb-item"><a href="conversation.php">مدیریت مکالمه</a></li>
+              <li class="breadcrumb-item active">افزودن مکالمه</li>
             </ol>
           </div>
         </div>
@@ -231,7 +231,7 @@
                 <!-- general form elements -->
                 <div class="card card-success">
                     <div class="card-header">
-                        <h3 class="card-title">فرم افزودن گرامر</h3>
+                        <h3 class="card-title">فرم افزودن مکالمه</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -263,7 +263,7 @@
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="video" name="video">
-                                        <label class="custom-file-label" for="video">فیلم مناسب گرامر</label>
+                                        <label class="custom-file-label" for="video">فیلم مناسب مکالمه</label>
                                     </div>
                                     <div class="input-group-append">
                                         <span class="input-group-text" id="">Upload</span>
@@ -321,7 +321,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $video = $_FILES["video"]["name"];
 
       // محدودیت‌های مربوط به ویدیو
-      $targetDir = "../../../../videos/uploads/grammer/";
+      $targetDir = "../../../../videos/uploads/conversation/";
       $targetFile = $targetDir . basename($_FILES["video"]["name"]);
       $videoFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
       $maxFileSize = 500 * 1024 * 1024; // حداکثر سایز ویدیو: 500
@@ -339,7 +339,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       else {
           if (move_uploaded_file($_FILES["video"]["tmp_name"], $targetFile)) {
               // استفاده از prepared statement برای جلوگیری از حمله‌های اینجکشن
-              $stmt = $conn->prepare("INSERT INTO grammar (Title, caption, lesson_id, video) VALUES (?, ?, ?, ?)");
+              $stmt = $conn->prepare("INSERT INTO conversation (Title, caption, lesson_id, video) VALUES (?, ?, ?, ?)");
               $stmt->bind_param("ssss", $Title, $caption, $cours, $targetFile);
 
               if ($stmt->execute()) {
