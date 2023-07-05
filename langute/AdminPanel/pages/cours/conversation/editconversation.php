@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>مدیریت | واژگان</title>
+  <title>مدیریت | مکالمه</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -221,7 +221,7 @@ if ($conn->connect_error) {
 // دریافت شناسه کلمه برای ویرایش
 $id = $_GET['id'];
 // دریافت اطلاعات کلمه قبل از ویرایش
-$sql = "SELECT * FROM grammar WHERE id = $id";
+$sql = "SELECT * FROM conversation WHERE id = $id";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
@@ -242,12 +242,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_lesson_id = $_POST['lesson_id'];
     $new_video = $_POST['video'];
 
-    // به روزرسانی رکورد کلمه در جدول grammar
-    $update_sql = "UPDATE grammar SET Title = '$new_Title', caption = '$new_caption', lesson_id = '$new_lesson_id', Video = '$new_video' WHERE id = $id";
+    // به روزرسانی رکورد کلمه در جدول conversation
+    $update_sql = "UPDATE conversation SET Title = '$new_Title', caption = '$new_caption', lesson_id = '$new_lesson_id', Video = '$new_video' WHERE id = $id";
 
     if ($conn->query($update_sql) === TRUE) {
-        echo "<script>alert('ویرایش واژه با موفقیت انجام شد.')</script>";
-        echo "<script>window.location.href = 'grammer.php';</script>";
+        echo "<script>alert('ویرایش مکالمه با موفقیت انجام شد.')</script>";
+        echo "<script>window.location.href = 'conversation.php';</script>";
     } else {
         echo "<script>alert('خطا در ویرایش رکورد.')</script>";
     }
@@ -270,8 +270,8 @@ $conn->close();
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="../../HomeAdmin.html">خانه</a></li>
-                        <li class="breadcrumb-item"><a href="grammer.php">مدیریت واژگان</a></li>
-                        <li class="breadcrumb-item active">ویرایش گرامر</li>
+                        <li class="breadcrumb-item"><a href="conversation.php">مدیریت مکالمه</a></li>
+                        <li class="breadcrumb-item active">ویرایش مکالمه</li>
                     </ol>
                 </div>
             </div>
@@ -282,7 +282,7 @@ $conn->close();
             <div class="col-md-12">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">فرم ویرایش گرامر</h3>
+                        <h3 class="card-title">فرم ویرایش مکالمه</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
