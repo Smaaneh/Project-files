@@ -123,10 +123,17 @@
 		</div>
 		<!--/ End Breadcrumb -->
 
-  <div class="container">
-          <h1>English Grammar Video</h1>
-          <p>Welcome to our English grammar video lesson.</p>
-
+  <section class="teachers archive section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3 col-12">
+             <div class="section-title bg">
+              <h2>Title عنوان فیلم</h2>
+              <p>caption کپشن فیلم</p>
+              <div class="icon"><i class="fa fa-users"></i></div>
+        </div>
+        </div>
+      </div>
           <div class="video-frame">
               <div class="tv-screen">
                   <video id="grammar-video" controls>
@@ -137,7 +144,7 @@
           </div>
       </div>
 
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      
       <script>
           var video = document.getElementById("grammar-video");
           var playPauseBtn = document.getElementById("play-pause-btn");
@@ -163,6 +170,10 @@
           });
       </script>
 
+
+  </div>
+  </section>
+<!--/ End cours -->
     <!-- Clients CSS -->
     <div class="clients">
       <div class="container">
@@ -268,5 +279,7 @@
 		<script src="js/gmaps.min.js"></script>
 		<!-- Main JS-->
         <script src="js/main.js"></script>
+    <!-- course film JS-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     </body>
 </html>
