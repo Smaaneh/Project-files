@@ -1,4 +1,6 @@
 .video-frame {
+    padding-top: 90px;
+    padding-bottom: 90px;
     position: relative;
     width: 640px;
     height: 480px;
@@ -9,6 +11,7 @@
 }
 
 .tv-screen {
+
     position: absolute;
     top: 20px;
     left: 20px;
