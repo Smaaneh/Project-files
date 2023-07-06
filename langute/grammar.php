@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Title -->
-  <title>آموزش ها و درس ها</title>
+  <title>درس یک گرامر</title>
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/favicon.png">
@@ -122,58 +122,61 @@
 			</div>
 		</div>
 		<!--/ End Breadcrumb -->
+    <?php
+// اتصال به دیتابیس
+$servername = "localhost";
+$username = "root";
+$password = "123";
+$dbname = "langute";
 
-  <section class="teachers archive section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 offset-lg-3 col-12">
-             <div class="section-title bg">
-              <h2>Title عنوان فیلم</h2>
-              <p>caption کپشن فیلم</p>
-              <div class="icon"><i class="fa fa-users"></i></div>
-        </div>
-        </div>
-      </div>
-          <div class="video-frame">
-              <div class="tv-screen">
-                  <video id="grammar-video" controls>
-                      <source src="videos/dah.mp4" type="video/mp4">
-                      Your browser does not support the video tag.
-                  </video>
-              </div>
-          </div>
-      </div>
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-      
-      <script>
-          var video = document.getElementById("grammar-video");
-          var playPauseBtn = document.getElementById("play-pause-btn");
-          var speedRange = document.getElementById("speed-range");
-          var volumeRange = document.getElementById("volume-range");
+// استعلام برای دریافت اطلاعات فیلم مورد نظر
+$sql = "SELECT Title, caption, Video FROM grammar WHERE lesson_id = 1";
+$result = $conn->query($sql);
 
-          playPauseBtn.addEventListener("click", function() {
-              if (video.paused || video.ended) {
-                  video.play();
-                  playPauseBtn.textContent = "Pause";
-              } else {
-                  video.pause();
-                  playPauseBtn.textContent = "Play";
-              }
-          });
+if ($result->num_rows > 0) {
+    // نمایش اطلاعات فیلم
+    while ($row = $result->fetch_assoc()) {
+        $title = $row["Title"];
+        $caption = $row["caption"];
+        $videoPath = $row["Video"];
+        ?>
+        <!-- caption & title -->
+        <section class="teachers archive section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-3 col-12">
+                        <div class="section-title bg">
+                            <h2><?php echo $title; ?></h2>
+                            <p><?php echo $caption; ?></p>
+                            <div class="icon"><i class="fa fa-users"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-frame">
+                    <div class="tv-screen">
+                        <video id="grammar-video" controls>
+                            <source src="<?php echo $videoPath; ?>" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--/ End cours -->
+        <?php
+    }
+} else {
+    echo "No videos found for lesson_id = 1";
+}
 
-          speedRange.addEventListener("input", function() {
-              video.playbackRate = speedRange.value;
-          });
+$conn->close();
+?>
 
-          volumeRange.addEventListener("input", function() {
-              video.volume = volumeRange.value;
-          });
-      </script>
-
-
-  </div>
-  </section>
-<!--/ End cours -->
     <!-- Clients CSS -->
     <div class="clients">
       <div class="container">
