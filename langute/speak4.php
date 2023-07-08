@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Title -->
-  <title>درس چهار گرامر</title>
+  <title>درس چهار گفتار</title>
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/favicon.png">
@@ -108,13 +108,13 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-6 col-md-6 col-12">
-						<h2>گرامر</h2>
+						<h2>گفتار</h2>
 					</div>
 					<div class="col-lg-6 col-md-6 col-12">
 						<ul class="bread-list">
 							<li><a href="index.html">خانه <i class="fa fa-angle-left"></i></a></li>
 							<li><a href="courses.html">آموزش و درس ها<i class="fa fa-angle-left"></i></a></li>
-              <li><a href="grammers.html">گرامر<i class="fa fa-angle-left"></i></a></li>
+              <li><a href="speaking.html">گفتار<i class="fa fa-angle-left"></i></a></li>
 							<li class="active"><a href="#">درس چهار</a></li>
 						</ul>
 					</div>
@@ -135,7 +135,7 @@ if ($conn->connect_error) {
 }
 
 // استعلام برای دریافت اطلاعات فیلم مورد نظر
-$sql = "SELECT Title, caption, Video FROM grammar WHERE lesson_id = 4";
+$sql = "SELECT Title, caption, Video FROM speak WHERE lesson_id = 4";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -171,7 +171,7 @@ if ($result->num_rows > 0) {
         <?php
     }
 } else {
-    echo "No videos found for lesson_id = 1";
+    echo "No videos found for lesson_id = 4";
 }
 
 $conn->close();
