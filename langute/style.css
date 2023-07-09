@@ -316,7 +316,36 @@
 		opacity:0.8;
 	}
 	
+	.search-area.active .search-results {
+		transform: translateY(0);
+	}
+		.search-results {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			width: 100%;
+			text-align: center;
+			transform: translateY(10px);
+		}
 	
+	.search-results {
+		list-style-type: none;
+		padding: 0;
+		text-align: left;
+	}
+	
+	.search-results li {
+		margin-bottom: 10px;
+	}
+	
+	.search-results li a {
+		display: block;
+		background-color: #f1f1f1;
+		border: 1px solid #ccc;
+		padding: 10px;
+		text-decoration: none;
+		color: #000;
+	}
 	/*===============================
 		End Header CSS
 	=================================*/
