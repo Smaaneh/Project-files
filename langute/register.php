@@ -1,74 +1,76 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
+  <title>عضویت</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>عضویت</title>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<!-- Styles -->
-	<link type="text/css" href="css/bootstrap-rtl.min.css" rel="stylesheet" />
-	<link type="text/css" href="css/font-awesome.min.css" rel="stylesheet" />
-	<link type="text/css" href="css/animate.css" rel="stylesheet" />
-	<link type="text/css" href="css/hamburgers.min.css" rel="stylesheet" />
-	<link type="text/css" href="css/select2.min.css" rel="stylesheet" />
-	<link type="text/css" href="css/util.css" rel="stylesheet" />
-	<link type="text/css" href="css/style.css" rel="stylesheet" />
-	<!-- / styles -->
+  <!-- Styles -->
+  <link type="text/css" href="css/bootstrap-rtl.min.css" rel="stylesheet" />
+  <link type="text/css" href="css/font-awesome.min.css" rel="stylesheet" />
+  <link type="text/css" href="css/animate.css" rel="stylesheet" />
+  <link type="text/css" href="css/hamburgers.min.css" rel="stylesheet" />
+  <link type="text/css" href="css/select2.min.css" rel="stylesheet" />
+  <link type="text/css" href="css/util.css" rel="stylesheet" />
+  <link type="text/css" href="css/style.css" rel="stylesheet" />
+  <!-- / styles -->
 </head>
 
 <body>
 <div class="limiter">
   <div class="container-login100" style="background-color:#05C46B;">
     <div class="wrap-login100">
-    <!-- php cods -->
+    <!-- php codes -->
     <?php
-// اتصال به دیتابیس
-$servername = "localhost";
-$username = "root";
-$password = "123";
-$dbname = "langute";
+      // اتصال به دیتابیس
+      $servername = "localhost";
+      $username = "root";
+      $password = "123";
+      $dbname = "langute";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("خطا در اتصال به دیتابیس: " . $conn->connect_error);
-}
+      $conn = new mysqli($servername, $username, $password, $dbname);
+      if ($conn->connect_error) {
+          die("خطا در اتصال به دیتابیس: " . $conn->connect_error);
+      }
 
-// بررسی فرم عضویت کاربر
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST["name"];
-    $last_name = $_POST["last_name"];
-    $password = $_POST["password"];
-    $email = $_POST["email"];
+      // بررسی فرم عضویت کاربر
+      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+          $name = $_POST["name"];
+          $last_name = $_POST["last_name"];
+          $password = $_POST["password"];
+          $email = $_POST["email"];
 
-    // اعتبارسنجی کاربران تکراری
-    $checkUserSQL = "SELECT * FROM users WHERE email = '$email'";
-    $checkUserResult = $conn->query($checkUserSQL);
+          // اعتبارسنجی کاربران تکراری
+          $checkUserSQL = "SELECT * FROM users WHERE email = ?";
+          $stmt = $conn->prepare($checkUserSQL);
+          $stmt->bind_param("s", $email);
+          $stmt->execute();
+          $checkUserResult = $stmt->get_result();
 
-    if ($checkUserResult->num_rows == 0) {
-        // رمز عبور را رمزنگاری کنید
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+          if ($checkUserResult->num_rows == 0) {
+              // رمز عبور را رمزنگاری کنید
+              $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        // کاربر جدید را به دیتابیس اضافه کنید
-        $insertUserSQL = "INSERT INTO users (name, last_name, password, email) VALUES ('$name', '$last_name', '$hashedPassword', '$email')";
-
-        if ($conn->query($insertUserSQL) === TRUE) {
-            session_start();
-            $_SESSION["username"] = $email;
-            $_SESSION["name"] = $name;
-            $_SESSION["last_name"] = $last_name;
-            header("Location: welcome.php");
-            exit();
-        } else {
-            echo "خطا در ایجاد کاربر: " . $conn->error;
-        }
-    } else {
-        echo "این ایمیل قبلاً ثبت شده است.";
-    }
-}
-
-?>
+              // کاربر جدید را به دیتابیس اضافه کنید
+              $insertUserSQL = "INSERT INTO users (name, last_name, password, email) VALUES (?, ?, ?, ?)";
+              $stmt = $conn->prepare($insertUserSQL);
+              $stmt->bind_param("ssss", $name, $last_name, $hashedPassword, $email);
+              if ($stmt->execute()) {
+                  session_start();
+                  $_SESSION["email"] = $email;
+                  $_SESSION["name"] = $name;
+                  $_SESSION["last_name"] = $last_name;
+                  header("Location: welcome.php");
+                  exit();
+              } else {
+                  echo "خطا در ایجاد کاربر: " . $conn->error;
+              }
+          } else {
+              echo "این ایمیل قبلاً ثبت شده است.";
+          }
+      }
+    ?>
       <!-- input form -->
       <form class="login100-form validate-form"  method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <span class="login100-form-title">عضویت در سایت</span>
@@ -90,7 +92,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           </span>
         </div>
         <!-- / enter last name -->
-
         <!-- enter email -->
         <div class="wrap-input100 validate-input" data-validate="لطفاً پست الکترونیک خود را وارد کنید!">
           <input class="input100" type="email" id="email" name="email" placeholder="پست الکترونیک" required>
@@ -100,8 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           </span>
         </div>
         <!-- / enter email -->
-
-        <!-- enter password -->
+       <!-- enter password -->
         <div class="wrap-input100 validate-input" data-validate="لطفاً رمز عبور را وارد کنید!">
           <input class="input100" type="password" id="password" name="password" placeholder="رمز عبور" required minlength="8">
           <span class="focus-input100"></span>
@@ -138,19 +138,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </div>
 </div>
 
-	<!-- scripts -->
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/select2.min.js"></script>
-	<script src="js/tilt.jquery.min.js"></script>
-	<script >
-		$('.js-tilt').tilt({
-			scale: 1.1
-		})
-	</script>
-	<script src="js/scripts.js"></script>
-	<!-- / scripts -->
+  <!-- scripts -->
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/select2.min.js"></script>
+  <script src="js/tilt.jquery.min.js"></script>
+  <script >
+    $('.js-tilt').tilt({
+      scale: 1.1
+    })
+  </script>
+  <script src="js/scripts.js"></script>
+  <!-- / scripts -->
 </body>
 </html>
 <!-- This template has been downloaded from Webrubik.com -->
