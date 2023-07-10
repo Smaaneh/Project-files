@@ -19,17 +19,67 @@
 </head>
 
 <body>
+<?php
+// اتصال به دیتابیس
+$servername = "localhost";
+$username = "root";
+$password = "123";
+$dbname = "langute";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("خطا در اتصال به دیتابیس: " . $conn->connect_error);
+}
+
+// بررسی فرم ورود کاربر
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    // بررسی اعتبار رمز عبور
+    $getUserSQL = "SELECT * FROM users WHERE username = '$username'";
+    $getUserResult = $conn->query($getUserSQL);
+
+    if ($getUserResult->num_rows == 1) {
+        $row = $getUserResult->fetch_assoc();
+        $hashedPassword = $row["password"];
+
+        // بررسی تطابق رمز عبور
+        if (password_verify($password, $hashedPassword)) {
+            session_start();
+            $_SESSION["username"] = $username;
+            $_SESSION["name"] = $row["name"];
+            $_SESSION["last_name"] = $row["last_name"];
+            $_SESSION["is_admin"] = $row["is_admin"];
+
+            if ($row["is_admin"] == 1) {
+                // اگر کاربر ادمین است، به مسیرHomeAdmin.html  بروید
+                header("Location:AdminPanel/pages/HomeAdmin.html");
+            } else {
+                // اگر کاربر عادی است، به صفحه خوش‌آمدگویی بروید
+                header("Location: welcome.php");
+            }
+            exit();
+        } else {
+            $error = "نام کاربری یا رمز عبور اشتباه است.";
+        }
+    } else {
+        $error = "نام کاربری یا رمز عبور اشتباه است.";
+    }
+}
+
+?>
 	<div class="limiter">
 		<div class="container-login100" style="background-color:#05C46B;">
 			<div class="wrap-login100">
 
 			<!-- input form -->
-			<form class="login100-form validate-form">
+			<form class="login100-form validate-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 				<span class="login100-form-title">ورود</span>
 
 				<!-- enter email-->
 				<div class="wrap-input100 validate-input" data-validate = "لطفا پست الکترونیک خود را وارد کنید!">
-					<input class="input100" type="text" name="email" placeholder="پست الکترونیک">
+					<input class="input100" type="text" id="email" name="email" placeholder="پست الکترونیک">
 					<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true" style="color: #05C46B;"></i>
@@ -39,7 +89,7 @@
 
 				<!-- enter password-->
 				<div class="wrap-input100 validate-input" data-validate = "لطفا رمز عبور را وارد کنید!">
-					<input class="input100" type="password" name="pass" placeholder="رمز عبور">
+					<input class="input100" type="password" id="epassword" name="password" placeholder="رمز عبور">
 					<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true" style="color: #05C46B;"></i>
@@ -52,10 +102,10 @@
 					<button class="login100-form-btn" style="background-color: #05C46B;">ورود</button>
 				</div>
 				<!-- / login button -->
-
+				<?php if(isset($error)) { echo "<p>".$error."</p>"; } ?>
 				<!-- restore password -->
 				<div class="text-center p-t-12">
-					<a class="txt2" href="#">
+					<a class="txt2" href="forgot_password.php">
 						بازگردانی رمز عبور!
 					</a>
 				</div>
@@ -63,7 +113,7 @@
 
 				<!-- register-->
 				<div class="text-center p-t-50">
-					<a class="txt2" href="register.html">
+					<a class="txt2" href="register.php">
 						<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true" ></i>
 						هنوز ثبت نام نکرده اید ؟
 					</a>
@@ -99,4 +149,3 @@
 	<!-- / scripts -->
 </body>
 </html>
-<!-- This template has been downloaded from Webrubik.com -->
