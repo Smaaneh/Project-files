@@ -348,7 +348,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
               $stmt->close();
           } else {
-              echo '<div class="alert alert-danger text-center mb-3">خطا در آپلود ویدیو.</div>';
+              echo '<div class="alert alert-danger text-center mb-3">خطا در آپلود موزیک.</div>';
           }
       }
   }

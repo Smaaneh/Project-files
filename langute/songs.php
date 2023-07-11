@@ -66,7 +66,7 @@ $result = $conn->query($sql);
         <div class="card-body">
             <div class="text-center">
                 <audio id="audio-<?php echo $row["id"]; ?>" controls style="width: 100%;">
-                    <source src="<?php echo $row["file_path"]; ?>" type="audio/mpeg">
+                    <source src="<?php echo $row["music"]; ?>" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
             </div>
