@@ -5,7 +5,7 @@
  <?php include 'metaTAGS.php';?>
 
   <!-- Title -->
-  <title>فیلم های کمدی</title>
+  <title>فیلم های درام</title>
 
  <!-- linksCSS -->
  <?php include 'linksCSS.php';?>
@@ -20,14 +20,14 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-6 col-md-6 col-12">
-						<h2>فیلم های کمدی</h2>
+						<h2>فیلم های درام</h2>
 					</div>
 					<div class="col-lg-6 col-md-6 col-12">
 						<ul class="bread-list">
 							<li><a href="index.html">خانه <i class="fa fa-angle-left"></i></a></li>
                             <li><a href="Learning.html">یادگیری با روش های مختلف<i class="fa fa-angle-left"></i></a></li>
                             <li><a href="film.html">فیلم و کارتن<i class="fa fa-angle-left"></i></a></li>
-							<li class="active"><a href="#">فیلم های کمدی</a></li>
+							<li class="active"><a href="#">فیلم های درام</a></li>
 						</ul>
 					</div>
 				</div>
@@ -47,7 +47,7 @@ if ($conn->connect_error) {
 }
 
 // استعلام برای دریافت اطلاعات فیلم مورد نظر
-$sql = "SELECT Title, caption, Video FROM movie WHERE Collection_name = 'comedy'";
+$sql = "SELECT Title, caption, Video FROM movie WHERE Collection_name = 'drama'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -83,7 +83,7 @@ if ($result->num_rows > 0) {
         <?php
     }
 } else {
-    echo "هنوز فیلم کمدی در این سایت بارگذاری نشد ه است لطفا از بقیه بخش های سایت استفاده کنید";
+    echo "هنوز فیلم درام در این سایت بارگذاری نشد ه است لطفا از بقیه بخش های سایت استفاده کنید";
 }
 
 $conn->close();
