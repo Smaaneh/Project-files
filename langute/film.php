@@ -41,11 +41,11 @@
 							<!-- Course Head -->
 							<div class="course-head overlay">
 								<img src="images\films/comedy.jpg" alt="#">
-								<a href="grammer1.php" class="btn white primary">مشاهده فیلم ها </a>
+								<a href="comedy.php" class="btn white primary">مشاهده فیلم ها </a>
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
-								<h4 class="c-title"><a href="comedyfilm.php"">فیلم های کمدی</a></h4>
+								<h4 class="c-title"><a href="comedy.php"">فیلم های کمدی</a></h4>
 								<p>اگر به این ژانر فیلم ها علاقه دارید همین الان دیدن فیلم را شروع کنید </p>
 							</div>
 						</div>
@@ -57,11 +57,11 @@
 							<!-- Course Head -->
 							<div class="course-head overlay">
 								<img src="images/Lesson number/lesson-2.jpg" alt="#">
-								<a href="grammer2.php" class="btn white primary">مشاهده انیمیشن ها</a>
+								<a href="Animation.php" class="btn white primary">مشاهده انیمیشن ها</a>
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
-								<h4 class="c-title"><a href="grammer2.php">انیمیشن های جذاب</a></h4>
+								<h4 class="c-title"><a href="Animation.php">انیمیشن های جذاب</a></h4>
 								<p>با دیدن انیمیشن های جذاب ، زبان خود را تقویت کنید</p>
 							</div>
 							<!--/ End Course Meta -->
@@ -74,11 +74,11 @@
 							<!-- Course Head -->
 							<div class="course-head overlay">
 								<img src="images/Lesson number/lesson-3.jpg" alt="#">
-								<a href="grammer3.php" class="btn white primary">مشاهده فیلم ها</a>
+								<a href="drama.php" class="btn white primary">مشاهده فیلم ها</a>
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
-								<h4 class="c-title"><a href="grammer3.php">فیلم های درام</a></h4>
+								<h4 class="c-title"><a href="drama.php">فیلم های درام</a></h4>
 								<p>این ژانر فیلم رو از دست ندید ! حتمادر یادگیری زبان بهتون کمک میکنه</p>
 							</div>
 							<!--/ End Course Meta -->
@@ -91,11 +91,11 @@
 							<!-- Course Head -->
 							<div class="course-head overlay">
 								<img src="images/Lesson number/lesson-4.jpg" alt="#">
-								<a href="grammer4.php" class="btn white primary">مشاهده فیلم ها</a>
+								<a href="action.php" class="btn white primary">مشاهده فیلم ها</a>
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
-								<h4 class="c-title"><a href="grammer4.php">فیلم های اکشن</a></h4>
+								<h4 class="c-title"><a href="action.php">فیلم های اکشن</a></h4>
 								<p>دیدن بهترین و معروف ترین فیلم های اکشن رو همین الان شروع کن!!</p>
 							</div>
 						</div>
