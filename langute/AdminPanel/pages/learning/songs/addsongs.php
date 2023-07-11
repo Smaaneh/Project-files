@@ -257,13 +257,13 @@
                                     <option value="4">4</option>
                                 </select>
                             </div>
-                            <!-- upload video -->
+                            <!-- upload music -->
                             <div class="form-group">
-                                <label for="video">آپلود ویدیو</label>
+                                <label for="music">آپلود موسیقی یا پادکست</label>
                                 <div class="input-group">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="video" name="video">
-                                        <label class="custom-file-label" for="video">فیلم مناسب گفتار</label>
+                                        <input type="file" class="custom-file-input" id="music" name="music">
+                                        <label class="custom-file-label" for="music">موسیقی یا پادکست </label>
                                     </div>
                                     <div class="input-group-append">
                                         <span class="input-group-text" id="">Upload</span>
@@ -310,37 +310,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (
       empty($_POST["title"]) ||
       empty($_POST["caption"]) ||
-      empty($_POST["cours"]) ||
-      empty($_FILES["video"]["name"])
+      empty($_FILES["music"]["name"])
   ) {
-      echo '<div class="alert alert-warning text-center mb-3">لطفاً تمام فیلدها را پر کنید و یک فایل ویدیو انتخاب کنید.</div>';
+      echo '<div class="alert alert-warning text-center mb-3">لطفاً تمام فیلدها را پر کنید و یک فایل صدا انتخاب کنید.</div>';
   } else {
       $title = $_POST["title"];
       $caption = $_POST["caption"];
-      $cours = $_POST["cours"];
-      $video = $_FILES["video"]["name"];
+      $music = $_FILES["music"]["name"];
 
-      // محدودیت‌های مربوط به ویدیو
-      $targetDir = "../../../../videos/uploads/songs/";
-      $targetFile = $targetDir . basename($_FILES["video"]["name"]);
-      $videoFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-      $maxFileSize = 500 * 1024 * 1024; // حداکثر سایز ویدیو: 500
+      // محدودیت‌های مربوط به موزیک
+      $targetDir = "../../../../songs/uploads/songs/";
+      $targetFile = $targetDir . basename($_FILES["music"]["name"]);
+      $musicFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+      $maxFileSize = 20 * 1024 * 1024; // حداکثر سایز ویدیو: 20
 
-      // بررسی پسوند ویدیو
-      $allowedExtensions = array("mp4", "avi", "mkv");
-      if (!in_array($videoFileType, $allowedExtensions)) {
-          echo '<div class="alert alert-danger text-center mb-3">فقط فایل‌های با پسوند MP4، AVI و MKV مجاز هستند.</div>';
+      // بررسی پسوند موزیک
+      $allowedExtensions = array("mp3", "RAW", "WAV", "WMA", "AAC", "OGG");
+      if (!in_array($musicFileType, $allowedExtensions)) {
+          echo '<div class="alert alert-danger text-center mb-3">فقط فایل‌های با پسوند "mp3", "RAW", "WAV", "WMA", "AAC", "OGG" مجاز هستند.</div>';
       }
-      // بررسی سایز ویدیو
-      elseif ($_FILES["video"]["size"] > $maxFileSize) {
-          echo '<div class="alert alert-danger text-center mb-3">سایز فایل ویدیو باید کمتر از 100MB باشد.</div>';
+      // بررسی سایز موزیک
+      elseif ($_FILES["music"]["size"] > $maxFileSize) {
+          echo '<div class="alert alert-danger text-center mb-3">سایز فایل ویدیو باید کمتر از 20 باشد.</div>';
       }
-      // آپلود ویدیو
+      // آپلود موزیک
       else {
-          if (move_uploaded_file($_FILES["video"]["tmp_name"], $targetFile)) {
+          if (move_uploaded_file($_FILES["music"]["tmp_name"], $targetFile)) {
               // استفاده از prepared statement برای جلوگیری از حمله‌های اینجکشن
-              $stmt = $conn->prepare("INSERT INTO songs (title, caption, lesson_id, video) VALUES (?, ?, ?, ?)");
-              $stmt->bind_param("ssss", $title, $caption, $cours, $targetFile);
+              $stmt = $conn->prepare("INSERT INTO songs (title, caption, music) VALUES (?, ?, ?)");
+              $stmt->bind_param("sss", $title, $caption, $targetFile);
 
               if ($stmt->execute()) {
                   echo '<div class="alert alert-success text-center mb-3">اطلاعات با موفقیت ذخیره شدند.</div>';
