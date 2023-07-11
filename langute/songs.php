@@ -27,22 +27,34 @@ $result = $conn->query($sql);
         <?php include 'linksCSS.php';?>
 </head>
 <body>
+<!-- header-->
 <?php include 'header.php';?>
-
-<div class="container">
-        <?php while($row = $result->fetch_assoc()) { ?>
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h3 class="card-title"><?php echo $row["title"]; ?></h3>
-                    <audio id="audio-<?php echo $row["id"]; ?>" controls>
-                        <source src="<?php echo $row["file_path"]; ?>" type="audio/mpeg">
-                        Your browser does not support the audio element.
-                    </audio>
+<!-- song main-->
+<?php while($row = $result->fetch_assoc()) { ?>
+    <section class="teachers archive section text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3 col-12">
+                    <div class="section-title bg">
+                        <h2><?php echo $row["title"]; ?></h2>
+                        <p><?php echo $row["caption"]; ?></p>
+                        <div class="icon"><i class="fa fa-music"></i></div>
+                    </div>
                 </div>
             </div>
-        <?php } ?>
+        </div>
+    </section>
+    <div class="card mb-3 mx-auto" style="max-width: 500px;">
+        <div class="card-body">
+            <div class="text-center">
+                <audio id="audio-<?php echo $row["id"]; ?>" controls style="width: 100%;">
+                    <source src="<?php echo $row["file_path"]; ?>" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
     </div>
-
+<?php } ?>
     <script>
         function playAudio(id) {
             var audio = document.getElementById("audio-" + id);
