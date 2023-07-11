@@ -47,7 +47,7 @@ if ($conn->connect_error) {
 }
 
 // استعلام برای دریافت اطلاعات فیلم مورد نظر
-$sql = "SELECT Title, caption, Video FROM grammar WHERE lesson_id = 1";
+$sql = "SELECT Title, caption, Video FROM movie WHERE Collection_name = "comedy"";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -65,7 +65,7 @@ if ($result->num_rows > 0) {
                         <div class="section-title bg">
                             <h2><?php echo $title; ?></h2>
                             <p><?php echo $caption; ?></p>
-                            <div class="icon"><i class="fa fa-users"></i></div>
+                            <div class="icon"><i class="fa fa-film"></i></div>
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@ if ($result->num_rows > 0) {
         <?php
     }
 } else {
-    echo "No videos found for lesson_id = 1";
+    echo "هنوز فیلم کمدی در این سایت بارگذاری نشد ه است لطفا از بقیه بخش های سایت استفاده کنید";
 }
 
 $conn->close();
