@@ -247,16 +247,6 @@
                                 <input type="text" class="form-control" id="caption" name="caption"
                                     placeholder="کپشن را وارد کنید">
                             </div>
-                            <!-- select -->
-                            <div class="form-group">
-                                <label>درس مد نظر خود را انتخاب کنید</label>
-                                <select class="form-control" name="cours">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                </select>
-                            </div>
                             <!-- upload music -->
                             <div class="form-group">
                                 <label for="music">آپلود موسیقی یا پادکست</label>
@@ -319,7 +309,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $music = $_FILES["music"]["name"];
 
       // محدودیت‌های مربوط به موزیک
-      $targetDir = "../../../../songs/uploads/songs/";
+      $targetDir = "/sound/uploads/songs/";
       $targetFile = $targetDir . basename($_FILES["music"]["name"]);
       $musicFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
       $maxFileSize = 20 * 1024 * 1024; // حداکثر سایز ویدیو: 20
