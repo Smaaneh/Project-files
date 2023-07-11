@@ -29,6 +29,24 @@ $result = $conn->query($sql);
 <body>
 <!-- header-->
 <?php include 'header.php';?>
+      <!-- Breadcrumb -->
+      <div class="breadcrumbs overlay" style="background-image:url('images/breadcrumb-bg.jpg')">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-12">
+						<h2>پادکست و موسیقی</h2>
+					</div>
+					<div class="col-lg-6 col-md-6 col-12">
+						<ul class="bread-list">
+							<li><a href="index.html">خانه <i class="fa fa-angle-left"></i></a></li>
+							<li><a href="Learning.html">یادگیری با روش های مختلف<i class="fa fa-angle-left"></i></a></li>
+                            <li class="active"><a href="#">موسیقی و پادکست<i class="fa fa-angle-left"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/ End Breadcrumb -->
 <!-- song main-->
 <?php while($row = $result->fetch_assoc()) { ?>
     <section class="teachers archive section text-center">
