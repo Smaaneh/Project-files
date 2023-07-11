@@ -6,3 +6,7 @@ $dbname = "langute";  // نام دیتابیس
 
 // اتصال به دیتابیس
 $conn = new mysqli($servername, $username, $password, $dbname);
+// بررسی اتصال
+if ($conn->connect_error) {
+    die("اتصال به دیتابیس با مشکل مواجه شد: " . $conn->connect_error);
+}
