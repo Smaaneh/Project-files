@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>مدیریت | مکالمه</title>
+  <title>مدیریت | فیلم و کارتن</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -218,16 +218,16 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// دریافت شناسه کلمه برای ویرایش
+// دریافت شناسه فیلم برای ویرایش
 $id = $_GET['id'];
-// دریافت اطلاعات کلمه قبل از ویرایش
-$sql = "SELECT * FROM conversation WHERE id = $id";
+// دریافت اطلاعات فیلم قبل از ویرایش
+$sql = "SELECT * FROM movie WHERE id = $id";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $Title = $row['Title'];
     $caption = $row['caption'];
-    $lesson_id = $row['lesson_id'];
+    $Collection_name = $row['Collection_name'];
     $video = $row['Video'];
 } else {
     echo "<script>alert('رکورد مورد نظر یافت نشد.')</script>";
@@ -239,15 +239,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // دریافت اطلاعات از فرم
     $new_Title = $_POST['Title'];
     $new_caption = $_POST['caption'];
-    $new_lesson_id = $_POST['lesson_id'];
+    $new_Collection_name = $_POST['Collection_name'];
     $new_video = $_POST['video'];
 
-    // به روزرسانی رکورد کلمه در جدول conversation
-    $update_sql = "UPDATE conversation SET Title = '$new_Title', caption = '$new_caption', lesson_id = '$new_lesson_id', Video = '$new_video' WHERE id = $id";
+    // به روزرسانی رکورد کلمه در جدول movie
+    $update_sql = "UPDATE movie SET Title = '$new_Title', caption = '$new_caption', Collection_name = '$new_Collection_name', Video = '$new_video' WHERE id = $id";
 
     if ($conn->query($update_sql) === TRUE) {
-        echo "<script>alert('ویرایش مکالمه با موفقیت انجام شد.')</script>";
-        echo "<script>window.location.href = 'conversation.php';</script>";
+        echo "<script>alert('ویرایش فیلم با موفقیت انجام شد.')</script>";
+        echo "<script>window.location.href = 'movie.php';</script>";
     } else {
         echo "<script>alert('خطا در ویرایش رکورد.')</script>";
     }
@@ -270,8 +270,8 @@ $conn->close();
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="../../HomeAdmin.html">خانه</a></li>
-                        <li class="breadcrumb-item"><a href="conversation.php">مدیریت مکالمه</a></li>
-                        <li class="breadcrumb-item active">ویرایش مکالمه</li>
+                        <li class="breadcrumb-item"><a href="movie.php">مدیریت فیلم  کارتن</a></li>
+                        <li class="breadcrumb-item active">ویرایش فیلم</li>
                     </ol>
                 </div>
             </div>
@@ -282,7 +282,7 @@ $conn->close();
             <div class="col-md-12">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">فرم ویرایش مکالمه</h3>
+                        <h3 class="card-title">فرم ویرایش فیلم</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -300,11 +300,11 @@ $conn->close();
                             <!-- select -->
                             <div class="form-group">
                                 <label>درس مد نظر خود را انتخاب کنید</label>
-                                <select class="form-control" name="lesson_id">
-                                <option value="1" <?php if ($lesson_id == 1) echo 'selected'; ?>>1</option>
-                                    <option value="2" <?php if ($lesson_id == 2) echo 'selected'; ?>>2</option>
-                                    <option value="3" <?php if ($lesson_id == 3) echo 'selected'; ?>>3</option>
-                                    <option value="4" <?php if ($lesson_id == 4) echo 'selected'; ?>>4</option>
+                                <select class="form-control" name="Collection_name">
+                                <option value="comedy" <?php if ($Collection_name == 'comedy') echo 'selected'; ?>>کمدی</option>
+                                    <option value="Animation" <?php if ($Collection_name == 'Animation') echo 'selected'; ?>>انیمیشن</option>
+                                    <option value="action" <?php if ($Collection_name == 'action') echo 'selected'; ?>>اکشن</option>
+                                    <option value="drama" <?php if ($Collection_name == 'drama') echo 'selected'; ?>>درام</option>
                                 </select>
                             </div>
                             <!-- /select -->

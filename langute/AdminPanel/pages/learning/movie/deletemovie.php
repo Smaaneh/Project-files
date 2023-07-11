@@ -16,17 +16,17 @@ if ($conn->connect_error) {
 $id = $_GET['id'];
 
 // دریافت عنوان قبل از حذف
-$sql = "SELECT Title FROM conversation WHERE id = $id";
+$sql = "SELECT Title FROM movie WHERE id = $id";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $Title = $row['Title'];
 
-    // حذف رکورد مربوطه از جدول conversation
-    $sql = "DELETE FROM conversation WHERE id = $id";
+    // حذف رکورد مربوطه از جدول movie
+    $sql = "DELETE FROM movie WHERE id = $id";
     if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('مکالمه $Title حذف شد.')</script>";
-        echo "<script>window.location.href = 'conversation.php';</script>";
+        echo "<script>alert('فیلم $Title حذف شد.')</script>";
+        echo "<script>window.location.href = 'movie.php';</script>";
         
     } else {
         echo "<script>alert('خطا در حذف رکورد.')</script>";
