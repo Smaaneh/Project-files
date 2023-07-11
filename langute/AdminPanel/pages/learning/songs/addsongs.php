@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>افزودن گفتار جدید</title>
+  <title>افزودن موسیقی جدید</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -210,12 +210,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>افزودن گفتار</h1>
+            <h1>افزودن موسیقی</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-left">
               <li class="breadcrumb-item"><a href="../HomeAdmin.html">خانه</a></li>
-              <li class="breadcrumb-item"><a href="speak.php">مدیریت گفتار</a></li>
+              <li class="breadcrumb-item"><a href="songs.php">مدیریت موسیقی</a></li>
               <li class="breadcrumb-item active">افزودن گفتار</li>
             </ol>
           </div>
@@ -238,8 +238,8 @@
                     <form role="form" method="post" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="Title">عنوان</label>
-                                <input type="text" class="form-control" id="Title" name="Title"
+                                <label for="title">عنوان</label>
+                                <input type="text" class="form-control" id="title" name="title"
                                     placeholder="عنوان خود را وارد کنید">
                             </div>
                             <div class="form-group">
@@ -308,20 +308,20 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // بررسی پر بودن تمام فیلدها
   if (
-      empty($_POST["Title"]) ||
+      empty($_POST["title"]) ||
       empty($_POST["caption"]) ||
       empty($_POST["cours"]) ||
       empty($_FILES["video"]["name"])
   ) {
       echo '<div class="alert alert-warning text-center mb-3">لطفاً تمام فیلدها را پر کنید و یک فایل ویدیو انتخاب کنید.</div>';
   } else {
-      $Title = $_POST["Title"];
+      $title = $_POST["title"];
       $caption = $_POST["caption"];
       $cours = $_POST["cours"];
       $video = $_FILES["video"]["name"];
 
       // محدودیت‌های مربوط به ویدیو
-      $targetDir = "../../../../videos/uploads/speak/";
+      $targetDir = "../../../../videos/uploads/songs/";
       $targetFile = $targetDir . basename($_FILES["video"]["name"]);
       $videoFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
       $maxFileSize = 500 * 1024 * 1024; // حداکثر سایز ویدیو: 500
@@ -339,8 +339,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       else {
           if (move_uploaded_file($_FILES["video"]["tmp_name"], $targetFile)) {
               // استفاده از prepared statement برای جلوگیری از حمله‌های اینجکشن
-              $stmt = $conn->prepare("INSERT INTO speak (Title, caption, lesson_id, video) VALUES (?, ?, ?, ?)");
-              $stmt->bind_param("ssss", $Title, $caption, $cours, $targetFile);
+              $stmt = $conn->prepare("INSERT INTO songs (title, caption, lesson_id, video) VALUES (?, ?, ?, ?)");
+              $stmt->bind_param("ssss", $title, $caption, $cours, $targetFile);
 
               if ($stmt->execute()) {
                   echo '<div class="alert alert-success text-center mb-3">اطلاعات با موفقیت ذخیره شدند.</div>';

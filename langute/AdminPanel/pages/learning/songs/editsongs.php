@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>مدیریت | واژگان</title>
+  <title>مدیریت | ویرایش موسیقی</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -221,14 +221,13 @@ if ($conn->connect_error) {
 // دریافت شناسه کلمه برای ویرایش
 $id = $_GET['id'];
 // دریافت اطلاعات کلمه قبل از ویرایش
-$sql = "SELECT * FROM speak WHERE id = $id";
+$sql = "SELECT * FROM songs WHERE id = $id";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
-    $Title = $row['Title'];
+    $title = $row['title'];
     $caption = $row['caption'];
-    $lesson_id = $row['lesson_id'];
-    $video = $row['Video'];
+    $file_path = $row['file_path'];
 } else {
     echo "<script>alert('رکورد مورد نظر یافت نشد.')</script>";
     exit();
@@ -237,17 +236,16 @@ if ($result->num_rows > 0) {
 // در صورتی که فرم ویرایش ارسال شده باشد
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // دریافت اطلاعات از فرم
-    $new_Title = $_POST['Title'];
+    $new_title = $_POST['title'];
     $new_caption = $_POST['caption'];
-    $new_lesson_id = $_POST['lesson_id'];
-    $new_video = $_POST['video'];
+    $new_file_path = $_POST['file_path'];
 
-    // به روزرسانی رکورد کلمه در جدول speak
-    $update_sql = "UPDATE speak SET Title = '$new_Title', caption = '$new_caption', lesson_id = '$new_lesson_id', Video = '$new_video' WHERE id = $id";
+    // به روزرسانی رکورد کلمه در جدول songs
+    $update_sql = "UPDATE songs SET title = '$new_title', caption = '$new_caption', file_path = ' $new_file_path' WHERE id = $id";
 
     if ($conn->query($update_sql) === TRUE) {
         echo "<script>alert('ویرایش گفتار با موفقیت انجام شد.')</script>";
-        echo "<script>window.location.href = 'speak.php';</script>";
+        echo "<script>window.location.href = 'songs.php';</script>";
     } else {
         echo "<script>alert('خطا در ویرایش رکورد.')</script>";
     }
@@ -265,13 +263,13 @@ $conn->close();
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>ویرایش گفتار</h1>
+                    <h1>ویرایش موسیقی</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="../../HomeAdmin.html">خانه</a></li>
-                        <li class="breadcrumb-item"><a href="speak.php">مدیریت گفتار</a></li>
-                        <li class="breadcrumb-item active">ویرایش گفتار</li>
+                        <li class="breadcrumb-item"><a href="songs.php">مدیریت موسیقی</a></li>
+                        <li class="breadcrumb-item active">ویرایش موسیقی</li>
                     </ol>
                 </div>
             </div>
@@ -282,35 +280,24 @@ $conn->close();
             <div class="col-md-12">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">فرم ویرایش گفتار</h3>
+                        <h3 class="card-title">فرم ویرایش موسیقی</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
                     <form role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . '?id=' . $id; ?>">
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="Title">عنوان</label>
-                                <input type="text" class="form-control" id="Title" name="Title" value="<?php echo $Title; ?>" required>
+                                <label for="title">عنوان</label>
+                                <input type="text" class="form-control" id="title" name="title" value="<?php echo $title; ?>" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="caption">کپشن</label>
                                 <input type="text" class="form-control" id="caption" name="caption" value="<?php echo $caption; ?>" required>
                             </div>
-                            <!-- select -->
                             <div class="form-group">
-                                <label>درس مد نظر خود را انتخاب کنید</label>
-                                <select class="form-control" name="lesson_id">
-                                <option value="1" <?php if ($lesson_id == 1) echo 'selected'; ?>>1</option>
-                                    <option value="2" <?php if ($lesson_id == 2) echo 'selected'; ?>>2</option>
-                                    <option value="3" <?php if ($lesson_id == 3) echo 'selected'; ?>>3</option>
-                                    <option value="4" <?php if ($lesson_id == 4) echo 'selected'; ?>>4</option>
-                                </select>
-                            </div>
-                            <!-- /select -->
-                            <div class="form-group">
-                                <label for="video">فیلم</label>
-                                <input type="file" class="form-control" id="video" name="video">
+                                <label for="music">موسیقی</label>
+                                <input type="file" class="form-control" id="file_path" name="file_path">
                             </div>
                         </div>
                         <!-- /.card-body -->

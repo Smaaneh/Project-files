@@ -16,17 +16,17 @@ if ($conn->connect_error) {
 $id = $_GET['id'];
 
 // دریافت عنوان قبل از حذف
-$sql = "SELECT Title FROM speak WHERE id = $id";
+$sql = "SELECT title FROM songs WHERE id = $id";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
-    $Title = $row['Title'];
+    $Title = $row['title'];
 
-    // حذف رکورد مربوطه از جدول speak
-    $sql = "DELETE FROM speak WHERE id = $id";
+    // حذف رکورد مربوطه از جدول songs
+    $sql = "DELETE FROM songs WHERE id = $id";
     if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('گفتار $Title حذف شد.')</script>";
-        echo "<script>window.location.href = 'speak.php';</script>";
+        echo "<script>alert('موسیقی $title حذف شد.')</script>";
+        echo "<script>window.location.href = 'songs.php';</script>";
         
     } else {
         echo "<script>alert('خطا در حذف رکورد.')</script>";
