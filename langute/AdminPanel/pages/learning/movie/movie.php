@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>مدیریت | مکالمه</title>
+  <title>مدیریت | فیلم و کارتن</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -218,8 +218,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// دریافت اطلاعات از جدول conversation
-$sql = "SELECT * FROM conversation";
+// دریافت اطلاعات از جدول movie
+$sql = "SELECT * FROM movie";
 $result = $conn->query($sql);
 
 ?>
@@ -230,12 +230,12 @@ $result = $conn->query($sql);
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>مدیریت  مکالمه</h1>
+                    <h1>مدیریت  فیلم و کارتن</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="../../HomeAdmin.html">خانه</a></li>
-                        <li class="breadcrumb-item active">مکالمه</li>
+                        <li class="breadcrumb-item active">فیلم</li>
                     </ol>
                 </div>
             </div>
@@ -246,9 +246,9 @@ $result = $conn->query($sql);
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <a class="btn btn-success btn-lg" href="addconversation.php">افزودن مکالمه جدید +</a>
+                    <a class="btn btn-success btn-lg" href="addmovie.php">افزودن فیلم جدید +</a>
                     <div class="card-header">
-                        <h3 class="card-title">لیست کل مکالمه ها</h3>
+                        <h3 class="card-title">لیست کل فیلم ها</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -257,21 +257,21 @@ $result = $conn->query($sql);
                                 <tr>
                                     <th>عنوان</th>
                                     <th>کپشن</th>
-                                    <th>شماره درس</th>
+                                    <th>نام مجموعه</th>
                                     <th>عملیات</th>
                                 </tr>
                             </thead>
                             <tbody>
                             <?php
-                                // نمایش رکوردهای جدول conversation
+                                // نمایش رکوردهای جدول movie
                                 if ($result->num_rows > 0) {
                                     while ($row = $result->fetch_assoc()) {
                                         echo "<tr>";
                                         echo "<td>" . $row['Title'] . "</td>";
                                         echo "<td>" . $row['caption'] . "</td>";
-                                        echo "<td>" . $row['lesson_id'] . "</td>";
-                                        echo "<td><a href='editconversation.php?id=" . $row['id'] . "' class='btn btn-block btn-info btn-sm'>ویرایش</a></td>";
-                                        echo "<td><a href='deleteconversation.php?id=" . $row['id'] . "' class='btn btn-block btn-danger btn-sm' onclick='confirmDelete(" . $row['id'] . ");'>حذف</a></td>";
+                                        echo "<td>" . $row['Collection_name'] . "</td>";
+                                        echo "<td><a href='editmovie.php?id=" . $row['id'] . "' class='btn btn-block btn-info btn-sm'>ویرایش</a></td>";
+                                        echo "<td><a href='deletemovie.php?id=" . $row['id'] . "' class='btn btn-block btn-danger btn-sm' onclick='confirmDelete(" . $row['id'] . ");'>حذف</a></td>";
                                         echo "</tr>";
                                     }
                                 } else {
@@ -302,10 +302,10 @@ $result = $conn->query($sql);
 <!-- /.content-wrapper -->
 <script>
     function confirmDelete(id) {
-        var result = confirm("آیا میخواهید این مکالمه حذف شود؟");
+        var result = confirm("آیا میخواهید این فیلم حذف شود؟");
         if (result) {
-            // اگر کاربر تایید کرد، ارسال درخواست حذف به صفحه deleteconversation.php
-            window.location.href = "deleteconversation.php?id=" + id;
+            // اگر کاربر تایید کرد، ارسال درخواست حذف به صفحه deletemovie.php
+            window.location.href = "deletemovie.php?id=" + id;
         } else {
             console.log("حذف رکورد لغو شد.");
         }

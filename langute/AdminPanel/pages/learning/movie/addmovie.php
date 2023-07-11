@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>افزودن مکالمه جدید</title>
+  <title>افزودن فیلم جدید</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -210,13 +210,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>افزود مکالمه</h1>
+            <h1>افزودن فیلم</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-left">
               <li class="breadcrumb-item"><a href="../HomeAdmin.html">خانه</a></li>
-              <li class="breadcrumb-item"><a href="conversation.php">مدیریت مکالمه</a></li>
-              <li class="breadcrumb-item active">افزودن مکالمه</li>
+              <li class="breadcrumb-item"><a href="movie.php">مدیریت فیلم و کارتن </a></li>
+              <li class="breadcrumb-item active">افزودن فیلم</li>
             </ol>
           </div>
         </div>
@@ -231,7 +231,7 @@
                 <!-- general form elements -->
                 <div class="card card-success">
                     <div class="card-header">
-                        <h3 class="card-title">فرم افزودن مکالمه</h3>
+                        <h3 class="card-title">فرم افزودن فیلم</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -249,12 +249,12 @@
                             </div>
                             <!-- select -->
                             <div class="form-group">
-                                <label>درس مد نظر خود را انتخاب کنید</label>
-                                <select class="form-control" name="cours">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
+                                <label>ژانر فیلم(نام مجموعه)</label>
+                                <select class="form-control" name="Collection_name">
+                                    <option value="comedy">کمدی</option>
+                                    <option value="Animation">انیمیشن</option>
+                                    <option value="action">اکشن</option>
+                                    <option value="drama">درام</option>
                                 </select>
                             </div>
                             <!-- upload video -->
@@ -263,7 +263,7 @@
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="video" name="video">
-                                        <label class="custom-file-label" for="video">فیلم مناسب مکالمه</label>
+                                        <label class="custom-file-label" for="video">فیلم </label>
                                     </div>
                                     <div class="input-group-append">
                                         <span class="input-group-text" id="">Upload</span>
@@ -310,21 +310,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (
       empty($_POST["Title"]) ||
       empty($_POST["caption"]) ||
-      empty($_POST["cours"]) ||
+      empty($_POST["Collection_name"]) ||
       empty($_FILES["video"]["name"])
   ) {
       echo '<div class="alert alert-warning text-center mb-3">لطفاً تمام فیلدها را پر کنید و یک فایل ویدیو انتخاب کنید.</div>';
   } else {
       $Title = $_POST["Title"];
       $caption = $_POST["caption"];
-      $cours = $_POST["cours"];
+      $Collection_name = $_POST["Collection_name"];
       $video = $_FILES["video"]["name"];
 
       // محدودیت‌های مربوط به ویدیو
-      $targetDir = "../../../../videos/uploads/conversation/";
+      $targetDir = "../../../../videos/uploads/movie/";
       $targetFile = $targetDir . basename($_FILES["video"]["name"]);
       $videoFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-      $maxFileSize = 500 * 1024 * 1024; // حداکثر سایز ویدیو: 500
+      $maxFileSize = 2000 * 1024 * 1024; // حداکثر سایز ویدیو: 2000
 
       // بررسی پسوند ویدیو
       $allowedExtensions = array("mp4", "avi", "mkv");
@@ -333,14 +333,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       }
       // بررسی سایز ویدیو
       elseif ($_FILES["video"]["size"] > $maxFileSize) {
-          echo '<div class="alert alert-danger text-center mb-3">سایز فایل ویدیو باید کمتر از 100MB باشد.</div>';
+          echo '<div class="alert alert-danger text-center mb-3">سایز فایل ویدیو باید کمتر از 2000MB باشد.</div>';
       }
       // آپلود ویدیو
       else {
           if (move_uploaded_file($_FILES["video"]["tmp_name"], $targetFile)) {
               // استفاده از prepared statement برای جلوگیری از حمله‌های اینجکشن
-              $stmt = $conn->prepare("INSERT INTO conversation (Title, caption, lesson_id, video) VALUES (?, ?, ?, ?)");
-              $stmt->bind_param("ssss", $Title, $caption, $cours, $targetFile);
+              $stmt = $conn->prepare("INSERT INTO movie (Title, caption, Collection_name, video) VALUES (?, ?, ?, ?)");
+              $stmt->bind_param("ssss", $Title, $caption, $Collection_name, $targetFile);
 
               if ($stmt->execute()) {
                   echo '<div class="alert alert-success text-center mb-3">اطلاعات با موفقیت ذخیره شدند.</div>';

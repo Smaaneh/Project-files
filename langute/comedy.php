@@ -47,7 +47,7 @@ if ($conn->connect_error) {
 }
 
 // استعلام برای دریافت اطلاعات فیلم مورد نظر
-$sql = "SELECT Title, caption, Video FROM movie WHERE Collection_name = "comedy"";
+$sql = "SELECT Title, caption, Video FROM movie WHERE Collection_name = 'comedy'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
