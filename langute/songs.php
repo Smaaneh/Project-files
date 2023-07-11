@@ -20,7 +20,7 @@ $result = $conn->query($sql);
          <!-- metaTAGS -->
         <?php include 'metaTAGS.php';?>
         <!-- Title -->
-        <title>پخش موسیقی</title>
+        <title>موسیقی و پادکست</title>
         <!-- songs -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <!-- linksCSS -->
