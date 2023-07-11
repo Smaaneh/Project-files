@@ -227,7 +227,7 @@ if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $title = $row['title'];
     $caption = $row['caption'];
-    $file_path = $row['file_path'];
+    $music = $row['music'];
 } else {
     echo "<script>alert('رکورد مورد نظر یافت نشد.')</script>";
     exit();
@@ -238,10 +238,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // دریافت اطلاعات از فرم
     $new_title = $_POST['title'];
     $new_caption = $_POST['caption'];
-    $new_file_path = $_POST['file_path'];
+    $new_music = $_POST['music'];
 
     // به روزرسانی رکورد کلمه در جدول songs
-    $update_sql = "UPDATE songs SET title = '$new_title', caption = '$new_caption', file_path = ' $new_file_path' WHERE id = $id";
+    $update_sql = "UPDATE songs SET title = '$new_title', caption = '$new_caption', music = ' $new_music' WHERE id = $id";
 
     if ($conn->query($update_sql) === TRUE) {
         echo "<script>alert('ویرایش گفتار با موفقیت انجام شد.')</script>";
@@ -297,7 +297,7 @@ $conn->close();
                             </div>
                             <div class="form-group">
                                 <label for="music">موسیقی</label>
-                                <input type="file" class="form-control" id="file_path" name="file_path">
+                                <input type="file" class="form-control" id="music" name="music">
                             </div>
                         </div>
                         <!-- /.card-body -->
