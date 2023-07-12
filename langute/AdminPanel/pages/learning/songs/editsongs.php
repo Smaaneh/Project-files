@@ -227,6 +227,7 @@ if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $title = $row['title'];
     $caption = $row['caption'];
+    $Collection_name = $row['Collection_name'];
     $music = $row['music'];
 } else {
     echo "<script>alert('رکورد مورد نظر یافت نشد.')</script>";
@@ -238,10 +239,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // دریافت اطلاعات از فرم
     $new_title = $_POST['title'];
     $new_caption = $_POST['caption'];
+    $new_Collection_name = $_POST['Collection_name'];
     $new_music = $_POST['music'];
 
     // به روزرسانی رکورد کلمه در جدول songs
-    $update_sql = "UPDATE songs SET title = '$new_title', caption = '$new_caption', music = ' $new_music' WHERE id = $id";
+    $update_sql = "UPDATE songs SET title = '$new_Title', caption = '$new_caption', Collection_name = '$new_Collection_name', music = '$new_music' WHERE id = $id";
 
     if ($conn->query($update_sql) === TRUE) {
         echo "<script>alert('ویرایش گفتار با موفقیت انجام شد.')</script>";
@@ -297,10 +299,10 @@ $conn->close();
                                 <div class="form-group">
                                 <label>نوع موسیقی یا پادکست را انتخاب کنید</label>
                                 <select class="form-control" name="Collection_name">
-                                <option value="comedy" <?php if ($Collection_name == 'comedy') echo 'selected'; ?>>کمدی</option>
-                                    <option value="Animation" <?php if ($Collection_name == 'Animation') echo 'selected'; ?>>انیمیشن</option>
-                                    <option value="action" <?php if ($Collection_name == 'action') echo 'selected'; ?>>اکشن</option>
-                                    <option value="drama" <?php if ($Collection_name == 'drama') echo 'selected'; ?>>درام</option>
+                                <option value="happy_music" <?php if ($Collection_name == 'happy_music') echo 'selected'; ?>>موزیک های شاد</option>
+                                    <option value="Motivational" <?php if ($Collection_name == 'Motivational') echo 'selected'; ?>>پادکست های انگیزشی</option>
+                                    <option value="sad_music" <?php if ($Collection_name == 'sad_music') echo 'selected'; ?>>موسیقی های آرام و غمگین</option>
+                                    <option value="Academic" <?php if ($Collection_name == 'Academic') echo 'selected'; ?>>پادکست های علمی</option>
                                 </select>
                             </div>
                             <!-- /select -->
