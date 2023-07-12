@@ -255,9 +255,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $conn->close();
 ?>
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper
-
-">
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
@@ -295,6 +293,17 @@ $conn->close();
                                 <label for="caption">کپشن</label>
                                 <input type="text" class="form-control" id="caption" name="caption" value="<?php echo $caption; ?>" required>
                             </div>
+                                <!-- select -->
+                                <div class="form-group">
+                                <label>نوع موسیقی یا پادکست را انتخاب کنید</label>
+                                <select class="form-control" name="Collection_name">
+                                <option value="comedy" <?php if ($Collection_name == 'comedy') echo 'selected'; ?>>کمدی</option>
+                                    <option value="Animation" <?php if ($Collection_name == 'Animation') echo 'selected'; ?>>انیمیشن</option>
+                                    <option value="action" <?php if ($Collection_name == 'action') echo 'selected'; ?>>اکشن</option>
+                                    <option value="drama" <?php if ($Collection_name == 'drama') echo 'selected'; ?>>درام</option>
+                                </select>
+                            </div>
+                            <!-- /select -->
                             <div class="form-group">
                                 <label for="music">موسیقی</label>
                                 <input type="file" class="form-control" id="music" name="music">

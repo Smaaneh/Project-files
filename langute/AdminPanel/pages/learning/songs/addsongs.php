@@ -252,7 +252,7 @@
                                 <label>نام مجموعه</label>
                                 <select class="form-control" name="Collection_name">
                                     <option value="happy_music">موزیک های شاد</option>
-                                    <option value="Motivational ">پادکست های انگیزشی</option>
+                                    <option value="Motivational">پادکست های انگیزشی</option>
                                     <option value="sad_music">موسیقی های آرام و غمگین</option>
                                     <option value="Academic">پادکست های علمی</option>
                                 </select>
