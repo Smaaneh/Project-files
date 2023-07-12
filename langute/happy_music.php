@@ -11,7 +11,7 @@ if ($conn->connect_error) {
     die("اتصال به دیتابیس با مشکل مواجه شد: " . $conn->connect_error);
 }
 // دریافت اطلاعات اهنگ‌ها از دیتابیس
-$sql = "SELECT * FROM songs";
+$sql = "SELECT * FROM songs WHERE Collection_name = 'happy_music'";
 $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
@@ -20,7 +20,7 @@ $result = $conn->query($sql);
          <!-- metaTAGS -->
         <?php include 'metaTAGS.php';?>
         <!-- Title -->
-        <title>موسیقی و پادکست</title>
+        <title>موزیک های شاد</title>
         <!-- songs -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <!-- linksCSS -->
@@ -40,7 +40,8 @@ $result = $conn->query($sql);
 						<ul class="bread-list">
 							<li><a href="index.html">خانه <i class="fa fa-angle-left"></i></a></li>
 							<li><a href="Learning.html">یادگیری با روش های مختلف<i class="fa fa-angle-left"></i></a></li>
-                            <li class="active"><a href="#">موسیقی و پادکست<i class="fa fa-angle-left"></i></a></li>
+                            <li><a href="music.php">موسیقی ، پادکست<i class="fa fa-angle-left"></i></a></li>
+                            <li class="active"><a href="#">آهنگ های شاد<i class="fa fa-angle-left"></i></a></li>
 						</ul>
 					</div>
 				</div>
