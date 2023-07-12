@@ -299,7 +299,7 @@ $conn->close();
                             </div>
                             <!-- select -->
                             <div class="form-group">
-                                <label>درس مد نظر خود را انتخاب کنید</label>
+                                <label>ژانر مد نظر خود را انتخاب کنید</label>
                                 <select class="form-control" name="Collection_name">
                                 <option value="comedy" <?php if ($Collection_name == 'comedy') echo 'selected'; ?>>کمدی</option>
                                     <option value="Animation" <?php if ($Collection_name == 'Animation') echo 'selected'; ?>>انیمیشن</option>
