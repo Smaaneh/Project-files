@@ -247,6 +247,16 @@
                                 <input type="text" class="form-control" id="caption" name="caption"
                                     placeholder="کپشن را وارد کنید">
                             </div>
+                                 <!-- select -->
+                                <div class="form-group">
+                                <label>نام مجموعه</label>
+                                <select class="form-control" name="Collection_name">
+                                    <option value="happy_music">موزیک های شاد</option>
+                                    <option value="Motivational ">پادکست های انگیزشی</option>
+                                    <option value="sad_music">موسیقی های آرام و غمگین</option>
+                                    <option value="Academic">پادکست های علمی</option>
+                                </select>
+                            </div>
                             <!-- upload music -->
                             <div class="form-group">
                                 <label for="music">آپلود موسیقی یا پادکست</label>
@@ -300,12 +310,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (
       empty($_POST["title"]) ||
       empty($_POST["caption"]) ||
+      empty($_POST["Collection_name"]) ||
       empty($_FILES["music"]["name"])
   ) {
       echo '<div class="alert alert-warning text-center mb-3">لطفاً تمام فیلدها را پر کنید و یک فایل صدا انتخاب کنید.</div>';
   } else {
       $title = $_POST["title"];
       $caption = $_POST["caption"];
+      $Collection_name = $_POST["Collection_name"];
       $music = $_FILES["music"]["name"];
 
       // محدودیت‌های مربوط به موزیک
@@ -327,8 +339,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       else {
           if (move_uploaded_file($_FILES["music"]["tmp_name"], $targetFile)) {
               // استفاده از prepared statement برای جلوگیری از حمله‌های اینجکشن
-              $stmt = $conn->prepare("INSERT INTO songs (title, caption, music) VALUES (?, ?, ?)");
-              $stmt->bind_param("sss", $title, $caption, $targetFile);
+              $stmt = $conn->prepare("INSERT INTO songs (title, caption, music, Collection_name) VALUES (?, ?, ?)");
+              $stmt->bind_param("sss", $title, $caption, $Collection_name, $targetFile);
 
               if ($stmt->execute()) {
                   echo '<div class="alert alert-success text-center mb-3">اطلاعات با موفقیت ذخیره شدند.</div>';
