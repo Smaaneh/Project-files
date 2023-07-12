@@ -47,7 +47,7 @@
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
-								<h4 class="c-title"><a href="course-single.html">فیلم ، کارتن</a></h4>
+								<h4 class="c-title"><a href="film.php">فیلم ، کارتن</a></h4>
 								<p>با دیدن فیلم مهارت شنیدار و گفتارتان را تقویت کنید</p>
 							</div>
 						</div>
@@ -59,11 +59,11 @@
 							<!-- Course Head -->
 							<div class="course-head overlay">
 								<img src="images/learn/music.jpg" alt="#">
-								<a href="course-single.html" class="btn white primary">شروع یادگیری</a>
+								<a href="music.php" class="btn white primary">شروع یادگیری</a>
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
-								<h4 class="c-title"><a href="course-single.html">موسیقی ، پادکست</a></h4>
+								<h4 class="c-title"><a href="music.php">موسیقی ، پادکست</a></h4>
 								<p>با موسیقی های انگلیسی زبان توانایی شنیداری خود را افزایش دهید</p>
 							</div>
 							<!--/ End Course Meta -->
