@@ -55,7 +55,7 @@ $result = $conn->query($sql);
             <div class="row">
                 <div class="col-lg-6 offset-lg-3 col-12">
                     <div class="section-title bg">
-                        <h2><?php echo $row["title"]; ?></h2>
+                        <h2><?php echo $row["Title"]; ?></h2>
                         <p><?php echo $row["caption"]; ?></p>
                         <div class="icon"><i class="fa fa-music"></i></div>
                     </div>

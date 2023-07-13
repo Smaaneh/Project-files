@@ -23,10 +23,10 @@ if ($result->num_rows > 0) {
     $Title = $row['Title'];
 
     // حذف رکورد مربوطه از جدول movie
-    $sql = "DELETE FROM movie WHERE id = $id";
+    $sql = "DELETE FROM book WHERE id = $id";
     if ($conn->query($sql) === TRUE) {
         echo "<script>alert('فیلم $Title حذف شد.')</script>";
-        echo "<script>window.location.href = 'movie.php';</script>";
+        echo "<script>window.location.href = 'book.php';</script>";
         
     } else {
         echo "<script>alert('خطا در حذف رکورد.')</script>";
