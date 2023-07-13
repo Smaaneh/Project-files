@@ -76,11 +76,11 @@
 							<!-- Course Head -->
 							<div class="course-head overlay">
 								<img src="images/learn/book.jpg" alt="#">
-								<a href="course-single.html" class="btn white primary">شروع یادگیری</a>
+								<a href="book.php" class="btn white primary">شروع یادگیری</a>
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
-								<h4 class="c-title"><a href="course-single.html">کتاب ، داستان</a></h4>
+								<h4 class="c-title"><a href="book.php">کتاب ، داستان</a></h4>
 								<p>دانلود کتاب، داستان های کوتاه برای همه</p>
 							</div>
 							<!--/ End Course Meta -->
