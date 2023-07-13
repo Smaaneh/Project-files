@@ -302,7 +302,7 @@ $result = $conn->query($sql);
 <!-- /.content-wrapper -->
 <script>
     function confirmDelete(id) {
-        var result = confirm("آیا میخواهید این فیلم حذف شود؟");
+        var result = confirm("آیا میخواهید این کتاب حذف شود؟");
         if (result) {
             // اگر کاربر تایید کرد، ارسال درخواست حذف به صفحه deletebook.php
             window.location.href = "deletebook.php?id=" + id;

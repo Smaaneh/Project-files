@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>مدیریت | فیلم و کارتن</title>
+  <title>مدیریت | کتاب و داستان</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -218,17 +218,17 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// دریافت شناسه فیلم برای ویرایش
+// دریافت شناسه کتاب برای ویرایش
 $id = $_GET['id'];
-// دریافت اطلاعات فیلم قبل از ویرایش
-$sql = "SELECT * FROM movie WHERE id = $id";
+// دریافت اطلاعات کتاب قبل از ویرایش
+$sql = "SELECT * FROM book WHERE id = $id";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $Title = $row['Title'];
     $caption = $row['caption'];
     $Collection_name = $row['Collection_name'];
-    $video = $row['Video'];
+    $PDF = $row['PDF'];
 } else {
     echo "<script>alert('رکورد مورد نظر یافت نشد.')</script>";
     exit();
@@ -240,14 +240,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_Title = $_POST['Title'];
     $new_caption = $_POST['caption'];
     $new_Collection_name = $_POST['Collection_name'];
-    $new_video = $_POST['video'];
+    $new_PDF = $_POST['PDF'];
 
-    // به روزرسانی رکورد کلمه در جدول movie
-    $update_sql = "UPDATE movie SET Title = '$new_Title', caption = '$new_caption', Collection_name = '$new_Collection_name', Video = '$new_video' WHERE id = $id";
+    // به روزرسانی رکورد کلمه در جدول book
+    $update_sql = "UPDATE book SET Title = '$new_Title', caption = '$new_caption', Collection_name = '$new_Collection_name', PDF = '$new_PDF' WHERE id = $id";
 
     if ($conn->query($update_sql) === TRUE) {
-        echo "<script>alert('ویرایش فیلم با موفقیت انجام شد.')</script>";
-        echo "<script>window.location.href = 'movie.php';</script>";
+        echo "<script>alert('ویرایش کتاب با موفقیت انجام شد.')</script>";
+        echo "<script>window.location.href = 'book.php';</script>";
     } else {
         echo "<script>alert('خطا در ویرایش رکورد.')</script>";
     }
@@ -270,8 +270,8 @@ $conn->close();
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="../../HomeAdmin.html">خانه</a></li>
-                        <li class="breadcrumb-item"><a href="movie.php">مدیریت فیلم  کارتن</a></li>
-                        <li class="breadcrumb-item active">ویرایش فیلم</li>
+                        <li class="breadcrumb-item"><a href="book.php">مدیریت کتاب و  داستان</a></li>
+                        <li class="breadcrumb-item active">ویرایش کتاب</li>
                     </ol>
                 </div>
             </div>
@@ -282,7 +282,7 @@ $conn->close();
             <div class="col-md-12">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">فرم ویرایش فیلم</h3>
+                        <h3 class="card-title">فرم ویرایش کتاب</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -299,18 +299,27 @@ $conn->close();
                             </div>
                             <!-- select -->
                             <div class="form-group">
-                                <label>ژانر مد نظر خود را انتخاب کنید</label>
+                                <label> (نام مجموعه)</label>
                                 <select class="form-control" name="Collection_name">
-                                <option value="comedy" <?php if ($Collection_name == 'comedy') echo 'selected'; ?>>کمدی</option>
-                                    <option value="Animation" <?php if ($Collection_name == 'Animation') echo 'selected'; ?>>انیمیشن</option>
-                                    <option value="action" <?php if ($Collection_name == 'action') echo 'selected'; ?>>اکشن</option>
-                                    <option value="drama" <?php if ($Collection_name == 'drama') echo 'selected'; ?>>درام</option>
+                                    <option value="Romance">عاشقانه</option>
+                                    <option value="Science_fiction">علمی/تخیلی</option>
+                                    <option value="Motivational">انگیزشی</option>
+                                    <option value="Humer">طنز</option>
                                 </select>
                             </div>
                             <!-- /select -->
+                            <!-- upload PDF -->
                             <div class="form-group">
-                                <label for="video">فیلم</label>
-                                <input type="file" class="form-control" id="video" name="video">
+                                <label for="pdf">آپلود PDF</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="pdf" name="pdf" accept=".pdf">
+                                        <label class="custom-file-label" for="pdf">کتاب</label>
+                                    </div>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="">Upload</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <!-- /.card-body -->
