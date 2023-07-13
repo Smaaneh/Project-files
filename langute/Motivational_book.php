@@ -65,11 +65,9 @@ $result = $conn->query($sql);
     <div class="card mb-3 mx-auto" style="max-width: 500px;">
         <div class="card-body">
             <div class="text-center">
-                <a href="<?php echo $row["PDF"]; ?>" target="_blank">خواندن PDF: <?php echo $row["Title"]; ?></a>
-            </div>
+            <a href="<?php echo $row["PDF"]; ?>" target="_blank" class="btn white primary">خواندن PDF: <?php echo $row["Title"]; ?></a>            </div>
             <div class="text-center">
-                <a href="<?php echo $row["PDF"]; ?>" download>دانلود PDF: <?php echo $row["Title"]; ?></a>
-            </div>
+            <a href="<?php echo $row["PDF"]; ?>" download class="btn white primary-">دانلود PDF: <?php echo $row["Title"]; ?></a>            </div>
         </div>
     </div>
 <?php } ?>
