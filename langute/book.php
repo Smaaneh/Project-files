@@ -74,11 +74,11 @@
 							<!-- Course Head -->
 							<div class="course-head overlay">
 								<img src="images/Lesson number/lesson-3.jpg" alt="#">
-								<a href="Motivational.php" class="btn white primary">مشاهده و خواندن</a>
+								<a href="Motivational_book.php" class="btn white primary">مشاهده و خواندن</a>
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
-								<h4 class="c-title"><a href="Motivational.php">کتاب های انگیزشی </a></h4>
+								<h4 class="c-title"><a href="Motivational_book.php">کتاب های انگیزشی </a></h4>
 								<p>این نوع کتاب ها رو از دست ندید ! حتمادر یادگیری زبان بهتون کمک میکنه</p>
 							</div>
 							<!--/ End Course Meta -->
