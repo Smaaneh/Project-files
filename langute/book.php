@@ -91,12 +91,12 @@
 							<!-- Course Head -->
 							<div class="course-head overlay">
 								<img src="images/Lesson number/lesson-4.jpg" alt="#">
-								<a href="action.php" class="btn white primary">مشاهده و خواندن</a>
+								<a href="Humer_Book.php" class="btn white primary">مشاهده و خواندن</a>
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
-								<h4 class="c-title"><a href="action.php">فیلم های اکشن</a></h4>
-								<p>دیدن بهترین و معروف ترین فیلم های اکشن رو همین الان شروع کن!!</p>
+								<h4 class="c-title"><a href="Humer_Book.php">داستان های طنز </a></h4>
+								<p>مطالعه بهترین و معروف ترین کتاب های طنز رو همین الان شروع کن!!</p>
 							</div>
 						</div>
 						<!--/ End Single Course -->
