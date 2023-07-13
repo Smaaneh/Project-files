@@ -12,11 +12,11 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-// دریافت شناسه کلمه برای حذف
+// دریافت شناسه کتاب برای حذف
 $id = $_GET['id'];
 
 // دریافت عنوان قبل از حذف
-$sql = "SELECT Title FROM movie WHERE id = $id";
+$sql = "SELECT Title FROM book WHERE id = $id";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();

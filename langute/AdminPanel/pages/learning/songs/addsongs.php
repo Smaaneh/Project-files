@@ -238,8 +238,8 @@
                     <form role="form" method="post" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="title">عنوان</label>
-                                <input type="text" class="form-control" id="title" name="title"
+                                <label for="Title">عنوان</label>
+                                <input type="text" class="form-control" id="Title" name="Title"
                                     placeholder="عنوان خود را وارد کنید">
                             </div>
                             <div class="form-group">
@@ -308,14 +308,14 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // بررسی پر بودن تمام فیلدها
   if (
-      empty($_POST["title"]) ||
+      empty($_POST["Title"]) ||
       empty($_POST["caption"]) ||
       empty($_POST["Collection_name"]) ||
       empty($_FILES["music"]["name"])
   ) {
       echo '<div class="alert alert-warning text-center mb-3">لطفاً تمام فیلدها را پر کنید و یک فایل صدا انتخاب کنید.</div>';
   } else {
-      $title = $_POST["title"];
+      $Title = $_POST["Title"];
       $caption = $_POST["caption"];
       $Collection_name = $_POST["Collection_name"];
       $music = $_FILES["music"]["name"];
@@ -339,8 +339,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       else {
           if (move_uploaded_file($_FILES["music"]["tmp_name"], $targetFile)) {
               // استفاده از prepared statement برای جلوگیری از حمله‌های اینجکشن
-              $stmt = $conn->prepare("INSERT INTO songs (title, caption, music, Collection_name) VALUES (?, ?, ?, ?)");
-              $stmt->bind_param("ssss", $title, $caption, $Collection_name, $targetFile);
+              $stmt = $conn->prepare("INSERT INTO songs (Title, caption, Collection_name, music) VALUES (?, ?, ?, ?)");
+              $stmt->bind_param("ssss", $Title, $caption, $Collection_name, $targetFile);
 
               if ($stmt->execute()) {
                   echo '<div class="alert alert-success text-center mb-3">اطلاعات با موفقیت ذخیره شدند.</div>';

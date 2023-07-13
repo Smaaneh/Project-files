@@ -225,7 +225,7 @@ $sql = "SELECT * FROM songs WHERE id = $id";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
-    $title = $row['title'];
+    $Title = $row['Title'];
     $caption = $row['caption'];
     $Collection_name = $row['Collection_name'];
     $music = $row['music'];
@@ -237,13 +237,13 @@ if ($result->num_rows > 0) {
 // در صورتی که فرم ویرایش ارسال شده باشد
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // دریافت اطلاعات از فرم
-    $new_title = $_POST['title'];
+    $new_Title = $_POST['Title'];
     $new_caption = $_POST['caption'];
     $new_Collection_name = $_POST['Collection_name'];
     $new_music = $_POST['music'];
 
     // به روزرسانی رکورد کلمه در جدول songs
-    $update_sql = "UPDATE songs SET title = '$new_Title', caption = '$new_caption', Collection_name = '$new_Collection_name', music = '$new_music' WHERE id = $id";
+    $update_sql = "UPDATE songs SET Title = '$new_Title', caption = '$new_caption', Collection_name = '$new_Collection_name', music = '$new_music' WHERE id = $id";
 
     if ($conn->query($update_sql) === TRUE) {
         echo "<script>alert('ویرایش گفتار با موفقیت انجام شد.')</script>";
@@ -287,8 +287,8 @@ $conn->close();
                     <form role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . '?id=' . $id; ?>">
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="title">عنوان</label>
-                                <input type="text" class="form-control" id="title" name="title" value="<?php echo $title; ?>" required>
+                                <label for="Title">عنوان</label>
+                                <input type="text" class="form-control" id="Title" name="Title" value="<?php echo $Title; ?>" required>
                             </div>
 
                             <div class="form-group">

@@ -267,7 +267,7 @@ $result = $conn->query($sql);
                                 if ($result->num_rows > 0) {
                                     while ($row = $result->fetch_assoc()) {
                                         echo "<tr>";
-                                        echo "<td>" . $row['title'] . "</td>";
+                                        echo "<td>" . $row['Title'] . "</td>";
                                         echo "<td>" . $row['caption'] . "</td>";
                                         echo "<td>" . $row['Collection_name'] . "</td>";
                                         echo "<td><a href='editsongs.php?id=" . $row['id'] . "' class='btn btn-block btn-info btn-sm'>ویرایش</a></td>";
