@@ -263,7 +263,7 @@
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="video" name="video">
-                                        <label class="custom-file-label" for="video">فیلم </label>
+                                        <label class="custom-file-label" for="video">کتاب </label>
                                     </div>
                                     <div class="input-group-append">
                                         <span class="input-group-text" id="">Upload</span>
@@ -321,7 +321,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $video = $_FILES["video"]["name"];
 
       // محدودیت‌های مربوط به ویدیو
-      $targetDir = "../../../../videos/uploads/movie/";
+      $targetDir = "/PDF/uploads";
       $targetFile = $targetDir . basename($_FILES["video"]["name"]);
       $videoFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
       $maxFileSize = 2000 * 1024 * 1024; // حداکثر سایز ویدیو: 2000
@@ -339,7 +339,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       else {
           if (move_uploaded_file($_FILES["video"]["tmp_name"], $targetFile)) {
               // استفاده از prepared statement برای جلوگیری از حمله‌های اینجکشن
-              $stmt = $conn->prepare("INSERT INTO movie (Title, caption, Collection_name, video) VALUES (?, ?, ?, ?)");
+              $stmt = $conn->prepare("INSERT INTO book (Title, caption, Collection_name, PDF) VALUES (?, ?, ?, ?)");
               $stmt->bind_param("ssss", $Title, $caption, $Collection_name, $targetFile);
 
               if ($stmt->execute()) {
