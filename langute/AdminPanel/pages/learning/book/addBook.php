@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>افزودن فیلم جدید</title>
+  <title>افزودن کتاب جدید</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -210,13 +210,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>افزودن فیلم</h1>
+            <h1>افزودن کتاب</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-left">
               <li class="breadcrumb-item"><a href="../HomeAdmin.html">خانه</a></li>
-              <li class="breadcrumb-item"><a href="movie.php">مدیریت فیلم و کارتن </a></li>
-              <li class="breadcrumb-item active">افزودن فیلم</li>
+              <li class="breadcrumb-item"><a href="movie.php">مدیریت کتاب و داستان </a></li>
+              <li class="breadcrumb-item active">افزودن کتاب</li>
             </ol>
           </div>
         </div>
@@ -231,7 +231,7 @@
                 <!-- general form elements -->
                 <div class="card card-success">
                     <div class="card-header">
-                        <h3 class="card-title">فرم افزودن فیلم</h3>
+                        <h3 class="card-title">فرم افزودن کتاب</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -249,17 +249,17 @@
                             </div>
                             <!-- select -->
                             <div class="form-group">
-                                <label>ژانر فیلم(نام مجموعه)</label>
+                                <label> (نام مجموعه)</label>
                                 <select class="form-control" name="Collection_name">
-                                    <option value="comedy">کمدی</option>
-                                    <option value="Animation">انیمیشن</option>
-                                    <option value="action">اکشن</option>
-                                    <option value="drama">درام</option>
+                                    <option value="Romance">عاشقانه </option>
+                                    <option value="Science_fiction">علمی/تخیلی</option>
+                                    <option value="Motivational">انگیزشی </option>
+                                    <option value="Humer">طنز </option>
                                 </select>
                             </div>
                             <!-- upload video -->
                             <div class="form-group">
-                                <label for="video">آپلود ویدیو</label>
+                                <label for="video">آپلود pdf</label>
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="video" name="video">
