@@ -7,7 +7,7 @@
 				<div class="col-lg-2 col-md-2 col-12">
 					<!-- Logo -->
 					<div class="logo">
-						<a href="index.html"><img src="images/logo.png" alt="#"></a>
+						<a href="index.php"><img src="images/logo.png" alt="#"></a>
 					</div>
 					<!--/ End Logo -->
 					<div class="mobile-menu"></div>
@@ -22,15 +22,15 @@
 									<li><a href="events.html"><i class="fa fa-bullhorn"></i>مقالات</a></li>
 									<li><a href="#"><i class="fa fa-clone"></i>صفحه ها</a>
 										<ul class="dropdown">
-											<li><a href="teachers.html">استادان</a></li>
+											<li><a href="teachers.php">استادان</a></li>
 											<li><a href="Social_learning.html">یادگیری اجتماعی</a></li>
 											<li><a href="Test.html">آزمون</a></li>
 											<li><a href="Progress_tracking.html">ردیابی پیشرفت</a></li>
 										</ul>
 									</li>
-									<li><a href="Learning.html"><i class="fa fa-clone"></i>یادگیری با روش های مختلف</a></li>
+									<li><a href="Learning.php"><i class="fa fa-clone"></i>یادگیری با روش های مختلف</a></li>
 									<li><a href="courses.html"><i class="fa fa-clone"></i>آموزش ها و درس ها</a></li>
-									<li class="active"><a href="index.html"><i class="fa fa-home"></i>خانه</a></li>
+									<li class="active"><a href="index.php"><i class="fa fa-home"></i>خانه</a></li>
 								</ul>
 								<!-- End Main Menu -->
 							</div>
