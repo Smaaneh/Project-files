@@ -231,7 +231,7 @@
                 <!-- general form elements -->
                 <div class="card card-success">
                     <div class="card-header">
-                        <h3 class="card-title">فرم افزودن گفتار</h3>
+                        <h3 class="card-title">فرم افزودن موسیقی</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -321,7 +321,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $music = $_FILES["music"]["name"];
 
       // محدودیت‌های مربوط به موزیک
-      $targetDir = "/sound/uploads/songs/";
+      $targetDir = "../../../../sound/uploads/";
       $targetFile = $targetDir . basename($_FILES["music"]["name"]);
       $musicFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
       $maxFileSize = 20 * 1024 * 1024; // حداکثر سایز ویدیو: 20
@@ -339,8 +339,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       else {
           if (move_uploaded_file($_FILES["music"]["tmp_name"], $targetFile)) {
               // استفاده از prepared statement برای جلوگیری از حمله‌های اینجکشن
-              $stmt = $conn->prepare("INSERT INTO songs (title, caption, music, Collection_name) VALUES (?, ?, ?)");
-              $stmt->bind_param("sss", $title, $caption, $Collection_name, $targetFile);
+              $stmt = $conn->prepare("INSERT INTO songs (title, caption, music, Collection_name) VALUES (?, ?, ?, ?)");
+              $stmt->bind_param("ssss", $title, $caption, $Collection_name, $targetFile);
 
               if ($stmt->execute()) {
                   echo '<div class="alert alert-success text-center mb-3">اطلاعات با موفقیت ذخیره شدند.</div>';

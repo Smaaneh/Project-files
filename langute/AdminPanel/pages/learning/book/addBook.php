@@ -251,19 +251,19 @@
                             <div class="form-group">
                                 <label> (نام مجموعه)</label>
                                 <select class="form-control" name="Collection_name">
-                                    <option value="Romance">عاشقانه </option>
+                                    <option value="Romance">عاشقانه</option>
                                     <option value="Science_fiction">علمی/تخیلی</option>
-                                    <option value="Motivational">انگیزشی </option>
-                                    <option value="Humer">طنز </option>
+                                    <option value="Motivational">انگیزشی</option>
+                                    <option value="Humer">طنز</option>
                                 </select>
                             </div>
-                            <!-- upload video -->
+                            <!-- upload PDF -->
                             <div class="form-group">
-                                <label for="video">آپلود pdf</label>
+                                <label for="pdf">آپلود PDF</label>
                                 <div class="input-group">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="video" name="video">
-                                        <label class="custom-file-label" for="video">کتاب </label>
+                                        <input type="file" class="custom-file-input" id="pdf" name="pdf" accept=".pdf">
+                                        <label class="custom-file-label" for="pdf">کتاب</label>
                                     </div>
                                     <div class="input-group-append">
                                         <span class="input-group-text" id="">Upload</span>
@@ -306,54 +306,53 @@ if ($conn->connect_error) {
 
 // دریافت داده‌ها از فرم و ذخیره در دیتابیس
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  // بررسی پر بودن تمام فیلدها
-  if (
-      empty($_POST["Title"]) ||
-      empty($_POST["caption"]) ||
-      empty($_POST["Collection_name"]) ||
-      empty($_FILES["video"]["name"])
-  ) {
-      echo '<div class="alert alert-warning text-center mb-3">لطفاً تمام فیلدها را پر کنید و یک فایل ویدیو انتخاب کنید.</div>';
-  } else {
-      $Title = $_POST["Title"];
-      $caption = $_POST["caption"];
-      $Collection_name = $_POST["Collection_name"];
-      $video = $_FILES["video"]["name"];
+    // بررسی پر بودن تمام فیلدها
+    if (
+        empty($_POST["Title"]) ||
+        empty($_POST["caption"]) ||
+        empty($_POST["Collection_name"]) ||
+        empty($_FILES["pdf"]["name"])
+    ) {
+        echo '<div class="alert alert-warning text-center mb-3">لطفاً تمام فیلدها را پر کنید و یک فایل PDF انتخاب کنید.</div>';
+    } else {
+        $Title = $_POST["Title"];
+        $caption = $_POST["caption"];
+        $Collection_name = $_POST["Collection_name"];
+        $pdf = $_FILES["pdf"]["name"];
 
-      // محدودیت‌های مربوط به ویدیو
-      $targetDir = "/PDF/uploads";
-      $targetFile = $targetDir . basename($_FILES["video"]["name"]);
-      $videoFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-      $maxFileSize = 2000 * 1024 * 1024; // حداکثر سایز ویدیو: 2000
+        // محدودیت‌های مربوط به PDF
+        $targetDir = "../../../../PDF/uploads/";
+        $targetFile = $targetDir . basename($_FILES["pdf"]["name"]);
+        $pdfFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+        $maxFileSize = 2000 * 1024 * 1024; // حداکثر سایز PDF: 2000
 
-      // بررسی پسوند ویدیو
-      $allowedExtensions = array("mp4", "avi", "mkv");
-      if (!in_array($videoFileType, $allowedExtensions)) {
-          echo '<div class="alert alert-danger text-center mb-3">فقط فایل‌های با پسوند MP4، AVI و MKV مجاز هستند.</div>';
-      }
-      // بررسی سایز ویدیو
-      elseif ($_FILES["video"]["size"] > $maxFileSize) {
-          echo '<div class="alert alert-danger text-center mb-3">سایز فایل ویدیو باید کمتر از 2000MB باشد.</div>';
-      }
-      // آپلود ویدیو
-      else {
-          if (move_uploaded_file($_FILES["video"]["tmp_name"], $targetFile)) {
-              // استفاده از prepared statement برای جلوگیری از حمله‌های اینجکشن
-              $stmt = $conn->prepare("INSERT INTO book (Title, caption, Collection_name, PDF) VALUES (?, ?, ?, ?)");
-              $stmt->bind_param("ssss", $Title, $caption, $Collection_name, $targetFile);
+        // بررسی پسوند PDF
+        if ($pdfFileType !== "pdf") {
+            echo '<div class="alert alert-danger text-center mb-3">فقط فایل‌های با پسوند PDF مجاز هستند.</div>';
+        }
+        // بررسی سایز PDF
+        elseif ($_FILES["pdf"]["size"] > $maxFileSize) {
+            echo '<div class="alert alert-danger text-center mb-3">سایز فایل PDF باید کمتر از 2000MB باشد.</div>';
+        }
+        // آپلود PDF
+        else {
+            if (move_uploaded_file($_FILES["pdf"]["tmp_name"], $targetFile)) {
+                // استفاده از prepared statement برای جلوگیری از حمله‌های اینجکشن
+                $stmt = $conn->prepare("INSERT INTO book (Title, caption, Collection_name, PDF) VALUES (?, ?, ?, ?)");
+                $stmt->bind_param("ssss", $Title, $caption, $Collection_name, $targetFile);
 
-              if ($stmt->execute()) {
-                  echo '<div class="alert alert-success text-center mb-3">اطلاعات با موفقیت ذخیره شدند.</div>';
-              } else {
-                  echo '<div class="alert alert-danger text-center mb-3">خطا در ذخیره اطلاعات: ' . $stmt->error . '</div>';
-              }
+                if ($stmt->execute()) {
+                    echo '<div class="alert alert-success text-center mb-3">اطلاعات با موفقیت ذخیره شدند.</div>';
+                } else {
+                    echo '<div class="alert alert-danger text-center mb-3">خطا در ذخیره اطلاعات: ' . $stmt->error . '</div>';
+                }
 
-              $stmt->close();
-          } else {
-              echo '<div class="alert alert-danger text-center mb-3">خطا در آپلود ویدیو.</div>';
-          }
-      }
-  }
+                $stmt->close();
+            } else {
+                echo '<div class="alert alert-danger text-center mb-3">خطا در آپلود PDF.</div>';
+            }
+        }
+    }
 }
 
 $conn->close();
