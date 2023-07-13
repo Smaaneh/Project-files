@@ -45,7 +45,7 @@
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
-								<h4 class="c-title"><a href="Romance.php"">کتاب و داستان های عاشقانه </a></h4>
+								<h4 class="c-title"><a href="Romance.php">کتاب و داستان های عاشقانه </a></h4>
 								<p>اگر به این موضوع داستان ها علاقه دارید همین الان خواندن کتاب را شروع کنید </p>
 							</div>
 						</div>
@@ -57,11 +57,11 @@
 							<!-- Course Head -->
 							<div class="course-head overlay">
 								<img src="images/Lesson number/lesson-2.jpg" alt="#">
-								<a href="Animation.php" class="btn white primary">مشاهده و خواندن</a>
+								<a href="Science_fiction.php" class="btn white primary">مشاهده و خواندن</a>
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
-								<h4 class="c-title"><a href="Animation.php">انیمیشن های جذاب</a></h4>
+								<h4 class="c-title"><a href="Science_fiction.php">انیمیشن های جذاب</a></h4>
 								<p>با دیدن انیمیشن های جذاب ، زبان خود را تقویت کنید</p>
 							</div>
 							<!--/ End Course Meta -->
