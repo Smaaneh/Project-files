@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="Fa">
     <head>
 		<!-- Meta Tags -->
 		<meta charset="utf-8">
