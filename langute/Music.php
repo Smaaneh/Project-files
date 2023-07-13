@@ -21,8 +21,8 @@
 					</div>
 					<div class="col-lg-6 col-md-6 col-12">
 						<ul class="bread-list">
-							<li><a href="index.html"> خانه <i class="fa fa-angle-left"></i></a></li>
-                            <li><a href="Learning.html">یادگیری با روش های مختلف<i class="fa fa-angle-left"></i></a></li>
+							<li><a href="index.php"> خانه <i class="fa fa-angle-left"></i></a></li>
+                            <li><a href="Learning.php">یادگیری با روش های مختلف<i class="fa fa-angle-left"></i></a></li>
 							<li class="active"><a href="#">پادکست و موزیک<i class="fa fa-angle-left"></i></a></li>
 						</ul>
 					</div>
@@ -40,12 +40,12 @@
 						<div class="single-course">
 							<!-- Course Head -->
 							<div class="course-head overlay">
-								<img src="images\films/comedy.jpg" alt="#">
-								<a href="comedy.php" class="btn white primary">دیدن صفحه</a>
+								<img src="images/Lesson number/lesson-1.jpg" alt="#">
+								<a href="happy_music.php" class="btn white primary">دیدن صفحه</a>
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
-								<h4 class="c-title"><a href="comedy.php"">موزیک های شاد</a></h4>
+								<h4 class="c-title"><a href="happy_music.php"">موزیک های شاد</a></h4>
 								<p>با گوش دادن به موزیک های شاد زبان خود را تقویت کنید</p>
 							</div>
 						</div>
@@ -57,11 +57,11 @@
 							<!-- Course Head -->
 							<div class="course-head overlay">
 								<img src="images/Lesson number/lesson-2.jpg" alt="#">
-								<a href="Animation.php" class="btn white primary">دیدن صفحه</a>
+								<a href="Motivational_podcasts.php" class="btn white primary">دیدن صفحه</a>
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
-								<h4 class="c-title"><a href="Animation.php">پادکست های انگیزشی</a></h4>
+								<h4 class="c-title"><a href="Motivational_podcasts.php">پادکست های انگیزشی</a></h4>
 								<p>پادکست هایی به زبان انگلیسی </p>
 							</div>
 							<!--/ End Course Meta -->
@@ -74,11 +74,11 @@
 							<!-- Course Head -->
 							<div class="course-head overlay">
 								<img src="images/Lesson number/lesson-3.jpg" alt="#">
-								<a href="drama.php" class="btn white primary">دیدن صفحه</a>
+								<a href="sad_music.php" class="btn white primary">دیدن صفحه</a>
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
-								<h4 class="c-title"><a href="drama.php">موسیقی های آرام و غمگین</a></h4>
+								<h4 class="c-title"><a href="sad_music.php">موسیقی های آرام و غمگین</a></h4>
 								<p>با گوش دادن به این نوع موسیقی پیشرفتتانم در زبان آموزی را دوچندان کنید</p>
 							</div>
 							<!--/ End Course Meta -->
@@ -91,11 +91,11 @@
 							<!-- Course Head -->
 							<div class="course-head overlay">
 								<img src="images/Lesson number/lesson-4.jpg" alt="#">
-								<a href="action.php" class="btn white primary">دیدن صفحه</a>
+								<a href="science_podcasts.php" class="btn white primary">دیدن صفحه</a>
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
-								<h4 class="c-title"><a href="action.php">پادکست های علمی</a></h4>
+								<h4 class="c-title"><a href="science_podcasts.php">پادکست های علمی</a></h4>
 								<p>علم و زبان خود را با گوش دادن به این کوسیقی زیاد کنید</p>
 							</div>
 						</div>
