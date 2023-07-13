@@ -61,8 +61,8 @@
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
-								<h4 class="c-title"><a href="Science_fiction.php">انیمیشن های جذاب</a></h4>
-								<p>با دیدن انیمیشن های جذاب ، زبان خود را تقویت کنید</p>
+								<h4 class="c-title"><a href="Science_fiction.php">کتاب ها و داستان های علمی تخیلی</a></h4>
+								<p>با مطالعه این کتاب های جذاب ، زبان خود را تقویت کنید</p>
 							</div>
 							<!--/ End Course Meta -->
 						</div>
@@ -74,12 +74,12 @@
 							<!-- Course Head -->
 							<div class="course-head overlay">
 								<img src="images/Lesson number/lesson-3.jpg" alt="#">
-								<a href="drama.php" class="btn white primary">مشاهده و خواندن</a>
+								<a href="Motivational.php" class="btn white primary">مشاهده و خواندن</a>
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
-								<h4 class="c-title"><a href="drama.php">فیلم های درام</a></h4>
-								<p>این ژانر فیلم رو از دست ندید ! حتمادر یادگیری زبان بهتون کمک میکنه</p>
+								<h4 class="c-title"><a href="Motivational.php">کتاب های انگیزشی </a></h4>
+								<p>این نوع کتاب ها رو از دست ندید ! حتمادر یادگیری زبان بهتون کمک میکنه</p>
 							</div>
 							<!--/ End Course Meta -->
 						</div>
