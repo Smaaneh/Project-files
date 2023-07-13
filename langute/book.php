@@ -45,8 +45,8 @@
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
-								<h4 class="c-title"><a href="Romance.php"">فیلم های کمدی</a></h4>
-								<p>اگر به این ژانر فیلم ها علاقه دارید همین الان دیدن فیلم را شروع کنید </p>
+								<h4 class="c-title"><a href="Romance.php"">کتاب و داستان های عاشقانه </a></h4>
+								<p>اگر به این موضوع داستان ها علاقه دارید همین الان خواندن کتاب را شروع کنید </p>
 							</div>
 						</div>
 						<!--/ End Single Course -->
