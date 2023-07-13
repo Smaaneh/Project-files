@@ -8,6 +8,8 @@
 
 	<!-- linksCSS -->
 	<?php include 'linksCSS.php';?>
+	  <!-- Eduland film -->
+	 <link rel="stylesheet" href="css/film.css">
 </head>
 <body>
   <!-- Header -->
