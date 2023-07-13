@@ -21,8 +21,6 @@ $result = $conn->query($sql);
         <?php include 'metaTAGS.php';?>
         <!-- Title -->
         <title>کتاب های انگیزشی</title>
-        <!-- songs -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <!-- linksCSS -->
         <?php include 'linksCSS.php';?>
 </head>
@@ -48,3 +46,33 @@ $result = $conn->query($sql);
 			</div>
 		</div>
 		<!--/ End Breadcrumb -->
+        <!-- book main-->
+<?php while($row = $result->fetch_assoc()) { ?>
+    <section class="teachers archive section text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3 col-12">
+                    <div class="section-title bg">
+                        <h2><?php echo $row["Title"]; ?></h2>
+                        <p><?php echo $row["caption"]; ?></p>
+                        <div class="icon"><i class="fa fa-book"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="card mb-3 mx-auto" style="max-width: 500px;">
+        <div class="card-body">
+            <div class="text-center">
+                <audio id="pdf-<?php echo $row["id"]; ?>" controls style="width: 100%;">
+                    <source src="<?php echo $row["PDF"]; ?>" type="pdf/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+     <!-- foother & js links -->
+     <?php include 'foother.php';?>
+</body>
+</html>
