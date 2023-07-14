@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>مدیریت | مکالمه</title>
   <!-- Tell the browser to be responsive to screen width -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- CSSlinks -->
   <?php include '../CSSlinks.php';?>
@@ -13,8 +13,8 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-  <!-- Navbar -->
-<?php include '../navbar.php';?>
+<!-- Navbar -->
+  <?php include '../navbar.php';?>
 <!-- menu -->
   <?php include '../menu.php';?>
 <!-- main editConvertion -->
@@ -144,7 +144,7 @@
   </div>
   <!-- /.content-wrapper -->
 <!-- footer -->
-<?php include '../footer.php';?>
+  <?php include '../footer.php';?>
 <!-- JSlinks -->
   <?php include '../JSlinks.php';?>
 </body>
