@@ -49,7 +49,7 @@ $result = $conn->query($sql);
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
-                        <li class="breadcrumb-item"><a href="../../HomeAdmin.html">خانه</a></li>
+                        <li class="breadcrumb-item"><a href="../HomeAdmin.html">خانه</a></li>
                         <li class="breadcrumb-item active">گفتار</li>
                     </ol>
                 </div>
