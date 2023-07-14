@@ -24,25 +24,25 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="cours\word\word.php" class="nav-link">
+                  <a href="../cours\word.php" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>واژگان</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="cours\grammer\grammer.php" class="nav-link">
+                  <a href="../cours\grammer.php" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>گرامر</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="cours\Conversation\Conversation.php" class="nav-link">
+                  <a href="../cours\Conversation.php" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>مکالمه</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="cours\speeck\speeck.php" class="nav-link">
+                  <a href="../cours/speeck.php" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>گفتار</p>
                   </a>
@@ -59,25 +59,25 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="charts/chartjs.html" class="nav-link">
+                  <a href="../learning/songs.php" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>موسیقی/پادکست</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="charts/flot.html" class="nav-link">
+                  <a href="../learning/movie.php" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>فیلم/کارتن</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="charts/inline.html" class="nav-link">
+                  <a href="#" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>رفتار/آداب</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="charts/inline.html" class="nav-link">
+                  <a href="../learning/book.php" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>کتاب/داستان</p>
                   </a>
@@ -86,7 +86,7 @@
             </li>
             <li class="nav-header"></li>
             <li class="nav-item">
-              <a href="calendar.html" class="nav-link">
+              <a href="../articlesc/articles.php" class="nav-link">
                 <i class="nav-icon fa fa-calendar"></i>
                 <p>
                   مقالات
@@ -94,7 +94,7 @@
               </a>
             </li>
            <li class="nav-item">
-              <a href="teacher/teacher.php" class="nav-link">
+              <a href="../teacher/teacher.php" class="nav-link">
                   <i class="nav-icon fa fa-user"></i>
                 <p>
                   استادان
@@ -102,7 +102,7 @@
               </a>
             </li>
             <li class="nav-item">
-               <a href="azmon\azmon.php" class="nav-link">
+               <a href="../azmon\azmon.php" class="nav-link">
                    <i class="nav-icon fa fa-dashboard"></i>
                  <p>
                   آزمون

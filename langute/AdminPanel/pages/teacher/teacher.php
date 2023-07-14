@@ -2,37 +2,20 @@
 <html>
   <?php
       header('Content-Type: text/html; charset=utf-8');
-      ?>
+    ?>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>مدیریت | استادان</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="../../plugins/datatables/dataTables.bootstrap4.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
-  <!-- bootstrap rtl -->
-  <link rel="stylesheet" href="../../dist/css/bootstrap-rtl.min.css">
-  <!-- template rtl version -->
-  <link rel="stylesheet" href="../../dist/css/custom-style.css">
-
+  <?php include '../CSSlinks.php';?>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 <?php include '../navbar.php';?>
 <?php include '../menu.php';?>
-<!-- **************************************************** -->
-
+<!-- main page -->
 <?php
 // اطلاعات اتصال به پایگاه داده
 $servername = "localhost"; // آدرس سرور پایگاه داده
@@ -53,7 +36,6 @@ $sql = "SELECT * FROM teacher";
 $result = $conn->query($sql);
 
 ?>
-
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -149,32 +131,12 @@ $result = $conn->query($sql);
 // بستن اتصال به پایگاه داده
 $conn->close();
 ?>
-  <!-- ******************************************************* -->
+  <!-- footer -->
   <?php include '../footer.php';?>
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
   </aside>
-  <!-- /.control-sidebar -->
 </div>
-<!-- ./wrapper -->
-
-<!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables -->
-<script src="../../plugins/datatables/jquery.dataTables.js"></script>
-<script src="../../plugins/datatables/dataTables.bootstrap4.js"></script>
-<!-- SlimScroll -->
-<script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="../../plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
+<!-- JSlinks -->
+<?php include '../JSlinks.php';?>
 <!-- page script -->
 <script>
   $(function () {
