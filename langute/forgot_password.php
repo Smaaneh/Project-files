@@ -56,7 +56,7 @@ function sendCodeByEmail($email, $code) {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com'; // آدرس سرور SMTP
     $mail->SMTPAuth = true;
-    $mail->Username = 'your-email@example.com'; // نام کاربری ایمیل شما
+    $mail->Username = 'langute2023@gmail.com'; // نام کاربری ایمیل شما
     $mail->Password = 'your-email-password'; // رمز عبور ایمیل شما
     $mail->SMTPSecure = 'tls'; // نوع اتصال امن (اختیاری)
     $mail->Port = 587; // پورت SMTP
