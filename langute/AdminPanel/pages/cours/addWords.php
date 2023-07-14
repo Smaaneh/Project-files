@@ -168,7 +168,7 @@
   </div>
   <!-- /.content-wrapper -->
 <!-- footer -->
-<?php include '../footer.php';?>
+  <?php include '../footer.php';?>
 <!-- JSlinks -->
   <?php include '../JSlinks.php';?>
 </body>
