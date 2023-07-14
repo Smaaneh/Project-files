@@ -130,7 +130,6 @@ $result = $conn->query($sql);
 // بستن اتصال به پایگاه داده
 $conn->close();
 ?>
-
 <!-- /main word -->
  <!-- footer -->
   <?php include '../footer.php';?>

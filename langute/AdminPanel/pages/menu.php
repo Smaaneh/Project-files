@@ -42,7 +42,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="../cours/speeck.php" class="nav-link">
+                  <a href="../cours/speak.php" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>گفتار</p>
                   </a>
