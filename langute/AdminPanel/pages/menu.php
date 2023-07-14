@@ -101,14 +101,40 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item">
-               <a href="../azmon\azmon.php" class="nav-link">
-                   <i class="nav-icon fa fa-dashboard"></i>
-                 <p>
-                  آزمون
-                 </p>
-               </a>
-             </li>
+            <li class="nav-item has-treeview">
+              <a href="azmon.php" class="nav-link">
+                <i class="nav-icon fa fa-dashboard"></i>
+                <p>آزمون
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="../azmon/Vocabulary.PHP" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>واژگان</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="../azmon\grammar.php" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>گرامر</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="../azmon\Conversation.php" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>مکالمه</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="../azmon/speeck.php" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>گفتار</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
 
             <li class="nav-header">ارتباط با کاربران</li>
             <li class="nav-item has-treeview">
