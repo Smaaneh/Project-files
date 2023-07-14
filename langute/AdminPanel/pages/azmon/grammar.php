@@ -6,22 +6,8 @@
   <title>مدیریت | آزمون گرامر</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="../../plugins/datatables/dataTables.bootstrap4.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
-  <!-- bootstrap rtl -->
-  <link rel="stylesheet" href="../../dist/css/bootstrap-rtl.min.css">
-  <!-- template rtl version -->
-  <link rel="stylesheet" href="../../dist/css/custom-style.css">
+ <!-- CSSlinks -->
+ <?php include '../CSSlinks.php';?>
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -29,7 +15,7 @@
 <?php include '../navbar.php';?>
 
 <?php include '../menu.php';?>
-<!-- **************************************************** -->
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -42,7 +28,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-left">
             <li class="breadcrumb-item"><a href="../HomeAdmin.html">خانه</a></li>
-            <li class="breadcrumb-item"><a href="../azmon.html">آزمون</a></li>
+            <li class="breadcrumb-item"><a href="azmon.html">آزمون</a></li>
             <li class="breadcrumb-item active">سوالات گرامر</li>
           </ol>
         </div>
@@ -96,31 +82,9 @@
 
 </div>
 </div>
-
-
-
-
-
-<!-- **************************************************** -->
+<!-- footer -->
 <?php include '../footer.php';?>
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
-
-<!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- FastClick -->
-<script src="../../plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
+<!-- JSlinks -->
+<?php include '../JSlinks.php';?>
 </body>
 </html>
