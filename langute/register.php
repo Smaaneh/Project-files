@@ -49,13 +49,29 @@
           $checkUserResult = $stmt->get_result();
 
           if ($checkUserResult->num_rows == 0) {
+              // بررسی ستون‌های is_admin و is_login
+              $is_admin = false; // تنظیم اولیه برای کاربر عادی
+              $is_login = true; // تنظیم اولیه برای وضعیت ورود
+
+              // بررسی وضعیت is_admin
+              if (isset($_POST["is_admin"]) && $_POST["is_admin"] == "on") {
+                  $is_admin = true; // تنظیم وضعیت برای کاربر مدیر
+              }
+
+              // بررسی وضعیت is_login
+              if (isset($_POST["is_login"]) && $_POST["is_login"] == "on") {
+                  $is_login = true; // تنظیم وضعیت برای کاربر وارد شده
+              } else {
+                  $is_login = false; // تنظیم وضعیت برای کاربر غیرفعال
+              }
+
               // رمز عبور را رمزنگاری کنید
               $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
               // کاربر جدید را به دیتابیس اضافه کنید
-              $insertUserSQL = "INSERT INTO users (name, last_name, password, email) VALUES (?, ?, ?, ?)";
+              $insertUserSQL = "INSERT INTO users (name, last_name, password, email, is_admin, is_login) VALUES (?, ?, ?, ?, ?, ?)";
               $stmt = $conn->prepare($insertUserSQL);
-              $stmt->bind_param("ssss", $name, $last_name, $hashedPassword, $email);
+              $stmt->bind_param("ssssii", $name, $last_name, $hashedPassword, $email, $is_admin, $is_login);
               if ($stmt->execute()) {
                   session_start();
                   $_SESSION["email"] = $email;
@@ -106,10 +122,26 @@
           <input class="input100" type="password" id="password" name="password" placeholder="رمز عبور" required minlength="8">
           <span class="focus-input100"></span>
           <span class="symbol-input100">
+
+
             <i class="fa fa-lock" aria-hidden="true" style="color: #05C46B;"></i>
           </span>
         </div>
         <!-- / enter password -->
+
+        <!-- is_admin checkbox -->
+        <div class="wrap-input100">
+          <input class="input-checkbox100" id="is_admin" type="checkbox" name="is_admin">
+          <label class="label-checkbox100" for="is_admin">کاربر مدیر</label>
+        </div>
+        <!-- / is_admin checkbox -->
+
+        <!-- is_login checkbox -->
+        <div class="wrap-input100">
+          <input class="input-checkbox100" id="is_login" type="checkbox" name="is_login" checked>
+          <label class="label-checkbox100" for="is_login">وضعیت ورود</label>
+        </div>
+        <!-- / is_login checkbox -->
 
         <!-- register button -->
         <div class="container-login100-form-btn">
