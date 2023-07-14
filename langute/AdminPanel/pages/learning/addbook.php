@@ -134,7 +134,7 @@
           $pdf = $_FILES["pdf"]["name"];
 
           // محدودیت‌های مربوط به PDF
-          $targetDir = "../../../../PDF/uploads/";
+          $targetDir = "../../../PDF/uploads/";
           $targetFile = $targetDir . basename($_FILES["pdf"]["name"]);
           $pdfFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
           $maxFileSize = 2000 * 1024 * 1024; // حداکثر سایز PDF: 2000
@@ -155,7 +155,7 @@
                   $stmt->bind_param("ssss", $Title, $caption, $Collection_name, $targetFile);
 
                   if ($stmt->execute()) {
-                      echo '<div class="alert alert-success text-center mb-3">اطلاعات با موفقیت ذخیره شدند.</div>';
+                      echo '<div class="card-body card-defaultalert alert-success alert-dismissible">اطلاعات با موفقیت ذخیره شدند.</div>';
                   } else {
                       echo '<div class="alert alert-danger text-center mb-3">خطا در ذخیره اطلاعات: ' . $stmt->error . '</div>';
                   }
@@ -172,6 +172,7 @@
   ?>
   </div>
   <!-- /.content-wrapper -->
+
 <!-- footer -->
 <?php include '../footer.php';?>
 <!-- JSlinks -->
