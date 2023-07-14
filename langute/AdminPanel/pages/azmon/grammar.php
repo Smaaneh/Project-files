@@ -27,7 +27,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-left">
             <li class="breadcrumb-item"><a href="../HomeAdmin.html">خانه</a></li>
-            <li class="breadcrumb-item"><a href="azmon.html">آزمون</a></li>
+            <li class="breadcrumb-item"><a href="azmon.php">آزمون</a></li>
             <li class="breadcrumb-item active">سوالات گرامر</li>
           </ol>
         </div>
