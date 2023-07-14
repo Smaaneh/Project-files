@@ -258,7 +258,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // ذخیره تصویر در مسیر مورد نظر
-        $target_dir = "images/";
+        $target_dir = "../../../../images/uploads/word/";
         $target_file = $target_dir . basename($_FILES['word_image']['name']);
         move_uploaded_file($file_tmp, $target_file);
                 // به روزرسانی رکورد کلمه در جدول vocabulary

@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // ذخیره تصویر در مسیر مورد نظر
-        $target_dir = "images/";
+        $target_dir = "../../../images/uploads/teacher/";
         $target_file = $target_dir . basename($_FILES['teacher_image']['name']);
         move_uploaded_file($file_tmp, $target_file);
 
