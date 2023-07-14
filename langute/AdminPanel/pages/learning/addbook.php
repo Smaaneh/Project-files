@@ -155,7 +155,7 @@
                   $stmt->bind_param("ssss", $Title, $caption, $Collection_name, $targetFile);
 
                   if ($stmt->execute()) {
-                      echo '<div class="card-body card-defaultalert alert-success alert-dismissible">اطلاعات با موفقیت ذخیره شدند.</div>';
+                      echo '<div class="alert alert-success  text-center mb-3">اطلاعات با موفقیت ذخیره شدند.</div>';
                   } else {
                       echo '<div class="alert alert-danger text-center mb-3">خطا در ذخیره اطلاعات: ' . $stmt->error . '</div>';
                   }
