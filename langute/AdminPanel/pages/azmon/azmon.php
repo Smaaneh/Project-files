@@ -44,7 +44,7 @@
              <!-- /.card -->
             <div class="card card-primary card-outline">
               <div class="card-body">
-                <h5 class="card-title mb-2 text-bold"> <a href="azmon/Vocabulary.html" class="card-link mr-2">بخش واژگان</a></h5>
+                <h5 class="card-title mb-2 text-bold"> <a href="Vocabulary.PHP" class="card-link mr-2">بخش واژگان</a></h5>
 
                 <p class="card-text">برای مشاهده ، ویرایش ، افزودن  و حذف سوالات این بخش بر روی متن بالا کلیک کنید</p>
               </div>
@@ -52,7 +52,7 @@
             <!-- /.card -->
            <div class="card card-primary card-outline">
              <div class="card-body">
-               <h5 class="card-title mb-2 text-bold"> <a href="azmon/grammar.html" class="card-link mr-2">بخش گرامر</a></h5>
+               <h5 class="card-title mb-2 text-bold"> <a href="grammar.php" class="card-link mr-2">بخش گرامر</a></h5>
 
                <p class="card-text">برای مشاهده ، ویرایش ، افزودن  و حذف سوالات این بخش بر روی متن بالا کلیک کنید</p>
              </div>
@@ -60,7 +60,7 @@
            <!-- /.card -->
           <div class="card card-primary card-outline">
             <div class="card-body">
-              <h5 class="card-title mb-2 text-bold"> <a href="azmon/speeck.html" class="card-link mr-2">بخش گفتار</a></h5>
+              <h5 class="card-title mb-2 text-bold"> <a href="speeck.php" class="card-link mr-2">بخش گفتار</a></h5>
 
               <p class="card-text">برای مشاهده ، ویرایش ، افزودن  و حذف سوالات این بخش بر روی متن بالا کلیک کنید</p>
             </div>
@@ -68,7 +68,7 @@
           <!-- /.card -->
          <div class="card card-primary card-outline">
            <div class="card-body">
-             <h5 class="card-title mb-2 text-bold"> <a href="azmon/Conversation.html" class="card-link mr-2">بخش مکالمه</a></h5>
+             <h5 class="card-title mb-2 text-bold"> <a href="Conversation.php" class="card-link mr-2">بخش مکالمه</a></h5>
 
              <p class="card-text">برای مشاهده ، ویرایش ، افزودن  و حذف سوالات این بخش بر روی متن بالا کلیک کنید</p>
            </div>
