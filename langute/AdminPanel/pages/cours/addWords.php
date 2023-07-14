@@ -16,7 +16,7 @@
  <?php include '../navbar.php';?>
 <!-- menu -->
   <?php include '../menu.php';?>
-<!-- main editConvertion -->
+<!-- main addWord -->
   <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
