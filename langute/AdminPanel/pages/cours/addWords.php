@@ -103,67 +103,71 @@
   </body>
 
   </html>
+<!-- PHP -->
+    <?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "123";
+    $dbname = "langute";
+    // اتصال به دیتابیس
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-  <?php
-  $servername = "localhost";
-  $username = "root";
-  $password = "123";
-  $dbname = "langute";
-  // اتصال به دیتابیس
-  $conn = new mysqli($servername, $username, $password, $dbname);
+    // بررسی اتصال
+    if ($conn->connect_error) {
+        die("خطا در اتصال به دیتابیس: " . $conn->connect_error);
+    }
 
-  // بررسی اتصال
-  if ($conn->connect_error) {
-      die("خطا در اتصال به دیتابیس: " . $conn->connect_error);
-  }
+    // دریافت داده‌ها از فرم و ذخیره در دیتابیس
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // بررسی پر بودن تمام فیلدها
+        if (empty($_POST["word"]) || empty($_POST["translation"]) || empty($_POST["cours"]) || empty($_FILES["image"]["name"])) {
+          echo '<div class="alert alert-warning text-center mb-3">لطفاً تمام فیلدها را پر کنید.</div>';
+      } else {
+            $word = $_POST["word"];
+            $translation = $_POST["translation"];
+            $cours = $_POST["cours"];
+            $image = $_FILES["image"]["name"];
 
-  // دریافت داده‌ها از فرم و ذخیره در دیتابیس
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      // بررسی پر بودن تمام فیلدها
-      if (empty($_POST["word"]) || empty($_POST["translation"]) || empty($_POST["cours"]) || empty($_FILES["image"]["name"])) {
-        echo '<div class="alert alert-warning text-center mb-3">لطفاً تمام فیلدها را پر کنید.</div>';
-    } else {
-          $word = $_POST["word"];
-          $translation = $_POST["translation"];
-          $cours = $_POST["cours"];
-          $image = $_FILES["image"]["name"];
+            // محدودیت‌های مربوط به عکس
+            $src="../../../images/uploads/word/" . basename($_FILES["image"]["name"]);
+            $targetDir = "/langute/Project-files/langute/images/uploads/word/";
+            $url = "/langute/Project-files/langute/images";
 
-          // محدودیت‌های مربوط به عکس
-          $targetDir = "../../../../images/uploads/word/";
-          $targetFile = $targetDir . basename($_FILES["image"]["name"]);
-          $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-          $maxFileSize = 5 * 1024 * 1024; // حداکثر سایز عکس: 5MB
+            echo '<a href="' . $targetDir . '">Link</a>';
+            $targetFile = $targetDir . basename($_FILES["image"]["name"]);
+            $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+            $maxFileSize = 5 * 1024 * 1024; // حداکثر سایز عکس: 5MB
 
-          // بررسی پسوند عکس
-          $allowedExtensions = array("jpg", "jpeg", "png");
-          if (!in_array($imageFileType, $allowedExtensions)) {
-              echo '<div class="alert alert-danger text-center mb-3">فقط فایل‌های با پسوند JPG، JPEG و PNG مجاز هستند.</div>';
-          }
-          // بررسی سایز عکس
-          elseif ($_FILES["image"]["size"] > $maxFileSize) {
-              echo '<div class="alert alert-danger text-center mb-3">سایز فایل عکس باید کمتر از 5MB باشد.</div>';
-          }
-          // آپلود عکس
-          if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
-              // استفاده از prepared statement برای جلوگیری از حمله‌های اینجکشن
-              $stmt = $conn->prepare("INSERT INTO vocabulary (word, translation, lesson_id, picture) VALUES (?, ?, ?, ?)");
-              $stmt->bind_param("ssss", $word, $translation, $cours, $targetFile);
+            // بررسی پسوند عکس
+            $allowedExtensions = array("jpg", "jpeg", "png");
+            if (!in_array($imageFileType, $allowedExtensions)) {
+                echo '<div class="alert alert-danger text-center mb-3">فقط فایل‌های با پسوند JPG، JPEG و PNG مجاز هستند.</div>';
+            }
+            // بررسی سایز عکس
+            elseif ($_FILES["image"]["size"] > $maxFileSize) {
+                echo '<div class="alert alert-danger text-center mb-3">سایز فایل عکس باید کمتر از 5MB باشد.</div>';
+            }
+            // آپلود عکس
+            if (move_uploaded_file($_FILES["image"]["tmp_name"], $src)) {
+                // استفاده از prepared statement برای جلوگیری از حمله‌های اینجکشن
+                $stmt = $conn->prepare("INSERT INTO vocabulary (word, translation, lesson_id, picture) VALUES (?, ?, ?, ?)");
+                $stmt->bind_param("ssss", $word, $translation, $cours, $targetFile);
 
-              if ($stmt->execute()) {
-                  echo '<div class="alert alert-success text-center mb-3">اطلاعات با موفقیت ذخیره شدند.</div>';
-              } else {
-                  echo '<div class="alert alert-danger text-center mb-3">خطا در ذخیره اطلاعات: ' . $stmt->error . '</div>';
-              }
+                if ($stmt->execute()) {
+                    echo '<div class="alert alert-success text-center mb-3">اطلاعات با موفقیت ذخیره شدند.</div>';
+                } else {
+                    echo '<div class="alert alert-danger text-center mb-3">خطا در ذخیره اطلاعات: ' . $stmt->error . '</div>';
+                }
 
-              $stmt->close();
-          } else {
-              echo '<div class="alert alert-danger text-center mb-3">خطا در آپلود عکس.</div>';
-          }
-      }
-  }
+                $stmt->close();
+            } else {
+                echo '<div class="alert alert-danger text-center mb-3">خطا در آپلود عکس.</div>';
+            }
+        }
+    }
 
-  $conn->close();
-  ?>
+    $conn->close();
+    ?>
 
   </div>
   <!-- /.content-wrapper -->
