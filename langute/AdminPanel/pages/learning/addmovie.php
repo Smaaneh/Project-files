@@ -134,10 +134,14 @@
         $video = $_FILES["video"]["name"];
 
         // محدودیت‌های مربوط به ویدیو
-        $targetDir = "../../../../videos/uploads/movie/";
+        $src="../../../videos/uploads/movie/" . basename($_FILES["video"]["name"]);
+        $targetDir = "/langute/Project-files/langute/videos/uploads/movie/";
+        $url = "/langute/Project-files/langute/videos";
+
+        echo '<a href="' . $targetDir . '">Link</a>';
         $targetFile = $targetDir . basename($_FILES["video"]["name"]);
         $videoFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-        $maxFileSize = 2000 * 1024 * 1024; // حداکثر سایز ویدیو: 2000
+        $maxFileSize = 2000 * 1024 * 1024; // حداکثر سایز ویدیو: 500
 
         // بررسی پسوند ویدیو
         $allowedExtensions = array("mp4", "avi", "mkv");
@@ -150,7 +154,7 @@
         }
         // آپلود ویدیو
         else {
-            if (move_uploaded_file($_FILES["video"]["tmp_name"], $targetFile)) {
+            if (move_uploaded_file($_FILES["video"]["tmp_name"], $src)) {
                 // استفاده از prepared statement برای جلوگیری از حمله‌های اینجکشن
                 $stmt = $conn->prepare("INSERT INTO movie (Title, caption, Collection_name, video) VALUES (?, ?, ?, ?)");
                 $stmt->bind_param("ssss", $Title, $caption, $Collection_name, $targetFile);
