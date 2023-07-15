@@ -134,11 +134,14 @@
         $music = $_FILES["music"]["name"];
 
         // محدودیت‌های مربوط به موزیک
-        $targetDir = "../../../../sound/uploads/";
-        $targetFile = $targetDir . basename($_FILES["music"]["name"]);
-        $musicFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-        $maxFileSize = 20 * 1024 * 1024; // حداکثر سایز ویدیو: 20
+        $src="../../../sound/uploads/" . basename($_FILES["music"]["name"]);
+        $targetDir = "/langute/Project-files/langute/sound/uploads/";
+        $url = "/langute/Project-files/langute/sound";
 
+        echo '<a href="' . $targetDir . '">Link</a>';
+        $targetFile = $targetDir . basename($_FILES["music"]["name"]);
+        $videoFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+        $maxFileSize = 30 * 1024 * 1024; // حداکثر سایز موزیک: 500
         // بررسی پسوند موزیک
         $allowedExtensions = array("mp3", "RAW", "WAV", "WMA", "AAC", "OGG");
         if (!in_array($musicFileType, $allowedExtensions)) {
@@ -150,7 +153,7 @@
         }
         // آپلود موزیک
         else {
-            if (move_uploaded_file($_FILES["music"]["tmp_name"], $targetFile)) {
+            if (move_uploaded_file($_FILES["music"]["tmp_name"], $src)) {
                 // استفاده از prepared statement برای جلوگیری از حمله‌های اینجکشن
                 $stmt = $conn->prepare("INSERT INTO songs (Title, caption, Collection_name, music) VALUES (?, ?, ?, ?)");
                 $stmt->bind_param("ssss", $Title, $caption, $Collection_name, $targetFile);
