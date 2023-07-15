@@ -107,6 +107,10 @@
 
   <!-- php code -->
   <?php
+  // $serverAddress = $_SERVER['SERVER_ADDR'];
+  // $url = "/langute/Project-files/langute/images";
+
+  // echo '<a href="' . $url . '">Link</a>';
   $servername = "localhost";
   $username = "root";
   $password = "123";
@@ -132,7 +136,14 @@
       $image = $_FILES["image"]["name"];
   
       // محدودیت‌های مربوط به عکس
-      $targetDir = "../../../images/uploads/teacher/";
+      $serverAddress = $_SERVER['SERVER_ADDR'];
+      // echo( $serverAddress);
+      // echo("<a href='../../../images/uploads/teacher/'>test</a>");
+      $src="../../../images/uploads/teacher/" . basename($_FILES["image"]["name"]);
+      $targetDir = "/langute/Project-files/langute/images/uploads/teacher/";
+      $url = "/langute/Project-files/langute/images";
+
+      echo '<a href="' . $targetDir . '">Link</a>';
       $targetFile = $targetDir . basename($_FILES["image"]["name"]);
       $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
       $maxFileSize = 5 * 1024 * 1024; // حداکثر سایز عکس: 5MB
@@ -147,7 +158,7 @@
         echo '<div class="alert alert-danger text-center mb-3">سایز فایل عکس باید کمتر از 5MB باشد.</div>';
       }
       // آپلود عکس
-      elseif (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
+      elseif (move_uploaded_file($_FILES["image"]["tmp_name"], $src)) {
         // استفاده از prepared statement برای جلوگیری از حمله‌های اینجکشن
         $stmt = $conn->prepare("INSERT INTO teacher (name, last_name, expertise, Picture) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $name, $Lname, $expertise, $targetFile);

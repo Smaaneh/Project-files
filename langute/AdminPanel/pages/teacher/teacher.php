@@ -85,7 +85,7 @@ $result = $conn->query($sql);
                                         echo "<td>" . $row['last_name'] . "</td>";
                                         echo "<td>" . $row['expertise'] . "</td>";
                                         echo "<td><a href='editTeacher.php?id=" . $row['id'] . "' class='btn btn-block btn-info btn-sm'>ویرایش</a></td>";
-                                        echo "<td><a href='deleteTeacher.php?id=" . $row['id'] . "' class='btn btn-block btn-danger btn-sm' onclick='confirmDelete(" . $row['id'] . ");'>حذف</a></td>";
+                                        echo "<td><button data-url='deleteTeacher.php?id=" . $row['id'] . "' class='btn btn-block btn-danger btn-sm' onclick='confirmDelete(" . $row['id'] . ");'>حذف</button></td>";
                                         echo "</tr>";
                                     }
                                 } else {
@@ -117,7 +117,9 @@ $result = $conn->query($sql);
 
 <script>
     function confirmDelete(id) {
+        
         var result = confirm("آیا میخواهید این استاد حذف شود؟");
+        console.log(result);
         if (result) {
             // اگر کاربر تایید کرد، ارسال درخواست حذف به صفحه deleteTeacher.php
             window.location.href = "deleteTeacher.php?id=" + id;
