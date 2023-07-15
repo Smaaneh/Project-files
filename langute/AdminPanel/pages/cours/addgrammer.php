@@ -105,74 +105,77 @@
   </body>
 
   </html>
+<!-- php -->
+    <?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "123";
+    $dbname = "langute";
+    // اتصال به دیتابیس
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-  <?php
-  $servername = "localhost";
-  $username = "root";
-  $password = "123";
-  $dbname = "langute";
-  // اتصال به دیتابیس
-  $conn = new mysqli($servername, $username, $password, $dbname);
+    // بررسی اتصال
+    if ($conn->connect_error) {
+        die("خطا در اتصال به دیتابیس: " . $conn->connect_error);
+    }
 
-  // بررسی اتصال
-  if ($conn->connect_error) {
-      die("خطا در اتصال به دیتابیس: " . $conn->connect_error);
-  }
+    // دریافت داده‌ها از فرم و ذخیره در دیتابیس
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // بررسی پر بودن تمام فیلدها
+        if (
+            empty($_POST["Title"]) ||
+            empty($_POST["caption"]) ||
+            empty($_POST["cours"]) ||
+            empty($_FILES["video"]["name"])
+        ) {
+            echo '<div class="alert alert-warning text-center mb-3">لطفاً تمام فیلدها را پر کنید و یک فایل ویدیو انتخاب کنید.</div>';
+        } else {
+            $Title = $_POST["Title"];
+            $caption = $_POST["caption"];
+            $cours = $_POST["cours"];
+            $video = $_FILES["video"]["name"];
 
-  // دریافت داده‌ها از فرم و ذخیره در دیتابیس
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // بررسی پر بودن تمام فیلدها
-    if (
-        empty($_POST["Title"]) ||
-        empty($_POST["caption"]) ||
-        empty($_POST["cours"]) ||
-        empty($_FILES["video"]["name"])
-    ) {
-        echo '<div class="alert alert-warning text-center mb-3">لطفاً تمام فیلدها را پر کنید و یک فایل ویدیو انتخاب کنید.</div>';
-    } else {
-        $Title = $_POST["Title"];
-        $caption = $_POST["caption"];
-        $cours = $_POST["cours"];
-        $video = $_FILES["video"]["name"];
+            // محدودیت‌های مربوط به ویدیو
+            $src="../../../videos/uploads/grammer/" . basename($_FILES["video"]["name"]);
+            $targetDir = "/langute/Project-files/langute/videos/uploads/grammer/";
+            $url = "/langute/Project-files/langute/videos";
 
-        // محدودیت‌های مربوط به ویدیو
-        $targetDir = "../../../../videos/uploads/grammer/";
-        $targetFile = $targetDir . basename($_FILES["video"]["name"]);
-        $videoFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-        $maxFileSize = 500 * 1024 * 1024; // حداکثر سایز ویدیو: 500
+            echo '<a href="' . $targetDir . '">Link</a>';
+            $targetFile = $targetDir . basename($_FILES["video"]["name"]);
+            $videoFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+            $maxFileSize = 500 * 1024 * 1024; // حداکثر سایز ویدیو: 500
+            // بررسی پسوند ویدیو
+            $allowedExtensions = array("mp4", "avi", "mkv");
+            if (!in_array($videoFileType, $allowedExtensions)) {
+                echo '<div class="alert alert-danger text-center mb-3">فقط فایل‌های با پسوند MP4، AVI و MKV مجاز هستند.</div>';
+            }
+            // بررسی سایز ویدیو
+            elseif ($_FILES["video"]["size"] > $maxFileSize) {
+                echo '<div class="alert alert-danger text-center mb-3">سایز فایل ویدیو باید کمتر از 100MB باشد.</div>';
+            }
+            // آپلود ویدیو
+            else {
+                if (move_uploaded_file($_FILES["video"]["tmp_name"], $src)) {
+                    // استفاده از prepared statement برای جلوگیری از حمله‌های اینجکشن
+                    $stmt = $conn->prepare("INSERT INTO grammar (Title, caption, lesson_id, video) VALUES (?, ?, ?, ?)");
+                    $stmt->bind_param("ssss", $Title, $caption, $cours, $targetFile);
 
-        // بررسی پسوند ویدیو
-        $allowedExtensions = array("mp4", "avi", "mkv");
-        if (!in_array($videoFileType, $allowedExtensions)) {
-            echo '<div class="alert alert-danger text-center mb-3">فقط فایل‌های با پسوند MP4، AVI و MKV مجاز هستند.</div>';
-        }
-        // بررسی سایز ویدیو
-        elseif ($_FILES["video"]["size"] > $maxFileSize) {
-            echo '<div class="alert alert-danger text-center mb-3">سایز فایل ویدیو باید کمتر از 100MB باشد.</div>';
-        }
-        // آپلود ویدیو
-        else {
-            if (move_uploaded_file($_FILES["video"]["tmp_name"], $targetFile)) {
-                // استفاده از prepared statement برای جلوگیری از حمله‌های اینجکشن
-                $stmt = $conn->prepare("INSERT INTO grammar (Title, caption, lesson_id, video) VALUES (?, ?, ?, ?)");
-                $stmt->bind_param("ssss", $Title, $caption, $cours, $targetFile);
+                    if ($stmt->execute()) {
+                        echo '<div class="alert alert-success text-center mb-3">اطلاعات با موفقیت ذخیره شدند.</div>';
+                    } else {
+                        echo '<div class="alert alert-danger text-center mb-3">خطا در ذخیره اطلاعات: ' . $stmt->error . '</div>';
+                    }
 
-                if ($stmt->execute()) {
-                    echo '<div class="alert alert-success text-center mb-3">اطلاعات با موفقیت ذخیره شدند.</div>';
+                    $stmt->close();
                 } else {
-                    echo '<div class="alert alert-danger text-center mb-3">خطا در ذخیره اطلاعات: ' . $stmt->error . '</div>';
+                    echo '<div class="alert alert-danger text-center mb-3">خطا در آپلود ویدیو.</div>';
                 }
-
-                $stmt->close();
-            } else {
-                echo '<div class="alert alert-danger text-center mb-3">خطا در آپلود ویدیو.</div>';
             }
         }
     }
-  }
 
-  $conn->close();
-  ?>
+    $conn->close();
+    ?>
   </div>
   <!-- /.content-wrapper -->
 <!-- footer -->
