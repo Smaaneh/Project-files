@@ -85,7 +85,7 @@
                                           echo "<td>" . $row['caption'] . "</td>";
                                           echo "<td>" . $row['Collection_name'] . "</td>";
                                           echo "<td><a href='editmovie.php?id=" . $row['id'] . "' class='btn btn-block btn-info btn-sm'>ویرایش</a></td>";
-                                          echo "<td><a href='deletemovie.php?id=" . $row['id'] . "' class='btn btn-block btn-danger btn-sm' onclick='confirmDelete(" . $row['id'] . ");'>حذف</a></td>";
+                                          echo "<td><button data-url='deletemovie.php?id=" . $row['id'] . "' class='btn btn-block btn-danger btn-sm' onclick='confirmDelete(" . $row['id'] . ");'>حذف</button></td>";
                                           echo "</tr>";
                                       }
                                   } else {
@@ -117,6 +117,7 @@
   <script>
       function confirmDelete(id) {
           var result = confirm("آیا میخواهید این فیلم حذف شود؟");
+          console.log(result);
           if (result) {
               // اگر کاربر تایید کرد، ارسال درخواست حذف به صفحه deletemovie.php
               window.location.href = "deletemovie.php?id=" + id;
