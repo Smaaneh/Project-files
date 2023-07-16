@@ -85,7 +85,7 @@ $result = $conn->query($sql);
                                         echo "<td>" . $row['translation'] . "</td>";
                                         echo "<td>" . $row['lesson_id'] . "</td>";
                                         echo "<td><a href='editWord.php?id=" . $row['id'] . "' class='btn btn-block btn-info btn-sm'>ویرایش</a></td>";
-                                        echo "<td><a href='deleteWord.php?id=" . $row['id'] . "' class='btn btn-block btn-danger btn-sm' onclick='confirmDelete(" . $row['id'] . ");'>حذف</a></td>";
+                                        echo "<td><button data-url='deleteWord.php?id=" . $row['id'] . "' class='btn btn-block btn-danger btn-sm' onclick='confirmDelete(" . $row['id'] . ");'>حذف</button></td>";
                                         echo "</tr>";
                                     }
                                 } else {
@@ -117,6 +117,7 @@ $result = $conn->query($sql);
 <script>
     function confirmDelete(id) {
         var result = confirm("آیا میخواهید این کلمه حذف شود؟");
+        console.log(result);
         if (result) {
             // اگر کاربر تایید کرد، ارسال درخواست حذف به صفحه deleteWord.php
             window.location.href = "deleteWord.php?id=" + id;
