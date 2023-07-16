@@ -84,7 +84,7 @@
                                           echo "<td>" . $row['caption'] . "</td>";
                                           echo "<td>" . $row['Collection_name'] . "</td>";
                                           echo "<td><a href='editsongs.php?id=" . $row['id'] . "' class='btn btn-block btn-info btn-sm'>ویرایش</a></td>";
-                                          echo "<td><a href='deletesongs.php?id=" . $row['id'] . "' class='btn btn-block btn-danger btn-sm' onclick='confirmDelete(" . $row['id'] . ");'>حذف</a></td>";
+                                          echo "<td><button data-url='deletesongs.php?id=" . $row['id'] . "' class='btn btn-block btn-danger btn-sm' onclick='confirmDelete(" . $row['id'] . ");'>حذف</button></td>";
                                           echo "</tr>";
                                       }
                                   } else {
