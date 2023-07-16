@@ -86,7 +86,7 @@ $result = $conn->query($sql);
                                         echo "<td>" . $row['caption'] . "</td>";
                                         echo "<td>" . $row['lesson_id'] . "</td>";
                                         echo "<td><a href='editgrammer.php?id=" . $row['id'] . "' class='btn btn-block btn-info btn-sm'>ویرایش</a></td>";
-                                        echo "<td><a href='deletegrammer.php?id=" . $row['id'] . "' class='btn btn-block btn-danger btn-sm' onclick='confirmDelete(" . $row['id'] . ");'>حذف</a></td>";
+                                        echo "<td><button data-url='deletegrammer.php?id=" . $row['id'] . "' class='btn btn-block btn-danger btn-sm' onclick='confirmDelete(" . $row['id'] . ");'>حذف</button></td>";
                                         echo "</tr>";
                                     }
                                 } else {
@@ -118,9 +118,10 @@ $result = $conn->query($sql);
 <script>
     function confirmDelete(id) {
         var result = confirm("آیا میخواهید این 'گرامر' حذف شود؟");
+        console.log(result);
         if (result) {
             // اگر کاربر تایید کرد، ارسال درخواست حذف به صفحه deletegrammar.php
-            window.location.href = "deletegrammar.php?id=" + id;
+            window.location.href = "deletegrammer.php?id=" + id;
         } else {
             console.log("حذف رکورد لغو شد.");
         }
