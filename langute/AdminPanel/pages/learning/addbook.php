@@ -134,10 +134,14 @@
           $pdf = $_FILES["pdf"]["name"];
 
           // محدودیت‌های مربوط به PDF
-          $targetDir = "../../../PDF/uploads/";
-          $targetFile = $targetDir . basename($_FILES["pdf"]["name"]);
-          $pdfFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-          $maxFileSize = 2000 * 1024 * 1024; // حداکثر سایز PDF: 2000
+        $src="../../../PDF/uploads/" . basename($_FILES["pdf"]["name"]);
+        $targetDir = "/langute/Project-files/langute/PDF/uploads/";
+        $url = "/langute/Project-files/langute/PDF";
+
+        echo '<a href="' . $targetDir . '">Link</a>';
+        $targetFile = $targetDir . basename($_FILES["pdf"]["name"]);
+        $pdfFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+        $maxFileSize = 30 * 1024 * 1024; // حداکثر سایز PDF: 30
 
           // بررسی پسوند PDF
           if ($pdfFileType !== "pdf") {
@@ -145,11 +149,11 @@
           }
           // بررسی سایز PDF
           elseif ($_FILES["pdf"]["size"] > $maxFileSize) {
-              echo '<div class="alert alert-danger text-center mb-3">سایز فایل PDF باید کمتر از 2000MB باشد.</div>';
+              echo '<div class="alert alert-danger text-center mb-3">سایز فایل PDF باید کمتر از 30MB باشد.</div>';
           }
           // آپلود PDF
           else {
-              if (move_uploaded_file($_FILES["pdf"]["tmp_name"], $targetFile)) {
+              if (move_uploaded_file($_FILES["pdf"]["tmp_name"], $src)) {
                   // استفاده از prepared statement برای جلوگیری از حمله‌های اینجکشن
                   $stmt = $conn->prepare("INSERT INTO book (Title, caption, Collection_name, PDF) VALUES (?, ?, ?, ?)");
                   $stmt->bind_param("ssss", $Title, $caption, $Collection_name, $targetFile);
