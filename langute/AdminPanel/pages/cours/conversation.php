@@ -86,7 +86,7 @@
                                           echo "<td>" . $row['caption'] . "</td>";
                                           echo "<td>" . $row['lesson_id'] . "</td>";
                                           echo "<td><a href='editconversation.php?id=" . $row['id'] . "' class='btn btn-block btn-info btn-sm'>ویرایش</a></td>";
-                                          echo "<td><a href='deleteconversation.php?id=" . $row['id'] . "' class='btn btn-block btn-danger btn-sm' onclick='confirmDelete(" . $row['id'] . ");'>حذف</a></td>";
+                                          echo "<td><button data-url='deleteconversation.php?id=" . $row['id'] . "' class='btn btn-block btn-danger btn-sm' onclick='confirmDelete(" . $row['id'] . ");'>حذف</button></td>";
                                           echo "</tr>";
                                       }
                                   } else {
@@ -118,6 +118,7 @@
   <script>
       function confirmDelete(id) {
           var result = confirm("آیا میخواهید این مکالمه حذف شود؟");
+          console.log(result);
           if (result) {
               // اگر کاربر تایید کرد، ارسال درخواست حذف به صفحه deleteconversation.php
               window.location.href = "deleteconversation.php?id=" + id;
