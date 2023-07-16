@@ -32,20 +32,11 @@
           </ol>
         </div>
       </div>
-    </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.container-fluid -->
   </section>
    <div class="col-lg-6 offset-lg-3 col-12">
-  <!-- select -->
-  <div class="form-group">
-    <label>سوال مد نظر خود را انتخاب کنید</label>
-    <select class="form-control">
-      <option>سوال 1</option>
-      <option>سوال 2</option>
-      <option>سوال 3</option>
-      <option>سوال 4</option>
-      <option>سوال 5</option>
-    </select>
-  </div>
+
   <!-- text input -->
 
    <div class="form-group">
@@ -76,9 +67,6 @@
  </div>
 <!-- button -->
  <button type="button" class="btn btn-block btn-success btn-sm">افزودن</button>
- <button type="button" class="btn btn-block btn-primary btn-sm">ویرایش</button>
- <button type="button" class="btn btn-block btn-danger btn-sm">حذف</button>
-
 </div>
 </div>
 <!-- footer -->
