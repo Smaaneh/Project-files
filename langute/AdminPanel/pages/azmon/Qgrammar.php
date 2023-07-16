@@ -30,7 +30,12 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
+// دریافت سوالات گرامری از جدول questions
+$sql = "SELECT question_title, correct_option FROM questions WHERE category = 'گرامر'";
+$result = $conn->query($sql);
 ?>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -69,16 +74,44 @@ if ($conn->connect_error) {
                                     <th>عملیات</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                <?php
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        // دریافت گزینه‌های مربوط به سوال از جدول opinions
+                                        $opinionsSql = "SELECT option_text FROM options WHERE question_id = " . $row['question_id'];
+                                        $opinionsResult = $conn->query($opinionsSql);
+
+                                        echo "<tr>";
+                                        echo "<td>" . $row['question_title'] . "</td>";
+                                        echo "<td>";
+                                        if ($opinionsResult->num_rows > 0) {
+                                            while ($opinionRow = $opinionsResult->fetch_assoc()) {
+                                                // نمایش فقط 20 کاراکتر اول از هر گزینه
+                                                $opinionText = mb_substr($opinionRow['opinion_text'], 0, 20);
+                                                echo $opinionText . "...";
+                                            }
+                                        }
+                                        echo "</td>";
+                                        echo "<td>" . $row['correct_opinion'] . "</td>";
+                                        echo "<td><button onclick='confirmDelete(" . $row['question_id'] . ")'>حذف</button></td>";
+                                        echo "</tr>";
+                                    }
+                                } else {
+                                    echo "<tr><td colspan='4'>هیچ سوال گرامری وجود ندارد.</td></tr>";
+                                }
+                                ?>
+                            </tbody>
                             <tfoot>
                                 <tr>
-                                   <th>عنوان سوال</th>
+                                    <th>عنوان سوال</th>
                                     <th>گزینه ها</th>
-                                    <th>گزینه صحیح </th>
+                                    <th>گزینه صحیح</th>
                                     <th>عملیات</th>
                                 </tr>
                             </tfoot>
                         </table>
-</div>
+                    </div>
                     <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
@@ -90,11 +123,10 @@ if ($conn->connect_error) {
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
 <script>
     function confirmDelete(id) {
-        
         var result = confirm("آیا میخواهید این سوال حذف شود؟");
-        console.log(result);
         if (result) {
             // اگر کاربر تایید کرد، ارسال درخواست حذف به صفحه deleteQgrammer.php
             window.location.href = "deleteQgrammer.php?id=" + id;
@@ -108,6 +140,7 @@ if ($conn->connect_error) {
 // بستن اتصال به پایگاه داده
 $conn->close();
 ?>
+
 <!-- footer -->
 <?php include '../footer.php';?>
 <!-- JSlinks -->
