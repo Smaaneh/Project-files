@@ -86,7 +86,7 @@ $result = $conn->query($sql);
                                         echo "<td>" . $row['caption'] . "</td>";
                                         echo "<td>" . $row['lesson_id'] . "</td>";
                                         echo "<td><a href='editspeak.php?id=" . $row['id'] . "' class='btn btn-block btn-info btn-sm'>ویرایش</a></td>";
-                                        echo "<td><a href='deletespeak.php?id=" . $row['id'] . "' class='btn btn-block btn-danger btn-sm' onclick='confirmDelete(" . $row['id'] . ");'>حذف</a></td>";
+                                        echo "<td><button data-url='deletespeak.php?id=" . $row['id'] . "' class='btn btn-block btn-danger btn-sm' onclick='confirmDelete(" . $row['id'] . ");'>حذف</button></td>";
                                         echo "</tr>";
                                     }
                                 } else {
@@ -118,6 +118,7 @@ $result = $conn->query($sql);
 <script>
     function confirmDelete(id) {
         var result = confirm("آیا میخواهید این گفتار حذف شود؟");
+        console.log(result);
         if (result) {
             // اگر کاربر تایید کرد، ارسال درخواست حذف به صفحه deletespeak.php
             window.location.href = "deletespeak.php?id=" + id;
