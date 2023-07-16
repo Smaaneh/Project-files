@@ -15,7 +15,7 @@
 <?php include '../navbar.php';?>
 <!-- menu -->
   <?php include '../menu.php';?>
-<!-- main book -->
+<!-- main Qgrammer -->
 <?php
 // اطلاعات اتصال به پایگاه داده
 $servername = "localhost"; // آدرس سرور پایگاه داده
