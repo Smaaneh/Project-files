@@ -84,7 +84,7 @@ $result = $conn->query($sql);
                                         echo "<td>" . $row['caption'] . "</td>";
                                         echo "<td>" . $row['Collection_name'] . "</td>";
                                         echo "<td><a href='editbook.php?id=" . $row['id'] . "' class='btn btn-block btn-info btn-sm'>ویرایش</a></td>";
-                                        echo "<td><a href='deletebook.php?id=" . $row['id'] . "' class='btn btn-block btn-danger btn-sm' onclick='confirmDelete(" . $row['id'] . ");'>حذف</a></td>";
+                                        echo "<td><button data-url='deletebook.php?id=" . $row['id'] . "' class='btn btn-block btn-danger btn-sm' onclick='confirmDelete(" . $row['id'] . ");'>حذف</button></td>";
                                         echo "</tr>";
                                     }
                                 } else {
@@ -115,7 +115,9 @@ $result = $conn->query($sql);
 <!-- /.content-wrapper -->
 <script>
     function confirmDelete(id) {
+        
         var result = confirm("آیا میخواهید این کتاب حذف شود؟");
+        console.log(result);
         if (result) {
             // اگر کاربر تایید کرد، ارسال درخواست حذف به صفحه deletebook.php
             window.location.href = "deletebook.php?id=" + id;
