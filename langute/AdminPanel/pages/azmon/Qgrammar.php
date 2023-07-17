@@ -78,7 +78,7 @@ $result = $conn->query($sql);
                                 <?php
                                 if ($result->num_rows > 0) {
                                     while ($row = $result->fetch_assoc()) {
-                                        // دریافت گزینه‌های مربوط به سوال از جدول opinions
+                                        // دریافت گزینه‌های مربوط به سوال از جدول options
                                         $opinionsSql = "SELECT option_text FROM options WHERE question_id = " . $row['question_id'];
                                         $opinionsResult = $conn->query($opinionsSql);
 
