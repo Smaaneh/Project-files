@@ -32,7 +32,7 @@ if ($conn->connect_error) {
 }
 
 // دریافت سوالات گرامری از جدول questions
-$sql = "SELECT question_title, correct_option FROM questions WHERE category = 'grammar'";
+$sql = "SELECT question_title, correct_option FROM questions WHERE category = 'grammer'";
 $result = $conn->query($sql);
 ?>
 
