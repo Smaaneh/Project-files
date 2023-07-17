@@ -106,18 +106,18 @@
                     <input type="text" class="form-control" name="correct_option" id="correct_option" placeholder="وارد کردن اطلاعات ..." required>
                 </div>
 
-                <div class="form-group">
-                    <label>گزینه غلط ۱</label>
-                    <input type="text" class="form-control" name="wrong_option_1" placeholder="وارد کردن اطلاعات ..." required>
+                <div class="form-group has-error">
+                <label class="control-label text-danger" for="inputError"><i class="fa fa-times-circle-o"></i>گزینه غلط ۱</label>
+                    <input type="text" class="form-control" name="wrong_option_1" id="wrong_option_1" placeholder="وارد کردن اطلاعات ..." required>
                 </div>
 
-                <div class="form-group">
-                    <label>گزینه غلط ۲</label>
-                    <input type="text" class="form-control" name="wrong_option_2" placeholder="وارد کردن اطلاعات ..." required>
+                <div class="form-group has-error">
+                <label class="control-label text-danger" for="inputError"><i class="fa fa-times-circle-o"></i>گزینه غلط ۲</label>
+                    <input type="text" class="form-control" name="wrong_option_2" id="wrong_option_2" placeholder="وارد کردن اطلاعات ..." required>
                 </div>
 
-                <div class="form-group">
-                    <label>گزینه غلط ۳</label>
+                <div class="form-group has-error">
+                <label class="control-label text-danger" for="inputError"><i class="fa fa-times-circle-o"></i>گزینه غلط ۳</label>
                     <input type="text" class="form-control" name="wrong_option_3" placeholder="وارد کردن اطلاعات ..." required>
                 </div>
 
