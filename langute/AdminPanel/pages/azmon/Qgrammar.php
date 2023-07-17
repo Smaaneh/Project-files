@@ -86,14 +86,16 @@ $result = $conn->query($sql);
                                         echo "<td>" . $row['question_title'] . "</td>";
                                         echo "<td>";
                                         if ($opinionsResult->num_rows > 0) {
+                                            $optionsText = "";
                                             while ($opinionRow = $opinionsResult->fetch_assoc()) {
                                                 // نمایش فقط 20 کاراکتر اول از هر گزینه
-                                                $opinionText = mb_substr($opinionRow['opinion_text'], 0, 20);
-                                                echo $opinionText . "...";
+                                                $opinionText = mb_substr($opinionRow['option_text'], 0, 20);
+                                                $optionsText .= $opinionText . "... ";
                                             }
                                         }
+                                        echo $optionsText;
                                         echo "</td>";
-                                        echo "<td>" . $row['correct_opinion'] . "</td>";
+                                        echo "<td>" . $row['correct_option'] . "</td>";
                                         echo "<td><button onclick='confirmDelete(" . $row['question_id'] . ")'>حذف</button></td>";
                                         echo "</tr>";
                                     }
