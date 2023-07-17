@@ -31,8 +31,12 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// دریافت سوالات گرامری از جدول questions
-$sql = "SELECT question_title, correct_option FROM questions WHERE category = 'grammer'";
+// کوئری برای دریافت اطلاعات سوالات و گزینه‌ها
+$sql = "SELECT q.question_id, q.question_title, q.correct_option, GROUP_CONCAT(o.option_text SEPARATOR ', ') AS options
+        FROM questions q
+        INNER JOIN options o ON q.question_id = o.question_id
+        GROUP BY q.question_id";
+
 $result = $conn->query($sql);
 ?>
 
@@ -78,40 +82,19 @@ $result = $conn->query($sql);
                                 <?php
                                 if ($result->num_rows > 0) {
                                     while ($row = $result->fetch_assoc()) {
-                                        // دریافت گزینه‌های مربوط به سوال از جدول options
-                                        $opinionsSql = "SELECT option_text FROM options WHERE question_id = " . $row['question_id'];
-                                        $opinionsResult = $conn->query($opinionsSql);
-
                                         echo "<tr>";
                                         echo "<td>" . $row['question_title'] . "</td>";
-                                        echo "<td>";
-                                        if ($opinionsResult->num_rows > 0) {
-                                            $optionsText = "";
-                                            while ($opinionRow = $opinionsResult->fetch_assoc()) {
-                                                // نمایش فقط 20 کاراکتر اول از هر گزینه
-                                                $opinionText = mb_substr($opinionRow['option_text'], 0, 20);
-                                                $optionsText .= $opinionText . "... ";
-                                            }
-                                        }
-                                        echo $optionsText;
-                                        echo "</td>";
+                                        echo "<td>" . $row['options'] . "</td>";
                                         echo "<td>" . $row['correct_option'] . "</td>";
-                                        echo "<td><button onclick='confirmDelete(" . $row['question_id'] . ")'>حذف</button></td>";
+                                        echo "<td><a href='editQgrammer.php?id=" . $row['question_id'] . "' class='btn btn-info btn-sm'>ویرایش</a>
+                                              <button data-url='deleteQgrammer.php?id=" . $row['question_id'] . "' class='btn btn-danger btn-sm' onclick='confirmDelete(" . $row['question_id'] . ");'>حذف</button></td>";
                                         echo "</tr>";
                                     }
                                 } else {
-                                    echo "<tr><td colspan='4'>هیچ سوال گرامری وجود ندارد.</td></tr>";
+                                    echo "<tr><td colspan='4'>هیچ سوالی وجود ندارد.</td></tr>";
                                 }
                                 ?>
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>عنوان سوال</th>
-                                    <th>گزینه ها</th>
-                                    <th>گزینه صحیح</th>
-                                    <th>عملیات</th>
-                                </tr>
-                            </tfoot>
                         </table>
                     </div>
                     <!-- /.card-body -->
@@ -125,7 +108,6 @@ $result = $conn->query($sql);
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-
 <script>
     function confirmDelete(id) {
         var result = confirm("آیا میخواهید این سوال حذف شود؟");
