@@ -59,7 +59,7 @@ $result = $conn->query($sql);
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <a class="btn btn-success btn-lg" href="addQgrammar.php">افزودن سوال جدید +</a>
+                    <a class="btn btn-success btn-lg" href="addQgrammer.php">افزودن سوال جدید +</a>
                     <div class="card-header">
                         <h3 class="card-title">لیست کل سوال ها</h3>
                     </div>

@@ -116,7 +116,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="../azmon\grammar.php" class="nav-link">
+                  <a href="../azmon\Qgrammar.php" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>گرامر</p>
                   </a>
