@@ -35,7 +35,7 @@
         </div>
       </section>
  <!--php code -->
- <?php
+    <?php
         // اطلاعات اتصال به پایگاه داده
         $servername = "localhost"; // آدرس سرور پایگاه داده
         $username = "root"; // نام کاربری پایگاه داده
@@ -52,9 +52,48 @@
         
         // پیام‌های خالی برای پیام‌های نمایشی به کاربر
         $successMessage = $errorMessage = "";
-            // بستن اتصال به پایگاه داده
-    $conn->close();
+        // بستن اتصال به پایگاه داده
+          $conn->close();
     ?>
+<!--form -->
+<div class="container">
+        <div class="col-lg-6 offset-lg-3 col-12">
+          <h2>افزودن سوال گرامری</h2>
+          <?php if (!empty($successMessage)): ?>
+            <div class="alert alert-success"><?php echo $successMessage; ?></div>
+          <?php endif; ?>
+          <?php if (!empty($errorMessage)): ?>
+            <div class="alert alert-danger"><?php echo $errorMessage; ?></div>
+          <?php endif; ?>
+          <form action="addQgrammer.php" method="post">
+            <div class="form-group">
+              <label>عنوان سوال</label>
+              <input type="text" class="form-control" name="question_title" placeholder="وارد کردن اطلاعات ..." required>
+            </div>
+            <div class="form-group has-success">
+              <label class="control-label text-success" for="inputSuccess" for="inputSuccess"><i class="fa fa-check"></i>گزینه درست</label>
+              <input type="text" class="form-control" name="correct_option" id="correct_option" placeholder="وارد کردن اطلاعات ..." required>
+            </div>
+            <div class="form-group has-error">
+              <label class="control-label text-danger" for="inputError"><i class="fa fa-times-circle-o"></i>گزینه غلط ۱</label>
+              <input type="text" class="form-control" name="wrong_option_1" id="wrong_option_1" placeholder="وارد کردن اطلاعات ..." required>
+            </div>
+
+            <div class="form-group has-error">
+              <label class="control-label text-danger" for="inputError"><i class="fa fa-times-circle-o"></i>گزینه غلط ۲</label>
+              <input type="text" class="form-control" name="wrong_option_2" id="wrong_option_2" placeholder="وارد کردن اطلاعات ..." required>
+            </div>
+
+            <div class="form-group has-error">
+              <label class="control-label text-danger" for="inputError"><i class="fa fa-times-circle-o"></i>گزینه غلط ۳</label>
+              <input type="text" class="form-control" name="wrong_option_3" placeholder="وارد کردن اطلاعات ..." required>
+            </div>
+
+            <button type="submit" class="btn btn-block btn-success btn-sm">افزودن</button>
+          </form>
+        </div>
+      </div>
+    </div>
     <!-- footer -->
     <?php include '../footer.php';?>
   <!-- JSlinks -->
