@@ -63,7 +63,7 @@
             $question_title = $row['question_title'];
             $correct_option = $row['correct_option'];
 
-            echo "<form action='updateQgrammer.php' method='post'>";
+            echo sprintf("<form role='form' method='POST' action='%s?question_id=%s'>", htmlspecialchars($_SERVER['PHP_SELF']), $question_id);
             echo "<input type='hidden' name='question_id' value='$question_id'>";
             echo "<div class='form-group'>";
             echo "<label>عنوان سوال</label>";
@@ -102,8 +102,31 @@
             echo "</form>";
         } else {
             echo "<div class='alert alert-danger'>سوال مورد نظر یافت نشد.</div>";
+            exit();
         }
-
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // دریافت اطلاعات از فرم
+            $new_question_id = $_POST['question_id'];
+            $new_question_title = $_POST['question_title'];
+            $new_correct_option = $_POST['correct_option'];
+            
+             // بروزرسانی اطلاعات سوال در جدول questions
+             $update_sql = "UPDATE questions SET question_title = '$new_question_title', correct_option = '$new_correct_option' WHERE question_id = $question_id";
+             if ($conn->query($update_sql) === TRUE) {
+                 // بروزرسانی گزینه‌های غلط در جدول options
+                 for ($i = 2; $i <= 4; $i++) {
+                    $new_wrong_option = $_POST["wrong_option_$i"];
+                     $update_sql = "UPDATE options SET option_text = '$new_wrong_option' WHERE question_id =$new_question_id AND option_id = $i";
+                     $conn->query($update_sql);
+                 }
+                 if ($conn->query($update_sql) === TRUE) {
+                    echo "<script>alert('ویرایش واژه با موفقیت انجام شد.')</script>";
+                    echo "<script>window.location.href = 'Qgrammar.php';</script>";
+                } else {
+                    echo "<script>alert('خطا در ویرایش رکورد.')</script>";
+                }
+            }
+        }
         // بستن اتصال به پایگاه داده
         $conn->close();
         ?>
@@ -114,4 +137,4 @@
         <!-- JS links -->
         <?php include '../JSlinks.php';?>
     </body>
-    </html>
+</html>
