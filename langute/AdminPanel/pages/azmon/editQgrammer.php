@@ -64,6 +64,7 @@
             $correct_option = $row['correct_option'];
 
             echo "<form action='updateQgrammer.php' method='post'>";
+            echo "<input type='hidden' name='question_id' value='$question_id'>";
             echo "<div class='form-group'>";
             echo "<label>عنوان سوال</label>";
             echo "<input type='text' class='form-control' name='question_title' placeholder='وارد کردن اطلاعات ...' value='$question_title' required>";
@@ -77,16 +78,26 @@
             $sql = "SELECT option_text FROM options WHERE question_id = $question_id";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
-                $option_number = 1;
+                $options = array();
                 while ($row = $result->fetch_assoc()) {
-                    $option_text = $row['option_text'];
-                    echo "<div class='form-group has-error'>";
-                    echo "<label class='control-label text-danger' for='inputError'><i class='fa fa-times-circle-o'></i>گزینه غلط $option_number</label>";
-                    echo "<input type='text' class='form-control' name='wrong_option_$option_number' placeholder='وارد کردن اطلاعات ...' value='$option_text' required>";
-                    echo "</div>";
-                    $option_number++;
+                    $options[] = $row['option_text'];
                 }
+                echo "<div class='form-group has-error'>";
+                echo "<label class='control-label text-danger' for='inputError'><i class='fa fa-times-circle-o'></i>گزینه غلط ۱</label>";
+                echo "<input type='text' class='form-control' name='wrong_option_1' placeholder='وارد کردن اطلاعات ...' value='{$options[1]}' required>";
+                echo "</div>";
+
+                echo "<div class='form-group has-error'>";
+                echo "<label class='control-label text-danger' for='inputError'><i class='fa fa-times-circle-o'></i>گزینه غلط ۲</label>";
+                echo "<input type='text' class='form-control' name='wrong_option_2' placeholder='وارد کردن اطلاعات ...' value='{$options[2]}' required>";
+                echo "</div>";
+
+                echo "<div class='form-group has-error'>";
+                echo "<label class='control-label text-danger' for='inputError'><i class='fa fa-times-circle-o'></i>گزینه غلط ۳</label>";
+                echo "<input type='text' class='form-control' name='wrong_option_3' placeholder='وارد کردن اطلاعات ...' value='{$options[3]}' required>";
+                echo "</div>";
             }
+
             echo "<button type='submit' class='btn btn-block btn-primary btn-sm'>ویرایش</button>";
             echo "</form>";
         } else {
