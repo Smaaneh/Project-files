@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "UPDATE questions SET question_title = '$question_title', correct_option = '$correct_option' WHERE question_id = $question_id";
     if ($conn->query($sql) === TRUE) {
         // بروزرسانی گزینه‌های غلط در جدول options
-        for ($i = 2; $i <= 4; $i++) {
+        for ($i = 1; $i <= 3; $i++) {
             $wrong_option = $_POST["wrong_option_$i"];
             $sql = "UPDATE options SET option_text = '$wrong_option' WHERE question_id = $question_id AND option_id = $i";
             $conn->query($sql);
@@ -32,6 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // پیام ویرایش موفقیت‌آمیز
         echo "<script>alert('ویرایش با موفقیت انجام شد.')</script>";
         echo "<script>window.location.href = 'Qgrammar.php';</script>";
+
     } else {
         // خطا در بروزرسانی
         echo "<script>alert('خطا در ویرایش رکورد.')</script>";
