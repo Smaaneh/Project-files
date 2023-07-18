@@ -89,7 +89,7 @@
               <input type="text" class="form-control" name="wrong_option_3" placeholder="وارد کردن اطلاعات ..." required>
             </div>
 
-            <button type="submit" class="btn btn-block btn-success btn-sm">ویرایش</button>
+            <button type="submit" class="btn btn-block btn-primary btn-sm">ویرایش</button>
           </form>
         </div>
       </div>
