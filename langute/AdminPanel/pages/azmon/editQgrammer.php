@@ -49,6 +49,9 @@
         if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);
         }
+        
+        // پیام‌های خالی برای پیام‌های نمایشی به کاربر
+        $successMessage = $errorMessage = "";
             // بستن اتصال به پایگاه داده
     $conn->close();
     ?>
