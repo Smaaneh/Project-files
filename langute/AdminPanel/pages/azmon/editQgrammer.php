@@ -14,7 +14,26 @@
   <?php include '../navbar.php';?>
 
   <?php include '../menu.php';?>
-
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>سوالات گرامر</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-left">
+                <li class="breadcrumb-item"><a href="../HomeAdmin.html">خانه</a></li>
+                <li class="breadcrumb-item"><a href="azmon.php">آزمون</a></li>
+                <li class="breadcrumb-item"><a href="Qgrammar.php">سوالات گرامر</a></li>
+                <li class="breadcrumb-item active">ویرایش سوالات گرامر</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
 
     <!-- footer -->
     <?php include '../footer.php';?>
