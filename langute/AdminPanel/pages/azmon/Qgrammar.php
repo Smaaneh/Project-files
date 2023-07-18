@@ -86,8 +86,8 @@ $result = $conn->query($sql);
                                         echo "<td>" . $row['question_title'] . "</td>";
                                         echo "<td>" . $row['options'] . "</td>";
                                         echo "<td>" . $row['correct_option'] . "</td>";
-                                        echo "<td><a href='editQgrammer.php?id=" . $row['question_id'] . "' class='btn btn-info btn-sm'>ویرایش</a>
-                                              <button data-url='deleteQgrammer.php?id=" . $row['question_id'] . "' class='btn btn-danger btn-sm' onclick='confirmDelete(" . $row['question_id'] . ");'>حذف</button></td>";
+                                        echo "<td><a href='editQgrammer.php?question_id=" . $row['question_id'] . "' class='btn btn-block btn-info btn-sm'>ویرایش</a></td>";
+                                        echo "<td><button data-url='deleteQgrammer.php?id=" . $row['question_id'] . "' class='btn btn-danger btn-sm' onclick='confirmDelete(" . $row['question_id'] . ");'>حذف</button></td>";
                                         echo "</tr>";
                                     }
                                 } else {
