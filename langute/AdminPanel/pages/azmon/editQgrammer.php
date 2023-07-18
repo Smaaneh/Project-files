@@ -55,10 +55,10 @@
         // بستن اتصال به پایگاه داده
           $conn->close();
     ?>
-<!--form -->
-<div class="container">
+    <!--form -->
+    <div class="container">
         <div class="col-lg-6 offset-lg-3 col-12">
-          <h2>افزودن سوال گرامری</h2>
+          <h2>ویرایش سوال گرامری</h2>
           <?php if (!empty($successMessage)): ?>
             <div class="alert alert-success"><?php echo $successMessage; ?></div>
           <?php endif; ?>
@@ -89,7 +89,7 @@
               <input type="text" class="form-control" name="wrong_option_3" placeholder="وارد کردن اطلاعات ..." required>
             </div>
 
-            <button type="submit" class="btn btn-block btn-success btn-sm">افزودن</button>
+            <button type="submit" class="btn btn-block btn-success btn-sm">ویرایش</button>
           </form>
         </div>
       </div>
