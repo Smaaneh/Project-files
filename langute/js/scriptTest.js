@@ -1,219 +1,145 @@
-//References
-let timeLeft = document.querySelector(".time-left");
-let quizContainer = document.getElementById("container");
-let nextBtn = document.getElementById("next-button");
-let countOfQuestion = document.querySelector(".number-of-question");
-let displayContainer = document.getElementById("display-container");
-let scoreContainer = document.querySelector(".score-container");
-let restart = document.getElementById("restart");
-let userScore = document.getElementById("user-score");
-let startScreen = document.querySelector(".start-screen");
-let startButton = document.getElementById("start-button");
-let questionCount;
-let scoreCount = 0;
-let count = 11;
-let countdown;
+// Global variables
+let quizArray = []; // An array to store fetched questions from the database
+let questionCount = 0; // Index to keep track of the current question
+let scoreCount = 0; // Variable to keep track of the user's score
+let count = 11; // Timer countdown variable
+let countdown; // Variable to store the countdown interval
 
-//Questions and Options array
+// DOM elements
+const startButton = document.getElementById("start-button");
+const startScreen = document.querySelector(".start-screen");
+const displayContainer = document.getElementById("display-container");
+const countOfQuestion = document.querySelector(".number-of-question");
+const timeLeft = document.querySelector(".time-left");
+const quizContainer = document.getElementById("container");
+const nextButton = document.getElementById("next-button");
+const restartButton = document.getElementById("restart");
 
-const quizArray = [
-    {
-        id: "0",
-        question: "Which is the most widely spoken language in the world?",
-        options: ["Spanish", "Mandarin", "English", "German"],
-        correct: "Mandarin",
-    },
-    {
-        id: "1",
-        question: "Which is the only continent in the world without a desert?",
-        options: ["North America", "Asia", "Africa", "Europe"],
-        correct: "Europe",
-    },
-    {
-        id: "2",
-        question: "Who invented Computer?",
-        options: ["Charles Babbage", "Henry Luce", "Henry Babbage", "Charles Luce"],
-        correct: "Charles Babbage",
-    },
-    {
-        id: "3",
-        question: "What do you call a computer on a network that requests files from another computer?",
-        options: ["A client", "A host", "A router", "A web server"],
-        correct: "A client",
-    },
-    {
-        id: "4",
-        question: "Hardware devices that are not part of the main computer system and are often added later to the system.",
-        options: ["Peripheral", "Clip art", "Highlight", "Execute"],
-        correct: "Peripheral",
-    },
-    {
-        id: "5",
-        question: "The main computer that stores the files that can be sent to computers that are networked together is:",
-        options: ["Clip art", "Mother board", "Peripheral", "File server"],
-        correct: "File server",
-    }, {
-        id: "6",
-        question: "How can you catch a computer virus?",
-        options: ["Sending e-mail messages", "Using a laptop during the winter", "Opening e-mail attachments", "Shopping on-line"],
-        correct: "Opening e-mail attachments",
-    },
-    {
-        id: "7",
-        question: "Google (www.google.com) is a:",
-        options: ["Search Engine", "Number in Math", "Directory of images", "Chat service on the web"],
-        correct: "Search Engine",
-    },
-    {
-        id: "8",
-        question: "Which is not an Internet protocol?",
-        options: ["HTTP", "FTP", "STP", "IP"],
-        correct: "STP",
-    },
-    {
-        id: "9",
-        question: "Which of the following is not a valid domain name?",
-        options: ["www.yahoo.com", "www.yahoo.co.uk", "www.com.yahoo", "www.yahoo.co.in"],
-        correct: "www.com.yahoo",
-    },
-];
-
-//Restart Quiz
-restart.addEventListener("click", () => {
+// Function to fetch questions from the database using fetch API
+async function fetchQuestions() {
+  try {
+    const response = await fetch("fetch_questions.php");
+    const data = await response.json();
+    quizArray = data;
     initial();
-    displayContainer.classList.remove("hide");
-    scoreContainer.classList.add("hide");
-});
+  } catch (error) {
+    console.error("Error fetching questions:", error);
+  }
+}
 
-//Next Button
-nextBtn.addEventListener(
-    "click",
-    (displayNext = () => {
-        //increment questionCount
-        questionCount += 1;
-        //if last question
-        if (questionCount == quizArray.length) {
-            //hide question container and display score
-            displayContainer.classList.add("hide");
-            scoreContainer.classList.remove("hide");
-            //user score
-            userScore.innerHTML =
-                "Your score is " + scoreCount + " out of " + questionCount;
-        } else {
-            //display questionCount
-            countOfQuestion.innerHTML =
-                questionCount + 1 + " of " + quizArray.length + " Question";
-            //display quiz
-            quizDisplay(questionCount);
-            count = 11;
-            clearInterval(countdown);
-            timerDisplay();
-        }
-    })
-);
-
-//Timer
+// Timer
 const timerDisplay = () => {
-    countdown = setInterval(() => {
-        count--;
-        timeLeft.innerHTML = `${count}s`;
-        if (count == 0) {
-            clearInterval(countdown);
-            displayNext();
-        }
-    }, 1000);
+  countdown = setInterval(() => {
+    count--;
+    timeLeft.innerHTML = '${count}s';
+     if (count == 0) {
+      clearInterval(countdown);
+      displayNext();
+    }
+  }, 1000);
 };
 
-//Display quiz
+// Display quiz
 const quizDisplay = (questionCount) => {
-    let quizCards = document.querySelectorAll(".container-mid");
-    //Hide other cards
-    quizCards.forEach((card) => {
-        card.classList.add("hide");
-    });
-    //display current question card
-    quizCards[questionCount].classList.remove("hide");
+  let quizCards = document.querySelectorAll(".container-mid");
+  // Hide other cards
+  quizCards.forEach((card) => {
+    card.classList.add("hide");
+  });
+  // Display current question card
+  quizCards[questionCount].classList.remove("hide");
 };
 
-//Quiz Creation
-function quizCreator() {
-    //randomly sort questions
-    quizArray.sort(() => Math.random() - 0.5);
-    //generate quiz
-    for (let i of quizArray) {
-        //randomly sort options
-        i.options.sort(() => Math.random() - 0.5);
-        //quiz card creation
-        let div = document.createElement("div");
-        div.classList.add("container-mid", "hide");
-        //question number
-        countOfQuestion.innerHTML = 1 + " of " + quizArray.length + " Question";
-        //question
-        let question_DIV = document.createElement("p");
-        question_DIV.classList.add("question");
-        question_DIV.innerHTML = i.question;
-        div.appendChild(question_DIV);
-        //options
-        div.innerHTML += `
-    <button class="option-div" onclick="checker(this)">${i.options[0]}</button>
-     <button class="option-div" onclick="checker(this)">${i.options[1]}</button>
-      <button class="option-div" onclick="checker(this)">${i.options[2]}</button>
-       <button class="option-div" onclick="checker(this)">${i.options[3]}</button>
-    `;
-        quizContainer.appendChild(div);
-    }
+// Quiz card creation
+let div = document.createElement("div");
+div.classList.add("container-mid", "hide");
+
+// Question number
+countOfQuestion.innerHTML ='${questionCount + 1} of ${quizArray.length} Question' ;
+
+// Question
+let question_DIV = document.createElement("p");
+question_DIV.classList.add("question");
+question_DIV.innerHTML = i.question_title;
+div.appendChild(question_DIV);
+
+// Options
+for (let option of i.options) {
+  let button = document.createElement("button");
+  button.classList.add("option-div");
+  button.innerText = option.option_text;
+  button.onclick = function () {
+    checker(this);
+  };
+  div.appendChild(button);
 }
 
-//Checker Function to check if option is correct or not
+quizContainer.appendChild(div);
+
+// Checker Function to check if the option is correct or not
 function checker(userOption) {
-    let userSolution = userOption.innerText;
-    let question =
-        document.getElementsByClassName("container-mid")[questionCount];
-    let options = question.querySelectorAll(".option-div");
+  let userSolution = userOption.innerText;
+  let question = document.getElementsByClassName("container-mid")[questionCount];
+  let options = question.querySelectorAll(".option-div");
 
-    //if user clicked answer == correct option stored in object
-    if (userSolution === quizArray[questionCount].correct) {
-        userOption.classList.add("correct");
-        scoreCount++;
-    } else {
-        userOption.classList.add("incorrect");
-        //For marking the correct option
-        options.forEach((element) => {
-            if (element.innerText == quizArray[questionCount].correct) {
-                element.classList.add("correct");
-            }
-        });
-    }
-
-    //clear interval(stop timer)
-    clearInterval(countdown);
-    //disable all options
+  // If the user clicked the correct option
+  if (userSolution === quizArray[questionCount].correct_option) {
+    userOption.classList.add("correct");
+    scoreCount++;
+  } else {
+    userOption.classList.add("incorrect");
+    // Mark the correct option
     options.forEach((element) => {
-        element.disabled = true;
+      if (element.innerText === quizArray[questionCount].correct_option) {
+        element.classList.add("correct");
+      }
     });
+  }
+
+  // Clear interval (stop the timer)
+  clearInterval(countdown);
+  // Disable all options
+  options.forEach((element) => {
+    element.disabled = true;
+  });
 }
 
-//initial setup
+// Initial setup
 function initial() {
-    quizContainer.innerHTML = "";
-    questionCount = 0;
-    scoreCount = 0;
-    count = 11;
-    clearInterval(countdown);
-    timerDisplay();
-    quizCreator();
-    quizDisplay(questionCount);
+  quizContainer.innerHTML = "";
+  questionCount = 0;
+  scoreCount = 0;
+  count = 11;
+  clearInterval(countdown);
+  timerDisplay();
+  quizCreator();
+  quizDisplay(questionCount);
 }
 
-//when user click on start button
+// Function to handle next button click
+function handleNextButtonClick() {
+  displayNext();
+}
+// Function to handle restart button click
+function handleRestartButtonClick() {
+  restartQuiz();
+}
+
+// Event listener for start button click
 startButton.addEventListener("click", () => {
-    startScreen.classList.add("hide");
-    displayContainer.classList.remove("hide");
-    initial();
+  startScreen.classList.add("hide");
+  displayContainer.classList.remove("hide");
+  fetchQuestions();
 });
 
-//hide quiz and display start screen
+// Event listener for next button click
+nextButton.addEventListener("click", handleNextButtonClick);
+
+// Event listener for restart button click
+restartButton.addEventListener("click", handleRestartButtonClick);
+
+// Hide quiz and display the start screen
 window.onload = () => {
-    startScreen.classList.remove("hide");
-    displayContainer.classList.add("hide");
+  startScreen.classList.remove("hide");
+  displayContainer.classList.add("hide");
 };

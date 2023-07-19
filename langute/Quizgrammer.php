@@ -13,6 +13,7 @@
 <!-- Title -->
 <title>test</title>
 <link rel="stylesheet" href="css/styleTest.css">
+<script src="fetch_questions.php"></script>
 </head>
 <body>
     <!-- Further code here -->
