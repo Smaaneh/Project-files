@@ -39,7 +39,7 @@
         <div id="user-score">Demo Score</div>
         <button id="restart">Restart</button>
     </div>
-    <script src="scriptTest.js"></script>
+    <script src="js/scriptTest.js"></script>
 </body>
 
 </html>
