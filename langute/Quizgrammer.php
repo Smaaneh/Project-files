@@ -12,7 +12,7 @@
 
 <!-- Title -->
 <title>test</title>
-<link rel="stylesheet" href="styleTest.css">
+<link rel="stylesheet" href="css/styleTest.css">
 </head>
 <body>
     <!-- Further code here -->
