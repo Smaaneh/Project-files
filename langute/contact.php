@@ -33,7 +33,9 @@
 			</div>
 		</div>
 		<!--/ End Breadcrumb -->
-
+		<?php
+		
+		?>
 		<!-- Contact Us -->
 		<section id="contact" class="contact section" >
 			<div class="container">
@@ -47,52 +49,52 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-lg-8 col-md-8 col-12">
-						<div class="form-head">
-							<!-- Contact Form -->
-							<form class="form" action="mail/mail.php" >
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-12">
-										<div class="form-group" >
-											<i class="fa fa-user"></i>
-											<input name="last-name" type="text" placeholder="نام خانوادگی">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-12">
-										<div class="form-group">
-											<i class="fa fa-user"></i>
-											<input name="first-name" type="text" placeholder="نام">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-12">
-										<div class="form-group">
-											<i class="fa fa-envelope"></i>
-											<input name="email" type="email" placeholder="آدرس ایمیل">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-12">
-										<div class="form-group">
-											<i class="fa fa-envelope"></i>
-											<input name="tel" type="tel" placeholder="شماره تلفن">
-										</div>
-									</div>
-									<div class="col-12">
-										<div class="form-group message">
-											<i class="fa fa-pencil"></i>
-											<textarea name="message" placeholder="پیام خود را تایپ کنید"></textarea>
-										</div>
-									</div>
-									<div class="col-12">
-										<div class="form-group">
-											<div class="button">
-												<button type="submit" class="btn primary">ارسال پیام</button>
-											</div>
-										</div>
-									</div>
+				<div class="col-lg-8 col-md-8 col-12">
+					<div class="form-head">
+						<!-- Contact Form -->
+						<form class="form" action="" method="POST">
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-12">
+							<div class="form-group">
+								<i class="fa fa-user"></i>
+								<input name="last-name" type="text" placeholder="نام خانوادگی">
+							</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-12">
+							<div class="form-group">
+								<i class="fa fa-user"></i>
+								<input name="first-name" type="text" placeholder="نام">
+							</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-12">
+							<div class="form-group">
+								<i class="fa fa-envelope"></i>
+								<input name="email" type="email" placeholder="آدرس ایمیل">
+							</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-12">
+							<div class="form-group">
+								<i class="fa fa-envelope"></i>
+								<input name="tel" type="tel" placeholder="شماره تلفن">
+							</div>
+							</div>
+							<div class="col-12">
+							<div class="form-group message">
+								<i class="fa fa-pencil"></i>
+								<textarea name="message" placeholder="پیام خود را تایپ کنید"></textarea>
+							</div>
+							</div>
+							<div class="col-12">
+							<div class="form-group">
+								<div class="button">
+								<button type="submit" class="btn primary">ارسال پیام</button>
 								</div>
-							</form>
-							<!--/ End Contact Form -->
+							</div>
+							</div>
 						</div>
+						</form>
+						<!--/ End Contact Form -->
+					</div>
 					</div>
 					<div class="col-lg-4 col-md-4 col-12">
 						<div class="contact-right">
