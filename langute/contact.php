@@ -106,7 +106,7 @@
 							<div class="contact-info">
 								<div class="icon"><i class="fa fa-envelope"></i></div>
 								<h3>اطلاعات تماس</h3>
-								<p><a href="mailto:info@example.com">langute@gmail.com</a></p>
+								<p><a href="mailto:info@example.com">langute2023@gmail.com</a></p>
 								<p>09130000006</p>
 							</div>
 							<!-- Contact-Info -->
