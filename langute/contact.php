@@ -34,8 +34,29 @@
 		</div>
 		<!--/ End Breadcrumb -->
 		<?php
-		
-		?>
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $toEmail = "langute2023@gmail.com";
+    $subject = "فرم ارتباط با ما";
+    $headers = "From: " . $_POST["email"] . "\r\n";
+    $headers .= "Reply-To: " . $_POST["email"] . "\r\n";
+    $headers .= "Content-type: text/html; charset=UTF-8\r\n";
+
+    // Email content
+    $message = "<p>نام خانوادگی: " . $_POST["last-name"] . "</p>";
+    $message .= "<p>نام: " . $_POST["first-name"] . "</p>";
+    $message .= "<p>آدرس ایمیل: " . $_POST["email"] . "</p>";
+    $message .= "<p>شماره تلفن: " . $_POST["tel"] . "</p>";
+    $message .= "<p>پیام: " . $_POST["message"] . "</p>";
+
+    // ارسال ایمیل
+    if (mail($toEmail, $subject, $message, $headers)) {
+        echo '<p style="color: green;">ایمیل با موفقیت ارسال شد.</p>';
+        echo '<p style="color: green;">کارشناسان لنگوته از طریق ایمیل با شما در ارتباط خواهند بود.</p>';
+    } else {
+        echo '<p style="color: red;">متاسفانه خطایی در ارسال ایمیل رخ داده است.</p>';
+    }
+}
+?>
 		<!-- Contact Us -->
 		<section id="contact" class="contact section" >
 			<div class="container">
