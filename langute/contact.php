@@ -33,15 +33,14 @@
 			</div>
 		</div>
 		<!--/ End Breadcrumb -->
-		<?php
+<?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-// Load Composer's autoloader
-require '<PHPMailer/src/Exception.php';
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php';
+require 'phpmailer/src/Exception.php';
+require 'phpmailer/src/PHPMailer.php';
+require 'phpmailer/src/SMTP.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $toEmail = "langute2023@gmail.com";
@@ -57,22 +56,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message .= "<p>شماره تلفن: " . $_POST["tel"] . "</p>";
     $message .= "<p>پیام: " . $_POST["message"] . "</p>";
 
-// Send the email using PHPMailer
+// کدهای ارسال ایمیل با PHPMailer
 $mail = new PHPMailer();
 $mail->isSMTP();
-$mail->Host = 'smtp.example.com'; // اطلاعات SMTP هاست خود را وارد کنید
+$mail->Host = 'smtp.gmail.com'; // اطلاعات SMTP هاست خود را وارد کنید
 $mail->SMTPAuth = true;
-$mail->Username = 'langute'; // نام کاربری SMTP خود را وارد کنید
+$mail->Username = 'langute2023@gmail.com'; // نام کاربری SMTP خود را وارد کنید
 $mail->Password = 'lan#S*mo22'; // رمز عبور SMTP خود را وارد کنید
 $mail->SMTPSecure = 'tls';
 $mail->Port = 587;
 
 $mail->setFrom($_POST["email"], $_POST["first-name"] . ' ' . $_POST["last-name"]);
-$mail->addAddress($toEmail);
-$mail->isHTML(true);
+$mail->addAddress('langute2023@gmail.com'); // ایمیل مقصد خود را وارد کنید
 
-$mail->Subject = $subject;
-$mail->Body = $message;
+$mail->isHTML(true);
+$mail->Subject = 'فرم ارتباط با ما';
+$mail->Body = '<p>نام خانوادگی: ' . $_POST["last-name"] . '</p>';
+$mail->Body .= '<p>نام: ' . $_POST["first-name"] . '</p>';
+$mail->Body .= '<p>آدرس ایمیل: ' . $_POST["email"] . '</p>';
+$mail->Body .= '<p>شماره تلفن: ' . $_POST["tel"] . '</p>';
+$mail->Body .= '<p>پیام: ' . $_POST["message"] . '</p>';
 
 if ($mail->send()) {
 	echo '<p style="color: green;">ایمیل با موفقیت ارسال شد.</p>';
