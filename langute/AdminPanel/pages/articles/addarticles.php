@@ -58,6 +58,7 @@
             <!-- /.card-header -->
             <div class="card-body">
               <div class="mb-3">
+              <label for="title">متن مقاله </label>
                 <textarea id="editor1" name="editor1" style="width: 100%">لطفا متن مورد نظر خودتان را وارد کنید</textarea>
               </div>
             </div>
