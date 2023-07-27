@@ -47,22 +47,6 @@
                 CKEditor5
                 <small>پیشرفته به همراه همه امکانات</small>
               </h3>
-              <!-- tools box -->
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool btn-sm"
-                        data-widget="collapse"
-                        data-toggle="tooltip"
-                        title="Collapse">
-                  <i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-tool btn-sm"
-                        data-widget="remove"
-                        data-toggle="tooltip"
-                        title="Remove">
-                  <i class="fa fa-times"></i>
-                </button>
-              </div>
-              <!-- /. tools -->
             </div>
             <!-- /.card-header -->
             <div class="card-body">
