@@ -59,7 +59,7 @@
             <div class="card-body">
               <div class="mb-3">
               <label for="title">متن مقاله </label>
-                <textarea id="editor1" name="editor1" style="width: 100%">لطفا متن مورد نظر خودتان را وارد کنید</textarea>
+                <textarea id="content" name="content" style="width: 100%">لطفا متن مورد نظر خودتان را وارد کنید</textarea>
               </div>
             </div>
           </div>
@@ -92,10 +92,10 @@
 <script src="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <script>
   $(function () {
-    // Replace the <textarea id="editor1"> with a CKEditor
+    // Replace the <textarea id="content"> with a CKEditor
     // instance, using default configuration.
     ClassicEditor
-      .create(document.querySelector('#editor1'))
+      .create(document.querySelector('#content'))
       .then(function (editor) {
         // The editor instance
       })
