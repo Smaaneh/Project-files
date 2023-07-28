@@ -56,6 +56,21 @@
                   <input type="text" class="form-control" id="title" name="title" placeholder="عنوان مقاله را وارد کنید ...">
                 </div>
             <!-- /.card-header -->
+                <!-- Date range -->
+                <div class="form-group">
+                  <label>انتخاب تاریخ:</label>
+
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-calendar"></i>
+                      </span>
+                    </div>
+                    <input class="normal-example form-control" />
+                  </div>
+                  <!-- /.input group -->
+                </div>
+            <!-- content articles -->
             <div class="card-body">
               <div class="mb-3">
               <label for="title">متن مقاله </label>
@@ -65,7 +80,7 @@
           </div>
               <!-- /.card-body -->
               <div class="card-footer text-center">
-                <button type="submit" class="btn btn-success" name="submit">ثبت مقاله</button>
+                <button type="submit" class="btn btn-success btn-lg" name="submit">ثبت مقاله</button>
                 <p class="text-sm mb-0">مشاهده مستندات مربوط به این ویرایشگر متن <a href="https://ckeditor.com/ckeditor-5-builds/#classic">CKEditor</a>
               </p>
               </div>
