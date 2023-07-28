@@ -25,12 +25,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>ویرایشگر متن</h1>
+            <h1>افزودن مقالات</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-left">
               <li class="breadcrumb-item"><a href="#">خانه</a></li>
-              <li class="breadcrumb-item active">ویرایشگر متن</li>
+              <li class="breadcrumb-item active">افزودن مقالات</li>
             </ol>
           </div>
         </div>
@@ -52,7 +52,7 @@
              <form role="form" method="post" enctype="multipart/form-data">
               <div class="card-body">
                 <div class="form-group">
-                  <label for="title">عنوان</label>
+                  <label for="title">عنوان:</label>
                   <input type="text" class="form-control" id="title" name="title" placeholder="عنوان مقاله را وارد کنید ...">
                 </div>
             <!-- /.card-header -->
@@ -73,7 +73,7 @@
             <!-- content articles -->
             <div class="card-body">
               <div class="mb-3">
-              <label for="title">متن مقاله </label>
+              <label for="title">متن مقاله :</label>
                 <textarea id="content" name="content" style="width: 100%">لطفا متن مورد نظر خودتان را وارد کنید</textarea>
               </div>
             </div>
@@ -84,7 +84,7 @@
                 <p class="text-sm mb-0">مشاهده مستندات مربوط به این ویرایشگر متن <a href="https://ckeditor.com/ckeditor-5-builds/#classic">CKEditor</a>
               </p>
               </div>
-            </form>
+          </form>
           </div>
           <!-- /.card -->
         </div>
