@@ -3,5 +3,5 @@
    صفحه ادمین لنگوته
   </div>
 
-  <strong>مدیریت لنگوته<a href="http://github.com/smaaneh/">سمانه محمدی</a>.</strong>
+  <strong>The year of construction is 2022<a href="http://github.com/smaaneh/">سمانه محمدی</a>.</strong>
 </footer>
