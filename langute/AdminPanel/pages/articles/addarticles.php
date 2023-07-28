@@ -66,7 +66,7 @@
                         <i class="fa fa-calendar"></i>
                       </span>
                     </div>
-                    <input class="normal-example form-control" />
+                    <input class="normal-example form-control" id="created_at	" name="created_at	"/>
                   </div>
                   <!-- /.input group -->
                 </div>
