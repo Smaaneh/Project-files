@@ -3,5 +3,5 @@
    صفحه ادمین لنگوته
   </div>
 
-  <strong>CopyLeft &copy; 2018<a href="http://github.com/smaaneh/">سمانه محمدی و نرگس افراز</a>.</strong>
+  <strong>مدیریت لنگوته<a href="http://github.com/smaaneh/">سمانه محمدی</a>.</strong>
 </footer>
