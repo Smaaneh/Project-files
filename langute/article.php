@@ -1,3 +1,39 @@
+<!DOCTYPE html>
+<html class="no-js" lang="fa">
+    <head>
+		<!-- metaTAGS -->
+		<?php include 'metaTAGS.php';?>
+
+		<!-- Title -->
+		<title>مقالات</title>
+
+		<!-- linksCSS -->
+ 		<?php include 'linksCSS.php';?>
+
+
+    </head>
+    <body>
+
+      <!-- header-->
+		 <?php include 'header.php';?>
+
+		<!-- Breadcrumb -->
+		<div class="breadcrumbs overlay" style="background-image:url('images/breadcrumb-bg.jpg')">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-12">
+						<h2>مقالات</h2>
+					</div>
+					<div class="col-lg-6 col-md-6 col-12">
+						<ul class="bread-list">
+							<li><a href="index.html">خانه <i class="fa fa-angle-left"></i></a></li>
+							<li class="active"><a href="#">مقالات</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/ End Breadcrumb -->
 <?php
 // اتصال به دیتابیس
 $servername = "localhost";
@@ -39,3 +75,7 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
 
 $conn->close();
 ?>
+<!-- foother & js links -->
+<?php include 'foother.php';?>
+    </body>
+</html>
