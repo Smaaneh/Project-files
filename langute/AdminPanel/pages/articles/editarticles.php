@@ -100,11 +100,11 @@ $conn->close();
               <h3 class="card-title">فرم  مقالات</h3>
             </div>
              <!-- form start -->
-             <form role="form" method="post" action="process_article.php" enctype="multipart/form-data">
+             <form role="form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . '?id=' . $id; ?>" enctype="multipart/form-data">
               <div class="card-body">
                 <div class="form-group">
                   <label for="title">عنوان:</label>
-                  <input type="text" class="form-control" id="title" name="title" placeholder="عنوان مقاله را وارد کنید ...">
+                  <input type="text" class="form-control" id="title" name="title" value="<?php echo $title; ?>" placeholder="عنوان مقاله را وارد کنید ...">
                 </div>
             <!-- /.card-header -->
                 <!-- Date range -->
@@ -116,7 +116,7 @@ $conn->close();
                 <i class="fa fa-calendar"></i>
             </span>
         </div>
-        <input class="normal-example form-control" id="created_at" name="created_at" />
+        <input class="normal-example form-control" id="created_at" name="created_at" value="<?php echo $created_at; ?>" />
     </div>
                   <!-- /.input group -->
                 </div>
@@ -124,7 +124,7 @@ $conn->close();
             <div class="card-body">
               <div class="mb-3">
               <label for="title">متن مقاله :</label>
-                <textarea id="content" name="content" style="width: 100%">لطفا متن مورد نظر خودتان را وارد کنید</textarea>
+                <textarea id="content" name="content" value="<?php echo $content; ?>" style="width: 100%">لطفا متن مورد نظر خودتان را وارد کنید</textarea>
               </div>
             </div>
           </div>
