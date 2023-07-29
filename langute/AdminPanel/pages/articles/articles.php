@@ -118,7 +118,7 @@ $result = $conn->query($sql);
 <script>
     function confirmDelete(id) {
         
-        var result = confirm("آیا میخواهید این استاد حذف شود؟");
+        var result = confirm("آیا میخواهید این مقاله حذف شود؟");
         console.log(result);
         if (result) {
             // اگر کاربر تایید کرد، ارسال درخواست حذف به صفحه deletearticles.php
