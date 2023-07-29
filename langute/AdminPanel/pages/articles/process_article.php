@@ -19,19 +19,22 @@ if (isset($_POST["submit"])) {
     $created_at = $_POST["created_at"];
     $content = $_POST["content"];
 
-    // بررسی اطلاعات وارد شده
-    if (empty($title) || empty($created_at) || empty($content)) {
-        echo "لطفاً همه‌ی فیلدها را پر کنید.";
-    } else {
-        // درج اطلاعات در جدول articles
-        $sql = "INSERT INTO articles (title, created_at, content) VALUES ('$title', '$created_at', '$content')";
+// بررسی اطلاعات وارد شده
+if (empty($title) || empty($created_at) || empty($content)) {
+    echo "لطفاً همه‌ی فیلدها را پر کنید.";
+} else {
+    // تبدیل تاریخ انتخاب شده به فرمت مناسب برای ذخیره در دیتابیس
+    $created_at = date("Y-m-d H:i:s", strtotime($created_at));
 
-        if ($conn->query($sql) === TRUE) {
-            echo "مقاله با موفقیت اضافه شد!";
-        } else {
-            echo "خطا در اضافه کردن مقاله: " . $conn->error;
-        }
+    // درج اطلاعات در جدول articles
+    $sql = "INSERT INTO articles (title, created_at, content) VALUES ('$title', '$created_at', '$content')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "مقاله با موفقیت اضافه شد!";
+    } else {
+        echo "خطا در اضافه کردن مقاله: " . $conn->error;
     }
+}
 }
 
 // بستن اتصال به دیتابیس

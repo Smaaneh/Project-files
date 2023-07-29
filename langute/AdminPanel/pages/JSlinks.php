@@ -22,6 +22,8 @@
 <!-- Persian Data Picker -->
 <script src="../../dist/js/persian-date.min.js"></script>
 <script src="../../dist/js/persian-datepicker.min.js"></script>
+<script src="../../dist/js/persian-datepicker.fa.min.js"></script>
+
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->

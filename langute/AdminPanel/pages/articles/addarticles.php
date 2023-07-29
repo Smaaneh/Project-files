@@ -59,15 +59,14 @@
                 <!-- Date range -->
                 <div class="form-group">
                   <label>انتخاب تاریخ:</label>
-
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="fa fa-calendar"></i>
-                      </span>
-                    </div>
-                    <input class="normal-example form-control" id="created_at	" name="created_at	"/>
-                  </div>
+                      <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">
+                <i class="fa fa-calendar"></i>
+            </span>
+        </div>
+        <input class="normal-example form-control" id="created_at" name="created_at" />
+    </div>
                   <!-- /.input group -->
                 </div>
             <!-- content articles -->
