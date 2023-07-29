@@ -163,7 +163,7 @@
 
                     <div class="col-lg-6 col-md-6 col-12">
                         <!-- Single Event -->
-                        <div class="single-event">
+                        <div class="single-event" style="height: 400px;">
                             <div class="event-image">
                                 <img src="images/events/event1.jpg" alt="#">
                                 <div class="event-date">
@@ -171,9 +171,8 @@
                                 </div>
                             </div>
                             <div class="event-content">
-                                <!-- نمایش عنوان مقاله -->
                                 <h3 class="event-title"><a href="article.php?id=<?php echo $row["id"]; ?>"><?php echo $row["title"]; ?></a></h3>
-                                <!-- نمایش ۱۰۰ کاراکتر اول متن مقاله -->
+                                <!-- نمایش محتوای مقاله (۱۰۰ کاراکتر اول) -->
                                 <p><?php echo substr($row["content"], 0, 100) . "..."; ?></p>
                                 <span class="entry-date-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo date("h:i A", strtotime($row["created_at"])); ?> </span>
                             </div>
