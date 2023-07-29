@@ -125,16 +125,20 @@
   })
 </script>
 <script>
-  $(function () {
-    //Initialize Select2 Elements
-    $('.select2').select2()
+    $(function () {
+        $('.normal-example').persianDatepicker({
+            format: 'YYYY/MM/DD HH:mm:ss',
+            initialValueType: 'gregorian'
+        });
+    });
 
-    //Datemask dd/mm/yyyy
-    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-    //Datemask2 mm/dd/yyyy
-    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-    $('.normal-example').persianDatepicker();
-  })
+    function submitForm() {
+        var title = $("#title").val();
+        var created_at_persian = $("#created_at").val(); // تاریخ شمسی دریافت شده از PersianDatepicker
+
+        // تبدیل تاریخ شمسی به تاریخ میلادی
+        var created_at_gregorian = new persianDate(created_at_persian).toCalendar('gregorian').toLocale('en').format('YYYY-MM-DD HH:mm:ss');
+    }
 </script>
 </body>
 </html>
