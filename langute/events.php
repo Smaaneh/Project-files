@@ -121,7 +121,7 @@
 		</div>
 		<!--/ End Breadcrumb -->
 
-		<!-- Events -->
+<!-- Events -->
 <section class="events archive section">
     <div class="container">
         <div class="row">
@@ -171,9 +171,11 @@
                                 </div>
                             </div>
                             <div class="event-content">
+                                <!-- نمایش عنوان مقاله -->
+                                <h3 class="event-title"><a href="article.php?id=<?php echo $row["id"]; ?>"><?php echo $row["title"]; ?></a></h3>
                                 <!-- نمایش ۱۰۰ کاراکتر اول متن مقاله -->
-                                <h3 class="event-title"><a href="article.php?id=<?php echo $row["id"]; ?>"><?php echo substr($row["content"], 0, 100) . "..."; ?></a></h3>
-                                <span class="entry-date-time"><i class="fa fa-clock-o" aria-hidden="true"></i> 05:23 AM - 09:23 AM </span>
+                                <p><?php echo substr($row["content"], 0, 100) . "..."; ?></p>
+                                <span class="entry-date-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo date("h:i A", strtotime($row["created_at"])); ?> </span>
                             </div>
                         </div>
                         <!-- End Single Event -->
