@@ -86,7 +86,7 @@
             </li>
             <li class="nav-header"></li>
             <li class="nav-item">
-              <a href="../articlesc/articles.php" class="nav-link">
+              <a href="../articles/articles.php" class="nav-link">
                 <i class="nav-icon fa fa-calendar"></i>
                 <p>
                   مقالات
