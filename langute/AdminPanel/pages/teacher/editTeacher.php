@@ -7,21 +7,8 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="../../plugins/datatables/dataTables.bootstrap4.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
-  <!-- bootstrap rtl -->
-  <link rel="stylesheet" href="../../dist/css/bootstrap-rtl.min.css">
-  <!-- template rtl version -->
-  <link rel="stylesheet" href="../../dist/css/custom-style.css">
+  <!-- CSSlinks -->
+  <?php include '../CSSlinks.php';?>
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -30,86 +17,86 @@
 
 <?php include '../menu.php';?>
 
-<!-- **************************************************** -->
-<?php
-// اطلاعات اتصال به پایگاه داده
-$servername = "localhost"; // آدرس سرور پایگاه داده
-$username = "root"; // نام کاربری پایگاه داده
-$password = "123"; // رمز عبور پایگاه داده
-$dbname = "langute"; // نام پایگاه داده
+<!-- php code -->
+    <?php
+    // اطلاعات اتصال به پایگاه داده
+    $servername = "localhost"; // آدرس سرور پایگاه داده
+    $username = "root"; // نام کاربری پایگاه داده
+    $password = "123"; // رمز عبور پایگاه داده
+    $dbname = "langute"; // نام پایگاه داده
 
-// ایجاد اتصال به پایگاه داده
-$conn = new mysqli($servername, $username, $password, $dbname);
+    // ایجاد اتصال به پایگاه داده
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-// بررسی وضعیت اتصال
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// دریافت شناسه استاد برای ویرایش
-$id = $_GET['id'];
-
-// دریافت اطلاعات استاد قبل از ویرایش
-$sql = "SELECT * FROM teacher WHERE id = $id";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $name = $row['name'];
-    $last_name = $row['last_name'];
-    $expertise = $row['expertise'];
-} else {
-    echo "<script>alert('رکورد مورد نظر یافت نشد.')</script>";
-    exit();
-}
-
-// در صورتی که فرم ویرایش ارسال شده باشد
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // دریافت اطلاعات از فرم
-    $new_name = $_POST['name'];
-    $new_last_name = $_POST['last_name'];
-    $new_expertise = $_POST['expertise'];
-
-    // اعتبارسنجی فقط برای عکس
-    if ($_FILES['teacher_image']['error'] === UPLOAD_ERR_OK) {
-        $file_tmp = $_FILES['teacher_image']['tmp_name'];
-        $file_size = $_FILES['teacher_image']['size'];
-        $file_type = $_FILES['teacher_image']['type'];
-
-        // چک کردن اندازه و نوع فایل
-        if ($file_size > 5242880) { // حداکثر حجم 5 مگابایت
-            echo "<script>alert('حجم تصویر باید کمتر از 5 مگابایت باشد.')</script>";
-            echo "<script>window.location.href = 'teacher.php';</script>";
-            exit();
-        }
-        if ($file_type !== 'image/jpeg' && $file_type !== 'image/png') {
-            echo "<script>alert('فرمت تصویر باید JPEG یا PNG باشد.')</script>";
-            echo "<script>window.location.href = 'teacher.php';</script>";
-            exit();
-        }
-
-        // ذخیره تصویر در مسیر مورد نظر
-        $target_dir = "../../../images/uploads/teacher/";
-        $target_file = $target_dir . basename($_FILES['teacher_image']['name']);
-        move_uploaded_file($file_tmp, $target_file);
-
-        // به روزرسانی رکورد استاد در جدول teacher
-        $update_sql = "UPDATE teacher SET name = '$new_name', last_name = '$new_last_name', expertise = '$new_expertise', image = '$target_file' WHERE id = $id";
-    } else {
-        // فقط به روزرسانی بدون تغییر تصویر
-        $update_sql = "UPDATE teacher SET name = '$new_name', last_name = '$new_last_name', expertise = '$new_expertise' WHERE id = $id";
+    // بررسی وضعیت اتصال
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
 
-    if ($conn->query($update_sql) === TRUE) {
-        echo "<script>alert('ویرایش استاد با موفقیت انجام شد.')</script>";
-        echo "<script>window.location.href = 'teacher.php';</script>";
-    } else {
-        echo "<script>alert('خطا در ویرایش رکورد.')</script>";
-    }
-}
+    // دریافت شناسه استاد برای ویرایش
+    $id = $_GET['id'];
 
-// بستن اتصال به پایگاه داده
-$conn->close();
-?>
+    // دریافت اطلاعات استاد قبل از ویرایش
+    $sql = "SELECT * FROM teacher WHERE id = $id";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $name = $row['name'];
+        $last_name = $row['last_name'];
+        $expertise = $row['expertise'];
+    } else {
+        echo "<script>alert('رکورد مورد نظر یافت نشد.')</script>";
+        exit();
+    }
+
+    // در صورتی که فرم ویرایش ارسال شده باشد
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // دریافت اطلاعات از فرم
+        $new_name = $_POST['name'];
+        $new_last_name = $_POST['last_name'];
+        $new_expertise = $_POST['expertise'];
+
+        // اعتبارسنجی فقط برای عکس
+        if ($_FILES['teacher_image']['error'] === UPLOAD_ERR_OK) {
+            $file_tmp = $_FILES['teacher_image']['tmp_name'];
+            $file_size = $_FILES['teacher_image']['size'];
+            $file_type = $_FILES['teacher_image']['type'];
+
+            // چک کردن اندازه و نوع فایل
+            if ($file_size > 5242880) { // حداکثر حجم 5 مگابایت
+                echo "<script>alert('حجم تصویر باید کمتر از 5 مگابایت باشد.')</script>";
+                echo "<script>window.location.href = 'teacher.php';</script>";
+                exit();
+            }
+            if ($file_type !== 'image/jpeg' && $file_type !== 'image/png') {
+                echo "<script>alert('فرمت تصویر باید JPEG یا PNG باشد.')</script>";
+                echo "<script>window.location.href = 'teacher.php';</script>";
+                exit();
+            }
+
+            // ذخیره تصویر در مسیر مورد نظر
+            $target_dir = "../../../images/uploads/teacher/";
+            $target_file = $target_dir . basename($_FILES['teacher_image']['name']);
+            move_uploaded_file($file_tmp, $target_file);
+
+            // به روزرسانی رکورد استاد در جدول teacher
+            $update_sql = "UPDATE teacher SET name = '$new_name', last_name = '$new_last_name', expertise = '$new_expertise', image = '$target_file' WHERE id = $id";
+        } else {
+            // فقط به روزرسانی بدون تغییر تصویر
+            $update_sql = "UPDATE teacher SET name = '$new_name', last_name = '$new_last_name', expertise = '$new_expertise' WHERE id = $id";
+        }
+
+        if ($conn->query($update_sql) === TRUE) {
+            echo "<script>alert('ویرایش استاد با موفقیت انجام شد.')</script>";
+            echo "<script>window.location.href = 'teacher.php';</script>";
+        } else {
+            echo "<script>alert('خطا در ویرایش رکورد.')</script>";
+        }
+    }
+
+    // بستن اتصال به پایگاه داده
+    $conn->close();
+    ?>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
