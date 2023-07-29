@@ -37,7 +37,57 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
+<!-- php code -->
+<?php
+    // اطلاعات اتصال به پایگاه داده
+    $servername = "localhost"; // آدرس سرور پایگاه داده
+    $username = "root"; // نام کاربری پایگاه داده
+    $password = "123"; // رمز عبور پایگاه داده
+    $dbname = "langute"; // نام پایگاه داده
 
+    // ایجاد اتصال به پایگاه داده
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // بررسی وضعیت اتصال
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // دریافت شناسه مقاله برای ویرایش
+    $id = $_GET['id'];
+
+    // دریافت اطلاعات مقاله قبل از ویرایش
+    $sql = "SELECT * FROM articles WHERE id = $id";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $title = $row['title'];
+        $content = $row['content'];
+        $created_at = $row['created_at'];
+    } else {
+        echo "<script>alert('رکورد مورد نظر یافت نشد.')</script>";
+        exit();
+    }
+
+    // در صورتی که فرم ویرایش ارسال شده باشد
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // دریافت اطلاعات از فرم
+        $new_title = $_POST['title'];
+        $new_content = $_POST['content'];
+        $new_created_at = $_POST['created_at'];
+ // به روزرسانی رکورد مقاله در جدول articles
+ $update_sql = "UPDATE articles SET name = '$new_title', content = '$new_content', created_at = '$new_created_at', image = '$target_file' WHERE id = $id";
+ if ($conn->query($update_sql) === TRUE) {
+    echo "<script>alert('ویرایش مقاله با موفقیت انجام شد.')</script>";
+    echo "<script>window.location.href = 'articles.php';</script>";
+} else {
+    echo "<script>alert('خطا در ویرایش رکورد.')</script>";
+}
+}
+
+// بستن اتصال به پایگاه داده
+$conn->close();
+?>
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
