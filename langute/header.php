@@ -19,7 +19,7 @@
 								<!-- Main Menu -->
 								<ul id="nav" class="nav menu navbar-nav">
 									<li><a href="contact.php"><i class="fa fa-address-book"></i>ارتباط با ما</a> </li>
-									<li><a href="events.html"><i class="fa fa-bullhorn"></i>مقالات</a></li>
+									<li><a href="articles.php"><i class="fa fa-bullhorn"></i>مقالات</a></li>
 									<li><a href="#"><i class="fa fa-clone"></i>صفحه ها</a>
 										<ul class="dropdown">
 											<li><a href="teachers.php">استادان</a></li>
