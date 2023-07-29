@@ -122,124 +122,77 @@
 		<!--/ End Breadcrumb -->
 
 		<!-- Events -->
-		<section class="events archive section">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6 offset-lg-3 col-12">
-						<div class="section-title bg">
-							<h2> مقالات <span>سایت</span></h2>
-							<p>در این بخش میتوانید با مطالعه مقالاتی در خصوص زبان ، به روند رشد یادگیری خود کمک کنید </p>
-							<div class="icon"><i class="fa fa-paper-plane"></i></div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-6 col-md-6 col-12">
-						<!-- Single Event -->
-						<div class="single-event">
-							<div class="event-image">
-								<img src="images/events/event1.jpg" alt="#">
-								<div class="event-date">
-									<p>23<span>March</span></p>
-								</div>
-							</div>
-							<div class="event-content">
-								<h3 class="event-title"><a href="event-single.html">یادگیری زبان انگلیسی را از کجا شروع کنم؟</a></h3>
-								<p>برای آموزش زبان انگلیسی از کجا شروع کنم؟ سوالی که بارها و بارها از استادان زبان پرسیده می شود! در این مقاله انتخاب های کلی شما برای آموزش زبان بررسی می شود و راه کارهایی ارائه می کنیم</p>
-								<span class="entry-date-time"><i class="fa fa-clock-o" aria-hidden="true"></i> 05:23 AM - 09:23 AM </span>
-							</div>
-						</div>
-						<!-- End Single Event -->
-					</div>
-					<div class="col-lg-6 col-md-6 col-12">
-						<!-- Single Event -->
-						<div class="single-event">
-							<div class="event-image">
-								<img src="images/events/event2.jpg" alt="#">
-								<div class="event-date">
-									<p>25<span>April</span></p>
-								</div>
-							</div>
-							<div class="event-content">
-									<h3 class="event-title"><a href="event-single.html">!هنگام صحبت کردن به انگلیسی نباید این ۷ کار را انجام دهیم</a></h3>
-								<p>.این مقاله حاصل مسافرت و اقامت در کشورهای مختلف و مصاحبت با افرادی است که زبان انگلیسی زبان دوم آنها بود . به گفته آن هااین 7 کار باعث شده بودکه روند یادگیریشان مختل شود</p>
-								<span class="entry-date-time"><i class="fa fa-clock-o" aria-hidden="true"></i> 05:23 AM - 09:23 AM </span>
-							</div>
-						</div>
-						<!-- End Single Event -->
-					</div>
-					<div class="col-lg-6 col-md-6 col-12">
-						<!-- Single Event -->
-						<div class="single-event">
-							<div class="event-image">
-								<img src="images/events/event3.jpg" alt="#">
-								<div class="event-date">
-									<p>05<span>Jun</span></p>
-								</div>
-							</div>
-							<div class="event-content">
-									<h3 class="event-title"><a href="event-single.html">چگونه یادگیری واژگان زبان خود را بهتر كنيم؟</a></h3>
-								<p>بعضی از مردم می گویند فقط ميخواهند مکالمه خود به زبان انگلیسی را بهبود بخشند بی آنکه در جهت افزایش دامنه واژگان یا دانش خود از دستور زبان تلاش کنند. در حقیقت باید به این مهم توجه داشت که تسلط شما به زبان انگلیسی نميتواند امري بديهي تلقي شود. نکات این مقاله به شما کمک می کنند تا سطح واژگان خود را ارتقا دهید</p>
-								<span class="entry-date-time"><i class="fa fa-clock-o" aria-hidden="true"></i> 05:23 AM - 09:23 AM </span>
-							</div>
-						</div>
-						<!-- End Single Event -->
-					</div>
-					<div class="col-lg-6 col-md-6 col-12">
-						<!-- Single Event -->
-						<div class="single-event">
-							<div class="event-image">
-								<img src="images/events/event4.jpg" alt="#">
-								<div class="event-date">
-									<p>23<span>March</span></p>
-								</div>
-							</div>
-							<div class="event-content">
-									<h3 class="event-title"><a href="event-single.html">مشکلات اساسی یادگیری زبان انگلیسی</a></h3>
-								<p>مشکلات اصلی جهت یادگیری زبان انگلیسی  ، مشکلات و موانع رایج یادگیری زبان انگلیسی و راه حل مقابله با آن و مشکلات آموزش زبان انگلیسی در ایران از مواردی هستند که در این مقاله مورد بررسی قرار می گیرد.</p>
-								<span class="entry-date-time"><i class="fa fa-clock-o" aria-hidden="true"></i> 05:23 AM - 09:23 AM </span>
-							</div>
-						</div>
-						<!-- End Single Event -->
-					</div>
-					<div class="col-lg-6 col-md-6 col-12">
-						<!-- Single Event -->
-						<div class="single-event">
-							<div class="event-image">
-								<img src="images/events/event5.jpg" alt="#">
-								<div class="event-date">
-									<p>23<span>March</span></p>
-								</div>
-							</div>
-							<div class="event-content">
-								<h3 class="event-title"><a href="event-single.html">زبان انگلیسی و اهمیت آن در دنیای علم</a></h3>
-								<p>در این مقاله به زبان انگلیسی و اهمیت آن در دنیای علم میپردازیم</p>
-								<span class="entry-date-time"><i class="fa fa-clock-o" aria-hidden="true"></i> 05:23 AM - 09:23 AM </span>
-							</div>
-						</div>
-						<!-- End Single Event -->
-					</div>
-					<div class="col-lg-6 col-md-6 col-12">
-						<!-- Single Event -->
-						<div class="single-event">
-							<div class="event-image">
-								<img src="images/events/event6.jpg" alt="#">
-								<div class="event-date">
-									<p>25<span>April</span></p>
-								</div>
-							</div>
-							<div class="event-content">
-									<h3 class="event-title"><a href="event-single.html">اهمیت یادگیری زبان انگلیسی</a></h3>
-								<p>در این مقاله به اهمیت یادگیری زبان انگلیسی در دنیای امروز میپردازیم</p>
-								<span class="entry-date-time"><i class="fa fa-clock-o" aria-hidden="true"></i> 05:23 AM - 09:23 AM </span>
-							</div>
-						</div>
-						<!-- End Single Event -->
-					</div>
-				</div>
-			</div>
-		</section>
-		<!--/ End Events -->
+<section class="events archive section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3 col-12">
+                <div class="section-title bg">
+                    <h2> مقالات <span>سایت</span></h2>
+                    <p>در این بخش میتوانید با مطالعه مقالاتی در خصوص زبان ، به روند رشد یادگیری خود کمک کنید </p>
+                    <div class="icon"><i class="fa fa-paper-plane"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <?php
+            // اطلاعات اتصال به دیتابیس
+            $servername = "localhost"; // نام سرور دیتابیس
+            $username = "root"; // نام کاربری دیتابیس
+            $password = "123"; // رمز عبور دیتابیس
+            $dbname = "langute"; // نام پایگاه داده
+
+            // اتصال به دیتابیس
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+            // بررسی اتصال
+            if ($conn->connect_error) {
+                die("اتصال با دیتابیس برقرار نشد: " . $conn->connect_error);
+            }
+
+            // کوئری برای دریافت مقالات از دیتابیس
+            $sql = "SELECT id, title, content, created_at FROM articles";
+            $result = $conn->query($sql);
+
+            // نمایش مقالات
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    // نمایش تاریخ به صورت نام ماه و شماره روز
+                    $date = date("d F", strtotime($row["created_at"]));
+                    ?>
+
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <!-- Single Event -->
+                        <div class="single-event">
+                            <div class="event-image">
+                                <img src="images/events/event1.jpg" alt="#">
+                                <div class="event-date">
+                                    <p><?php echo $date; ?></p>
+                                </div>
+                            </div>
+                            <div class="event-content">
+                                <!-- نمایش ۱۰۰ کاراکتر اول متن مقاله -->
+                                <h3 class="event-title"><a href="article.php?id=<?php echo $row["id"]; ?>"><?php echo substr($row["content"], 0, 100) . "..."; ?></a></h3>
+                                <span class="entry-date-time"><i class="fa fa-clock-o" aria-hidden="true"></i> 05:23 AM - 09:23 AM </span>
+                            </div>
+                        </div>
+                        <!-- End Single Event -->
+                    </div>
+
+                    <?php
+                }
+            } else {
+                echo "هیچ مقاله‌ای یافت نشد.";
+            }
+
+            // بستن اتصال به دیتابیس
+            $conn->close();
+            ?>
+
+        </div>
+    </div>
+</section>
+<!-- End Events -->
 
     <!-- Clients CSS -->
     <div class="clients">
