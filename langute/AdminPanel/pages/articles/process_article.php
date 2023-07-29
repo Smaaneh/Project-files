@@ -30,7 +30,8 @@ if (empty($title) || empty($created_at) || empty($content)) {
     $sql = "INSERT INTO articles (title, created_at, content) VALUES ('$title', '$created_at', '$content')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "مقاله با موفقیت اضافه شد!";
+        echo "<script>alert('مقاله با موفقیت اضافه شد :)')</script>";
+        echo "<script>window.location.href = 'articles.php';</script>";
     } else {
         echo "خطا در اضافه کردن مقاله: " . $conn->error;
     }
