@@ -30,6 +30,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-left">
               <li class="breadcrumb-item"><a href="#">خانه</a></li>
+              <li class="breadcrumb-item"><a href="articles.php">مدیریت مقالات</a></li>
               <li class="breadcrumb-item active">افزودن مقالات</li>
             </ol>
           </div>
