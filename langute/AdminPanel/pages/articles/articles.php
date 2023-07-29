@@ -82,7 +82,7 @@ $result = $conn->query($sql);
                                     while ($row = $result->fetch_assoc()) {
                                         echo "<tr>";
                                         echo "<td>" . $row['title'] . "</td>";
-                                        echo "<td>" . $row['content'] . "</td>";
+                                        echo "<td>" . substr($row['content'], 0, 50) . "..." . "</td>"; // استفاده از substr برای نمایش ۵۰ کاراکتر اول
                                         echo "<td>" . $row['created_at'] . "</td>";
                                         echo "<td><a href='editarticles.php?id=" . $row['id'] . "' class='btn btn-block btn-info btn-sm'>ویرایش</a></td>";
                                         echo "<td><button data-url='deletearticles.php?id=" . $row['id'] . "' class='btn btn-block btn-danger btn-sm' onclick='confirmDelete(" . $row['id'] . ");'>حذف</button></td>";
