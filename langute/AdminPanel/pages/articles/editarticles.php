@@ -80,7 +80,7 @@
           </div>
               <!-- /.card-body -->
               <div class="card-footer text-center">
-                <button type="submit" class="btn btn-success btn-lg" name="submit">ثبت مقاله</button>
+                <button type="submit" class="btn btn-primary btn-lg" name="submit">ویرایش مقاله</button>
                 <p class="text-sm mb-0">مشاهده مستندات مربوط به این ویرایشگر متن <a href="https://ckeditor.com/ckeditor-5-builds/#classic">CKEditor</a>
               </p>
               </div>
