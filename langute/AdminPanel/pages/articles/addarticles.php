@@ -49,7 +49,7 @@
               <h3 class="card-title">فرم  مقالات</h3>
             </div>
              <!-- form start -->
-             <form role="form" method="post" enctype="multipart/form-data">
+             <form role="form" method="post" action="process_article.php" enctype="multipart/form-data">
               <div class="card-body">
                 <div class="form-group">
                   <label for="title">عنوان:</label>
