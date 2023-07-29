@@ -76,7 +76,7 @@
         $new_content = $_POST['content'];
         $new_created_at = $_POST['created_at'];
  // به روزرسانی رکورد مقاله در جدول articles
- $update_sql = "UPDATE articles SET name = '$new_title', content = '$new_content', created_at = '$new_created_at' WHERE id = $id";
+ $update_sql = "UPDATE articles SET title = '$new_title', content = '$new_content', created_at = '$new_created_at' WHERE id = $id";
  if ($conn->query($update_sql) === TRUE) {
     echo "<script>alert('ویرایش مقاله با موفقیت انجام شد.')</script>";
     echo "<script>window.location.href = 'articles.php';</script>";
