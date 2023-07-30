@@ -61,9 +61,21 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
         $articleContent = $row["content"];
         $articlePicture = $row["Picture"];
         $articleDate = $row["created_at"];
-
-        // نمایش اطلاعات مقاله
-        echo '<h2>' . $articleTitle . '</h2>';
+?>
+        
+        <section class="teachers archive section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-3 col-12">
+                        <div class="section-title bg">
+                        <h2><?php echo $articleTitle; ?></h2>
+                            <div class="icon"><i class="fa fa-book"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         
+        <?php  
         echo '<img src="' . $articlePicture . '" alt="' . $articleTitle . '">';
         echo '<p>' . $articleContent . '</p>';
         echo '<p>تاریخ ایجاد مقاله : ' . $articleDate . '</p>';
@@ -76,6 +88,7 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
 
 $conn->close();
 ?>
+</section> 
 <!-- foother & js links -->
 <?php include 'foother.php';?>
     </body>
