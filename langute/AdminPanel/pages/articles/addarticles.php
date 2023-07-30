@@ -78,6 +78,19 @@
               </div>
             </div>
           </div>
+           <!-- image articles -->
+            <div class="form-group">
+                    <label for="image">آپلود عکس</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="image" name="image">
+                        <label class="custom-file-label" for="image">عکس استاد را انتخاب کنید</label>
+                      </div>
+                      <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div>
+                    </div>
+                  </div>
               <!-- /.card-body -->
               <div class="card-footer text-center">
                 <button type="submit" class="btn btn-success btn-lg" name="submit">ثبت مقاله</button>
