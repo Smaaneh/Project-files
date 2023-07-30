@@ -65,7 +65,7 @@
             }
 
             // کوئری برای دریافت مقالات از دیتابیس
-            $sql = "SELECT id, title, content, created_at FROM articles";
+            $sql = "SELECT id, title, content, created_at, Picture FROM articles";
             $result = $conn->query($sql);
 
             // نمایش مقالات
@@ -79,7 +79,7 @@
                         <!-- Single Event -->
                         <div class="single-event" style="height: 400px;">
                             <div class="event-image">
-                                <img src="images/events/event1.jpg" alt="#">
+                            <img src="<?php echo $row["Picture"]; ?>" alt="<?php echo $row["title"]; ?>">
                                 <div class="event-date">
                                     <p><?php echo $date; ?></p>
                                 </div>
