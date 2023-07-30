@@ -20,7 +20,7 @@ if (isset($_POST["submit"])) {
     $content = $_POST["content"];
 
 // بررسی اطلاعات وارد شده
-if (empty($title) || empty($created_at) || empty($content)) {
+if (empty($title) || empty($created_at) || empty($content) || empty($_FILES["image"]["name"])) {
     echo "لطفاً همه‌ی فیلدها را پر کنید.";
 } else {
     // تبدیل تاریخ انتخاب شده به فرمت مناسب برای ذخیره در دیتابیس
