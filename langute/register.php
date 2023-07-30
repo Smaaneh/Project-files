@@ -71,7 +71,7 @@
               // کاربر جدید را به دیتابیس اضافه کنید
               $insertUserSQL = "INSERT INTO users (name, last_name, password, email, is_admin, is_login) VALUES (?, ?, ?, ?, ?, ?)";
               $stmt = $conn->prepare($insertUserSQL);
-              $stmt->bind_param("ssssii", $name, $last_name, $hashedPassword, $email, $is_admin, $is_login);
+              $stmt->bind_param("ssssbb", $name, $last_name, $hashedPassword, $email, $is_admin, $is_login);
               if ($stmt->execute()) {
                   session_start();
                   $_SESSION["email"] = $email;
@@ -128,20 +128,6 @@
           </span>
         </div>
         <!-- / enter password -->
-
-        <!-- is_admin checkbox -->
-        <div class="wrap-input100">
-          <input class="input-checkbox100" id="is_admin" type="checkbox" name="is_admin">
-          <label class="label-checkbox100" for="is_admin">کاربر مدیر</label>
-        </div>
-        <!-- / is_admin checkbox -->
-
-        <!-- is_login checkbox -->
-        <div class="wrap-input100">
-          <input class="input-checkbox100" id="is_login" type="checkbox" name="is_login" checked>
-          <label class="label-checkbox100" for="is_login">وضعیت ورود</label>
-        </div>
-        <!-- / is_login checkbox -->
 
         <!-- register button -->
         <div class="container-login100-form-btn">
