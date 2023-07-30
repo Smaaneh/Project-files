@@ -51,8 +51,6 @@ if ($conn->connect_error) {
 if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
     $articleId = $_GET["id"];
 
- 
-
     // خواندن اطلاعات مقاله با آیدی مورد نظر از دیتابیس
     $sql = "SELECT * FROM articles WHERE id = $articleId";
     $result = $conn->query($sql);
@@ -76,17 +74,19 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
         </div>
     </div>
 
-    <!-- افزودن کلاس‌های جدید به محتوا و عکس مقاله -->
+    <!-- افزودن کلاس‌های جدید به محتوا مقاله -->
     <div class="container">
-        
-            <div class="col-lg-8 col-12">
-                <div class="article-content">
+        <div class="row">
+            <div class="col-12">
+                <div class="article-content text-right">
                     <?php echo $articleContent; ?>
-                    <p>تاریخ ایجاد مقاله: <?php echo $articleDate; ?></p>
+                    <p style="padding-right: 10px;">تاریخ ایجاد مقاله: <?php echo $articleDate; ?></p>
                 </div>
             </div>
+        </div>
     </div>
 </section>
+
 <?php
     } else {
         echo "مقاله یافت نشد !";

@@ -1232,9 +1232,16 @@
 	/*===============================
 		End Teachers CSS
 	=================================*/
-	.article-content {
+
+    .article-content {
+        text-align: justify;
         padding: 0 20px;
     }
+
+    .article-content p {
+        margin: 10px 0;
+    }
+
 	/*===============================
 		Events CSS
 	=================================*/
