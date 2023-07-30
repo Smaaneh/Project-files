@@ -51,6 +51,8 @@ if ($conn->connect_error) {
 if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
     $articleId = $_GET["id"];
 
+ 
+
     // خواندن اطلاعات مقاله با آیدی مورد نظر از دیتابیس
     $sql = "SELECT * FROM articles WHERE id = $articleId";
     $result = $conn->query($sql);
@@ -64,21 +66,31 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
 ?>
 
 <section class="teachers archive section">
-<div class="container article-content-container">
-    <div class="row">
-        <?php if (!empty($articlePicture)) { ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3 col-12">
+                <div class="section-title bg">
+                    <h2><?php echo $articleTitle; ?></h2>
+                    <div class="icon"><i class="fa fa-book"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- افزودن کلاس‌های جدید به محتوا و عکس مقاله -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-12">
+                <div class="article-content">
+                    <?php echo $articleContent; ?>
+                </div>
+            </div>
             <div class="col-lg-4 col-12">
                 <img src="<?php echo $articlePicture; ?>" alt="<?php echo $articleTitle; ?>" class="article-image">
-            </div>
-        <?php } ?>
-        <div class="col-lg-<?php echo (empty($articlePicture) ? '12' : '8'); ?> col-12">
-            <div class="article-content-text text-right text-justify">
-                <?php echo $articleContent; ?>
                 <p>تاریخ ایجاد مقاله: <?php echo $articleDate; ?></p>
             </div>
         </div>
     </div>
-</div>
 </section>
 <?php
     } else {
