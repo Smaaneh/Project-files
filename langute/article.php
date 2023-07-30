@@ -69,13 +69,12 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
         <?php if (!empty($articlePicture)) { ?>
             <div class="col-lg-4 col-12">
                 <img src="<?php echo $articlePicture; ?>" alt="<?php echo $articleTitle; ?>" class="article-image">
-                <p>تاریخ ایجاد مقاله: <?php echo $articleDate; ?></p>
             </div>
         <?php } ?>
-
         <div class="col-lg-<?php echo (empty($articlePicture) ? '12' : '8'); ?> col-12">
             <div class="article-content-text text-right text-justify">
                 <?php echo $articleContent; ?>
+                <p>تاریخ ایجاد مقاله: <?php echo $articleDate; ?></p>
             </div>
         </div>
     </div>
