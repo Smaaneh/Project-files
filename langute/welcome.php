@@ -13,7 +13,7 @@ $name = $_SESSION["name"];
 $last_name = $_SESSION["last_name"];
 
 echo "<script>alert('به خوش آمدید، $name $last_name! ایمیل شما: $email')</script>";
-echo "<script>window.location.href = 'index.php.php';</script>";
+echo "<script>window.location.href = 'index.php';</script>";
 
 // دسترسی به اطلاعات بیشتر کاربران مدیر (با توجه به ستون is_admin در دیتابیس)
 if (isset($_SESSION["is_admin"]) && $_SESSION["is_admin"]) {
