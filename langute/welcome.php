@@ -12,7 +12,7 @@ $email = $_SESSION["email"];
 $name = $_SESSION["name"];
 $last_name = $_SESSION["last_name"];
 
-echo "<script>alert('به خوش آمدید، $name $last_name! ایمیل شما: $email')</script>";
+echo "<script>alert('به لنگوته خوش آمدید، $name $last_name! ایمیل شما: $email')</script>";
 echo "<script>window.location.href = 'index.php';</script>";
 
 // دسترسی به اطلاعات بیشتر کاربران مدیر (با توجه به ستون is_admin در دیتابیس)
