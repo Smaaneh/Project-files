@@ -66,7 +66,7 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
         echo '<h2>' . $articleTitle . '</h2>';
         echo '<img src="' . $articlePicture . '" alt="' . $articleTitle . '">';
         echo '<p>' . $articleContent . '</p>';
-        echo '<p>Date: ' . $articleDate . '</p>';
+        echo '<p>تاریخ ایجاد مقاله : ' . $articleDate . '</p>';
     } else {
         echo "مقاله یافت نشد !";
     }
