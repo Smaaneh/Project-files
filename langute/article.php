@@ -61,7 +61,6 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
         $row = $result->fetch_assoc();
         $articleTitle = $row["title"];
         $articleContent = $row["content"];
-        $articlePicture = $row["Picture"];
         $articleDate = $row["created_at"];
 ?>
 
@@ -79,17 +78,13 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
 
     <!-- افزودن کلاس‌های جدید به محتوا و عکس مقاله -->
     <div class="container">
-        <div class="row">
+        
             <div class="col-lg-8 col-12">
                 <div class="article-content">
                     <?php echo $articleContent; ?>
+                    <p>تاریخ ایجاد مقاله: <?php echo $articleDate; ?></p>
                 </div>
             </div>
-            <div class="col-lg-4 col-12">
-                <img src="<?php echo $articlePicture; ?>" alt="<?php echo $articleTitle; ?>" class="article-image">
-                <p>تاریخ ایجاد مقاله: <?php echo $articleDate; ?></p>
-            </div>
-        </div>
     </div>
 </section>
 <?php
