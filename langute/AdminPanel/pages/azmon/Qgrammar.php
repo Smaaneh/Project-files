@@ -32,7 +32,8 @@ if ($conn->connect_error) {
 }
 
 // کوئری برای دریافت اطلاعات سوالات و گزینه‌ها
-$sql = "SELECT q.question_id, q.question_title, q.correct_option, GROUP_CONCAT(o.option_text SEPARATOR ', ') AS options
+$sql = "SELECT q.question_id, q.question_title, GROUP_CONCAT(o.option_text SEPARATOR ', ') AS options,
+        MAX(CASE WHEN o.correct_option = 1 THEN o.option_text END) AS correct_option
         FROM questions q
         INNER JOIN options o ON q.question_id = o.question_id
         GROUP BY q.question_id";
