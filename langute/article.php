@@ -62,23 +62,26 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
         $articlePicture = $row["Picture"];
         $articleDate = $row["created_at"];
 ?>
-        
-        <section class="teachers archive section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 offset-lg-3 col-12">
-                        <div class="section-title bg">
-                        <h2><?php echo $articleTitle; ?></h2>
-                            <div class="icon"><i class="fa fa-book"></i></div>
-                        </div>
-                    </div>
-                </div>
+
+<section class="teachers archive section">
+<div class="container article-content-container">
+    <div class="row">
+        <?php if (!empty($articlePicture)) { ?>
+            <div class="col-lg-4 col-12">
+                <img src="<?php echo $articlePicture; ?>" alt="<?php echo $articleTitle; ?>" class="article-image">
+                <p>تاریخ ایجاد مقاله: <?php echo $articleDate; ?></p>
             </div>
-         
-        <?php  
-        echo '<img src="' . $articlePicture . '" alt="' . $articleTitle . '">';
-        echo '<p>' . $articleContent . '</p>';
-        echo '<p>تاریخ ایجاد مقاله : ' . $articleDate . '</p>';
+        <?php } ?>
+
+        <div class="col-lg-<?php echo (empty($articlePicture) ? '12' : '8'); ?> col-12">
+            <div class="article-content-text text-right text-justify">
+                <?php echo $articleContent; ?>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<?php
     } else {
         echo "مقاله یافت نشد !";
     }
@@ -88,7 +91,7 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
 
 $conn->close();
 ?>
-</section> 
+
 <!-- foother & js links -->
 <?php include 'foother.php';?>
     </body>

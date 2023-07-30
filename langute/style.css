@@ -1232,7 +1232,24 @@
 	/*===============================
 		End Teachers CSS
 	=================================*/
-	
+	.article-content {
+        padding: 0 20px;
+    }
+
+    .article-image {
+        float: left;
+        margin: 0 20px 20px 0;
+    }
+
+    .article-content-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .article-content-text {
+        flex: 1;
+        text-align: justify;
+    }
 	/*===============================
 		Events CSS
 	=================================*/
