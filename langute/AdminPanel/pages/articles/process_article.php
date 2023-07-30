@@ -22,7 +22,8 @@ if (isset($_POST["submit"])) {
 
 // بررسی اطلاعات وارد شده
 if (empty($title) || empty($created_at) || empty($content) || empty($_FILES["image"]["name"])) {
-    echo "لطفاً همه‌ی فیلدها را پر کنید.";
+    echo "<script>alert('لطفاً همه‌ی فیلدها را پر کنید.')</script>";
+    echo "<script>window.location.href = 'addarticles.php';</script>";
 } else {
     // تبدیل تاریخ انتخاب شده به فرمت مناسب برای ذخیره در دیتابیس
     $created_at = date("Y-m-d H:i:s", strtotime($created_at));
@@ -40,11 +41,13 @@ $maxFileSize = 5 * 1024 * 1024; // حداکثر سایز عکس: 5MB
 // بررسی پسوند عکس
 $allowedExtensions = array("jpg", "jpeg", "png");
 if (!in_array($imageFileType, $allowedExtensions)) {
-  echo '<div class="alert alert-danger text-center mb-3">فقط فایل‌های با پسوند JPG، JPEG و PNG مجاز هستند.</div>';
+    echo "<script>alert('فقط فایل‌های با پسوند JPG، JPEG و PNG مجاز هستند.')</script>";
+    echo "<script>window.location.href = 'addarticles.php';</script>";
 }
 // بررسی سایز عکس
 elseif ($_FILES["image"]["size"] > $maxFileSize) {
-  echo '<div class="alert alert-danger text-center mb-3">سایز فایل عکس باید کمتر از 5MB باشد.</div>';
+    echo "<script>alert('سایز فایل عکس باید کمتر از 5MB باشد.')</script>";
+    echo "<script>window.location.href = 'addarticles.php';</script>";
 }
       // آپلود عکس
       elseif (move_uploaded_file($_FILES["image"]["tmp_name"], $src)) {
@@ -53,14 +56,16 @@ elseif ($_FILES["image"]["size"] > $maxFileSize) {
         $stmt->bind_param("ssss", $title, $content, $created_at, $targetFile);
   
         if ($stmt->execute()) {
-          echo '<div class="alert alert-success text-center mb-3">اطلاعات با موفقیت ذخیره شدند.</div>';
+            echo "<script>alert('اطلاعات با موفقیت ذخیره شدند.')</script>";
+            echo "<script>window.location.href = 'addarticles.php';</script>";
         } else {
-          echo '<div class="alert alert-danger text-center mb-3">خطا در ذخیره اطلاعات: ' . $stmt->error . '</div>';
+          echo '<script>alert("خطا در ذخیره اطلاعات") ' . $stmt->error . '</script>';
         }
   
         $stmt->close();
       } else {
-        echo '<div class="alert alert-danger text-center mb-3">خطا در آپلود عکس.</div>';
+        echo "<script>alert('خطا در آپلود عکس.')</script>";
+        echo "<script>window.location.href = 'addarticles.php';</script>";
       }
     }
   }
