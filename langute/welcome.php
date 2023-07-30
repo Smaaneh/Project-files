@@ -12,22 +12,35 @@ $email = $_SESSION["email"];
 $name = $_SESSION["name"];
 $last_name = $_SESSION["last_name"];
 
-echo "<script>alert('به لنگوته خوش آمدید، $name $last_name! ایمیل شما: $email')</script>";
-echo "<script>window.location.href = 'index.php';</script>";
+// اتصال به دیتابیس
+$servername = "localhost";
+$username = "root";
+$password = "123";
+$dbname = "langute";
 
-// دسترسی به اطلاعات بیشتر کاربران مدیر (با توجه به ستون is_admin در دیتابیس)
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("خطا در اتصال به دیتابیس: " . $conn->connect_error);
+}
+
+// به دیتابیس ایزلاگین کاربر را بروزرسانی کنید
+$updateIsLoginSQL = "UPDATE users SET is_login = 1 WHERE email = ?";
+$stmt = $conn->prepare($updateIsLoginSQL);
+$stmt->bind_param("s", $email);
+$stmt->execute();
+
+// بررسی وضعیت ادمین و انتقال کاربر به صفحه مدیریت در صورت بودن کاربر ادمین
 if (isset($_SESSION["is_admin"]) && $_SESSION["is_admin"]) {
-    echo "<br>شما یک کاربر مدیر هستید.";
-    header("Location: AdminPanel/pages/HomeAdmin.html"); // انتقال کاربر به صفحه مدیریت در صورت بودن کاربر ادمین
+    echo "<script>alert('$name $last_name به سایت لنگوته خوش آمدید. شما مدیر هستید.');</script>";
+    header("Location: AdminPanel/pages/HomeAdmin.html");
     exit();
-}
-
-// دسترسی به اطلاعات بیشتر کاربران وارد شده (با توجه به ستون is_login در دیتابیس)
-if (isset($_SESSION["is_login"]) && $_SESSION["is_login"]) {
-    echo "<br>شما وارد شده اید.";
 } else {
-    echo "<br>شما وارد نشده اید.";
+    echo "<script>alert('$name $last_name به سایت لنگوته خوش آمدید.');</script>";
 }
 
-// else codes
+// بستن اتصال به دیتابیس
+$conn->close();
+
+// انتقال کاربر به صفحه index.php
+echo "<script>window.location.href = 'index.php';</script>";
 ?>
