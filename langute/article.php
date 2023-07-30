@@ -59,7 +59,7 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
         $row = $result->fetch_assoc();
         $articleTitle = $row["title"];
         $articleContent = $row["content"];
-        $articlePicture = $row["pictures"];
+        $articlePicture = $row["Picture"];
         $articleDate = $row["created_at"];
 
         // نمایش اطلاعات مقاله
@@ -68,7 +68,7 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
         echo '<p>' . $articleContent . '</p>';
         echo '<p>Date: ' . $articleDate . '</p>';
     } else {
-        echo "Article not found.";
+        echo "مقاله یافت نشد !";
     }
 } else {
     echo "Invalid article ID.";
