@@ -79,7 +79,7 @@
                     $correct_option = $row['correct_option'];
 
                     echo "<div class='form-group'>";
-                    echo "<label class='control-label text-" . ($correct_option == 1 ? 'success' : 'danger') . "'>" . ($correct_option == 1 ? '<i class="fa fa-check"></i>' : '<i class="fa fa-times-circle-o"></i>') . ($correct_option == 1 ? ' گزینه درست' : " گزینه غلط $option_id") . "</label>";
+                    echo "<label class='control-label text-" . ($correct_option == 1 ? 'success' : 'danger') . "'>" . ($correct_option == 1 ? '<i class="fa fa-check"></i> گزینه درست' : "<i class='fa fa-times-circle-o'></i> گزینه غلط $option_id") . "</label>";
                     echo "<input type='text' class='form-control' name='option_text_$option_id' placeholder='وارد کردن اطلاعات ...' value='$option_text' required>";
                     echo "</div>";
                 }
@@ -99,16 +99,21 @@
             // بروزرسانی اطلاعات سوال در جدول questions
             $update_sql = "UPDATE questions SET question_title = '$new_question_title' WHERE question_id = $question_id";
             if ($conn->query($update_sql) === TRUE) {
-                // بروزرسانی گزینه‌های غلط در جدول options
-                for ($i = 2; $i <= 4; $i++) {
-                    $new_option_text = $_POST["option_text_$i"];
-                    $update_sql = "UPDATE options SET option_text = '$new_option_text' WHERE question_id = $new_question_id AND option_id = $i";
-                    $conn->query($update_sql);
+                // بروزرسانی گزینه‌های غلط و درست در جدول options
+                $sql = "SELECT option_id FROM options WHERE question_id = $new_question_id";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        $option_id = $row['option_id'];
+                        $new_option_text = $_POST["option_text_$option_id"];
+                        $update_sql = "UPDATE options SET option_text = '$new_option_text' WHERE question_id = $new_question_id AND option_id = $option_id";
+                        $conn->query($update_sql);
+                    }
+                    echo "<script>alert('ویرایش واژه با موفقیت انجام شد.')</script>";
+                    echo "<script>window.location.href = 'Qgrammar.php';</script>";
+                } else {
+                    echo "<script>alert('خطا در ویرایش رکورد.')</script>";
                 }
-                echo "<script>alert('ویرایش واژه با موفقیت انجام شد.')</script>";
-                echo "<script>window.location.href = 'Qgrammar.php';</script>";
-            } else {
-                echo "<script>alert('خطا در ویرایش رکورد.')</script>";
             }
         }
         // بستن اتصال به پایگاه داده
