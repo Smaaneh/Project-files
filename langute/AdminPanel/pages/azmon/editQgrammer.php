@@ -61,7 +61,6 @@
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $question_title = $row['question_title'];
-            $correct_option = $row['correct_option'];
 
             echo sprintf("<form role='form' method='POST' action='%s?question_id=%s'>", htmlspecialchars($_SERVER['PHP_SELF']), $question_id);
             echo "<input type='hidden' name='question_id' value='$question_id'>";
@@ -69,33 +68,21 @@
             echo "<label>عنوان سوال</label>";
             echo "<input type='text' class='form-control' name='question_title' placeholder='وارد کردن اطلاعات ...' value='$question_title' required>";
             echo "</div>";
-            echo "<div class='form-group has-success'>";
-            echo "<label class='control-label text-success' for='inputSuccess'><i class='fa fa-check'></i>گزینه درست</label>";
-            echo "<input type='text' class='form-control' name='correct_option' id='correct_option' placeholder='وارد کردن اطلاعات ...' value='$correct_option' required>";
-            echo "</div>";
 
             // دریافت گزینه‌های غلط بر اساس شناسه سوال
-            $sql = "SELECT option_text FROM options WHERE question_id = $question_id";
+            $sql = "SELECT option_id, option_text, correct_option FROM options WHERE question_id = $question_id";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
-                $options = array();
                 while ($row = $result->fetch_assoc()) {
-                    $options[] = $row['option_text'];
+                    $option_id = $row['option_id'];
+                    $option_text = $row['option_text'];
+                    $correct_option = $row['correct_option'];
+
+                    echo "<div class='form-group'>";
+                    echo "<label class='control-label text-" . ($correct_option == 1 ? 'success' : 'danger') . "'>" . ($correct_option == 1 ? '<i class="fa fa-check"></i>' : '<i class="fa fa-times-circle-o"></i>') . ($correct_option == 1 ? ' گزینه درست' : " گزینه غلط $option_id") . "</label>";
+                    echo "<input type='text' class='form-control' name='option_text_$option_id' placeholder='وارد کردن اطلاعات ...' value='$option_text' required>";
+                    echo "</div>";
                 }
-                echo "<div class='form-group has-error'>";
-                echo "<label class='control-label text-danger' for='inputError'><i class='fa fa-times-circle-o'></i>گزینه غلط ۱</label>";
-                echo "<input type='text' class='form-control' name='wrong_option_1' placeholder='وارد کردن اطلاعات ...' value='{$options[1]}' required>";
-                echo "</div>";
-
-                echo "<div class='form-group has-error'>";
-                echo "<label class='control-label text-danger' for='inputError'><i class='fa fa-times-circle-o'></i>گزینه غلط ۲</label>";
-                echo "<input type='text' class='form-control' name='wrong_option_2' placeholder='وارد کردن اطلاعات ...' value='{$options[2]}' required>";
-                echo "</div>";
-
-                echo "<div class='form-group has-error'>";
-                echo "<label class='control-label text-danger' for='inputError'><i class='fa fa-times-circle-o'></i>گزینه غلط ۳</label>";
-                echo "<input type='text' class='form-control' name='wrong_option_3' placeholder='وارد کردن اطلاعات ...' value='{$options[3]}' required>";
-                echo "</div>";
             }
 
             echo "<button type='submit' class='btn btn-block btn-primary btn-sm'>ویرایش</button>";
@@ -108,23 +95,20 @@
             // دریافت اطلاعات از فرم
             $new_question_id = $_POST['question_id'];
             $new_question_title = $_POST['question_title'];
-            $new_correct_option = $_POST['correct_option'];
-            
-             // بروزرسانی اطلاعات سوال در جدول questions
-             $update_sql = "UPDATE questions SET question_title = '$new_question_title', correct_option = '$new_correct_option' WHERE question_id = $question_id";
-             if ($conn->query($update_sql) === TRUE) {
-                 // بروزرسانی گزینه‌های غلط در جدول options
-                 for ($i = 2; $i <= 4; $i++) {
-                    $new_wrong_option = $_POST["wrong_option_$i"];
-                     $update_sql = "UPDATE options SET option_text = '$new_wrong_option' WHERE question_id =$new_question_id AND option_id = $i";
-                     $conn->query($update_sql);
-                 }
-                 if ($conn->query($update_sql) === TRUE) {
-                    echo "<script>alert('ویرایش واژه با موفقیت انجام شد.')</script>";
-                    echo "<script>window.location.href = 'Qgrammar.php';</script>";
-                } else {
-                    echo "<script>alert('خطا در ویرایش رکورد.')</script>";
+
+            // بروزرسانی اطلاعات سوال در جدول questions
+            $update_sql = "UPDATE questions SET question_title = '$new_question_title' WHERE question_id = $question_id";
+            if ($conn->query($update_sql) === TRUE) {
+                // بروزرسانی گزینه‌های غلط در جدول options
+                for ($i = 2; $i <= 4; $i++) {
+                    $new_option_text = $_POST["option_text_$i"];
+                    $update_sql = "UPDATE options SET option_text = '$new_option_text' WHERE question_id = $new_question_id AND option_id = $i";
+                    $conn->query($update_sql);
                 }
+                echo "<script>alert('ویرایش واژه با موفقیت انجام شد.')</script>";
+                echo "<script>window.location.href = 'Qgrammar.php';</script>";
+            } else {
+                echo "<script>alert('خطا در ویرایش رکورد.')</script>";
             }
         }
         // بستن اتصال به پایگاه داده
