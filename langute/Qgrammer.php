@@ -1,5 +1,5 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-
+<link rel="stylesheet" href="css/quiez.css">
 <div class="container mt-sm-5 my-1">
     <div class="question ml-sm-5 pl-sm-5 pt-2">
         <div class="py-2 h5"><b>Q. which option best describes your job role?</b></div>
