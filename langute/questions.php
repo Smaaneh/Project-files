@@ -78,7 +78,7 @@
             }
             if ($currentQuestion < $totalQuestions) {
                 echo '<div class="ml-auto mr-sm-5">';
-                echo '<button class="btn btn-success" type="submit" name="submit">Next</button>';
+                echo '<a class="btn btn-success" href="?category='.$category.'&q='.($currentQuestion + 1).'">Next</a>';
                 echo '</div>';
             } else {
                 echo '<div class="ml-auto mr-sm-5">';
