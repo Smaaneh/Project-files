@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <!-- metaTAGS -->
+ <?php include 'metaTAGS.php';?>
+  <!-- Title -->
+  <title>سوالات گرامر</title>
+ <!-- quiz CSS -->
+ <link rel="stylesheet" href="css/film.css">
+</head>
+<body>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/quiez.css">
 <div class="container mt-sm-5 my-1">
@@ -32,5 +43,8 @@
     </div>
 </div>
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+<!-- quiez linksJS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </body>
+</html>
