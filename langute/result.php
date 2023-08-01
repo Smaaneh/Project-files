@@ -15,15 +15,17 @@
     <div class="container mt-sm-5 my-1">
         <?php
         session_start();
-        $score = $_SESSION['correct_answers'] ?? 0;
+        $score = 0;
         $totalQuestions = $_SESSION['total_questions'] ?? 0;
-        if ($score) {
+        if (isset($_SESSION['correct_answers'])) {
+            $score = $_SESSION['correct_answers'];
+
             echo '<div class="py-2 h5">نمره کاربر: ' . $score . ' از ' . $totalQuestions . '</div>';
         } else {
             echo 'هیچ نمره‌ای وجود ندارد.';
         }
         session_unset();
-        session_destroy();
+      
         ?>
         <a class="btn btn-primary mt-3" href="test.php">بازگشت به صفحه آزمون</a>
     </div>

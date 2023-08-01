@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="css/quiez.css">
     <div class="container mt-sm-5 my-1">
         <?php
+        session_start();
+        $_SESSION['correct_answers'] = 0; // مقداردهی اولیه به متغیر correct_answers
         $servername = "localhost";
         $username = "root";
         $password = "123";
@@ -34,6 +36,7 @@
         $result = $conn->query($sql);
         $row = $result->fetch_assoc();
         $totalQuestions = $row['total'];
+        $_SESSION['total_questions'] = $totalQuestions;
 
         $sql = "SELECT * FROM questions WHERE category = '$category' ORDER BY RAND() LIMIT 1 OFFSET " . ($currentQuestion - 1);
         $result = $conn->query($sql);
@@ -53,6 +56,9 @@
                 $_SESSION['correct_answers']++;
             }
         }
+        
+        // ذخیره انتخابات کاربر در جلسه
+        $_SESSION['questions'][$currentQuestion] = $_POST['option'] ?? null;
 
         if ($currentQuestion <= $totalQuestions) {
             echo '<div class="question ml-sm-5 pl-sm-5 pt-2">';
