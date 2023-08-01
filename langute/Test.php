@@ -142,7 +142,7 @@
 								<img src="images\test/Vocabulary.jpg" alt="#">
 							</div>
 							<div class="event-content">
-								<h3 class="event-title"><a href="event-single.html">کوییز واژگان</a></h3>
+								<h3 class="event-title"><a href="questions.php?category=vocabulary">کوییز واژگان</a></h3>
 								<p>به سوالات چهار گزینه ای پاسخ دهید و ببینید چقدر در لغات انگلیسی مهارت دارید</p>
 							</div>
 						</div>
@@ -155,7 +155,7 @@
 								<img src="images\test/grammar.jpg" alt="#">
 							</div>
 							<div class="event-content">
-									<h3 class="event-title"><a href="event-single.html">کوییز گرامر</a></h3>
+									<h3 class="event-title"><a href="questions.php?category=grammer">کوییز گرامر</a></h3>
 								<p>آزمون را شروع کنید و سطح توانایی خود در گرامر را بسنجید</p>
 							</div>
 						</div>
@@ -168,7 +168,7 @@
 								<img src="images/test/Conversation.jpg" alt="#">
 							</div>
 							<div class="event-content">
-									<h3 class="event-title"><a href="event-single.html">کوییز مکالمه</a></h3>
+									<h3 class="event-title"><a href="questions.php?category=conversation">کوییز مکالمه</a></h3>
 								<p>همین الان کوییز را شروع کنید و در بخش مکالمه سطح یادگیریتان را تست کنید</p>
 							</div>
 						</div>
@@ -181,7 +181,7 @@
 								<img src="images/test/speak.jpg" alt="#">
 							</div>
 							<div class="event-content">
-									<h3 class="event-title"><a href="event-single.html">کوییز گفتار</a></h3>
+									<h3 class="event-title"<a href="questions.php?category=speaking">کوییز گفتار</a></h3>
 								<p>آزمون را شروع کنید و سطح توانایی خود در گفتاررا بسنجید</p>
 							</div>
 						</div>

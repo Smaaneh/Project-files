@@ -63,7 +63,7 @@ body{
     transition: 300ms ease-in-out 0s;
 }
 .options input[type="radio"]:checked ~ .checkmark{
-    background: #21bf73;
+    background: #05C46B;
     transition: 300ms ease-in-out 0s;
 }
 .options input[type="radio"]:checked ~ .checkmark:after{
@@ -75,12 +75,12 @@ body{
     border: 1px solid #ddd;
 }
 .btn-primary:hover{
-    background-color: #21bf73;
-    border: 1px solid #21bf73;
+    background-color: #05C46B;
+    border: 1px solid #05C46B;
 }
 .btn-success{
     padding: 5px 25px;
-    background-color: #21bf73;
+    background-color: #05C46B;
 }
 @media(max-width:576px){
     .question{
