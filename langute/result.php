@@ -13,20 +13,19 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/quiez.css">
     <div class="container mt-sm-5 my-1">
-        <?php
-        session_start();
-        $score = 0;
-        $totalQuestions = $_SESSION['total_questions'] ?? 0;
-        if (isset($_SESSION['correct_answers'])) {
-            $score = $_SESSION['correct_answers'];
+    <?php
+session_start();
+$score = 0;
+$totalQuestions = $_SESSION['total_questions'] ?? 0;
+if (isset($_SESSION['correct_answers'])) {
+    $score = $_SESSION['correct_answers'];
 
-            echo '<div class="py-2 h5">نمره کاربر: ' . $score . ' از ' . $totalQuestions . '</div>';
-        } else {
-            echo 'هیچ نمره‌ای وجود ندارد.';
-        }
-        session_unset();
-      
-        ?>
+    echo '<div class="py-2 h5">نمره کاربر: ' . $score . ' از ' . $totalQuestions . '</div>';
+} else {
+    echo 'هیچ نمره‌ای وجود ندارد.';
+}
+session_unset();
+?>
         <a class="btn btn-primary mt-3" href="test.php">بازگشت به صفحه آزمون</a>
     </div>
 

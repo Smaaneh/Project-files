@@ -48,17 +48,19 @@
             echo 'هیچ سوالی در این دسته‌بندی وجود ندارد.';
         }
 
-        if (isset($_POST['submit'])) {
-            $selectedOption = $_POST['option'];
-            $sql = "SELECT correct_option FROM options WHERE question_id = $question_id AND correct_option = 1";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0 && $selectedOption == 'correct') {
-                $_SESSION['correct_answers']++;
-            }
-        }
-        
-        // ذخیره انتخابات کاربر در جلسه
-        $_SESSION['questions'][$currentQuestion] = $_POST['option'] ?? null;
+      
+if (isset($_POST['submit'])) {
+    $selectedOption = $_POST['option'];
+    $sql = "SELECT correct_option FROM options WHERE question_id = $question_id AND correct_option = 1";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0 && $selectedOption == 'correct') {
+        $_SESSION['correct_answers']++;
+    }
+}
+
+// ذخیره انتخابات کاربر در جلسه
+$_SESSION['questions'][$currentQuestion] = $_POST['option'] ?? null;
+
 
         if ($currentQuestion <= $totalQuestions) {
             echo '<div class="question ml-sm-5 pl-sm-5 pt-2">';
