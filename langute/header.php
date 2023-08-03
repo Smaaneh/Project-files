@@ -24,7 +24,7 @@
 										<ul class="dropdown">
 											<li><a href="teachers.php">استادان</a></li>
 											<li><a href="Social_learning.html">یادگیری اجتماعی</a></li>
-											<li><a href="Test.html">آزمون</a></li>
+											<li><a href="Test.php">آزمون</a></li>
 											<li><a href="Progress_tracking.html">ردیابی پیشرفت</a></li>
 										</ul>
 									</li>
