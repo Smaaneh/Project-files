@@ -21,14 +21,14 @@
 
 									<li><a href="#"><i class="fa fa-clone"></i>صفحه ها</a>
 										<ul class="dropdown">
-											<li><a href="teachers.php">استادان</a></li>
-											<li><a href="contact.php"><i class="fa fa-address-book"></i>ارتباط با ما</a> </li>
-											<li><a href="articles.php"><i class="fa fa-bullhorn"></i>مقالات</a></li>
-											<li><a href="Test.php">آزمون</a></li>
+											<li><a href="teachers.php"><i class="fa fa-users"></i> استادان </a></li>
+											<li><a href="contact.php"><i class="fa fa-address-book"></i> ارتباط با ما </a> </li>
+											<li><a href="articles.php"><i class="fa fa-bullhorn"></i> مقالات</a></li>
+											<li><a href="Test.php"><i class="fa fa-question"></i> آزمون</a></li>
 										</ul>
 									</li>
-									<li><a href="Learning.php"><i class="fa fa-clone"></i>یادگیری با روش های مختلف</a></li>
-									<li><a href="courses.php"><i class="fa fa-clone"></i>آموزش ها و درس ها</a></li>
+									<li><a href="Learning.php"><i class="fa fa-map"></i>یادگیری با روش های مختلف</a></li>
+									<li><a href="courses.php"><i class="fa fa-book"></i>آموزش ها و درس ها</a></li>
 									<li class="active"><a href="index.php"><i class="fa fa-home"></i>خانه</a></li>
 								</ul>
 								<!-- End Main Menu -->
