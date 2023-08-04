@@ -18,14 +18,13 @@
 							<div class="navbar-collapse">
 								<!-- Main Menu -->
 								<ul id="nav" class="nav menu navbar-nav">
-									<li><a href="contact.php"><i class="fa fa-address-book"></i>ارتباط با ما</a> </li>
-									<li><a href="articles.php"><i class="fa fa-bullhorn"></i>مقالات</a></li>
+
 									<li><a href="#"><i class="fa fa-clone"></i>صفحه ها</a>
 										<ul class="dropdown">
 											<li><a href="teachers.php">استادان</a></li>
-											<li><a href="Social_learning.html">یادگیری اجتماعی</a></li>
+											<li><a href="contact.php"><i class="fa fa-address-book"></i>ارتباط با ما</a> </li>
+											<li><a href="articles.php"><i class="fa fa-bullhorn"></i>مقالات</a></li>
 											<li><a href="Test.php">آزمون</a></li>
-											<li><a href="Progress_tracking.html">ردیابی پیشرفت</a></li>
 										</ul>
 									</li>
 									<li><a href="Learning.php"><i class="fa fa-clone"></i>یادگیری با روش های مختلف</a></li>
