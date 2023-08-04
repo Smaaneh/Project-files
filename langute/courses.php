@@ -87,7 +87,7 @@
 							<!-- Course Head -->
 							<div class="course-head overlay">
 								<img src="images/courses/course3.jpg" alt="#">
-								<a href="words.html" class="btn white primary">شروع آموزش</a>
+								<a href="words.php" class="btn white primary">شروع آموزش</a>
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
