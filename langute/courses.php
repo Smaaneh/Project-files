@@ -45,7 +45,7 @@
 							<!-- Course Head -->
 							<div class="course-head overlay">
 								<img src="images/courses/course1.jpg" alt="#">
-								<a href="course-single.html" class="btn white primary">شروع آموزش</a>
+								<a href="speaking.php" class="btn white primary">شروع آموزش</a>
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
@@ -56,7 +56,7 @@
 									</div>
 									<span class="price">$350</span>
 								</div>
-								<h4 class="c-title"><a href="speaking.html">(speaking)گفتار</a></h4>
+								<h4 class="c-title"><a href="speaking.php">(speaking)گفتار</a></h4>
 								<p>با شروع این بخش شما در مهارت گفتار قوی خواهید شد</p>
 							</div>
 							<!-- Course Meta -->
@@ -140,7 +140,7 @@
 									</div>
 									<span class="price">$290</span>
 								</div>
-								<h4 class="c-title"><a href="grammers.html">(grammar)گرامر و قواید دستور زبان</a></h4>
+								<h4 class="c-title"><a href="grammers.php">(grammar)گرامر و قواید دستور زبان</a></h4>
 								<p>آموزش گرامر زبان انگلیسی از صفر تا صد</p>
 							</div>
 							<!-- Course Meta -->
@@ -171,7 +171,7 @@
 							<!-- Course Head -->
 							<div class="course-head overlay">
 								<img src="images/courses/course4.jpg" alt="#">
-								<a href="conversation.html" class="btn white primary">شروع آموزش</a>
+								<a href="conversation.php" class="btn white primary">شروع آموزش</a>
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
@@ -182,7 +182,7 @@
 									</div>
 									<span class="price">$550</span>
 								</div>
-								<h4 class="c-title"><a href="conversation.html">(conversion)مکالمه</a></h4>
+								<h4 class="c-title"><a href="conversation.php">(conversion)مکالمه</a></h4>
 								<p>آموزش مکالمه زبان انگلیسی از صفر تا صد</p>
 							</div>
 							<!-- Course Meta -->
