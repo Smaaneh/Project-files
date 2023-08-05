@@ -84,7 +84,7 @@
                     <div class="input-group">
                       <div class="custom-file">
                         <input type="file" class="custom-file-input" id="image" name="image">
-                        <label class="custom-file-label" for="image">عکس استاد را انتخاب کنید</label>
+                        <label class="custom-file-label" for="image">عکس را انتخاب کنید</label>
                       </div>
                       <div class="input-group-append">
                         <span class="input-group-text" id="">Upload</span>
