@@ -43,7 +43,7 @@
 							<!-- Course Head -->
 							<div class="course-head overlay">
 								<img src="images/learn/film.jpg" alt="#">
-								<a href="course-single.html" class="btn white primary">شروع یادگیری</a>
+								<a href="film.php" class="btn white primary">شروع یادگیری</a>
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
@@ -93,11 +93,11 @@
 							<!-- Course Head -->
 							<div class="course-head overlay">
 								<img src="images/learn/adab.jpg" alt="#">
-								<a href="course-single.html" class="btn white primary">شروع یادگیری</a>
+								<a href="cultures.php" class="btn white primary">شروع یادگیری</a>
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
-								<h4 class="c-title"><a href="culture.php">رفتار، آداب</a></h4>
+								<h4 class="c-title"><a href="cultures.php">رفتار، آداب</a></h4>
 								<p>رفتار و صحبت کردنمان با انگلیسی زبان ها باید چگونه باشد؟</p>
 							</div>
 						</div>
