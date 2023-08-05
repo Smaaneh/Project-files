@@ -75,7 +75,7 @@
                                   <label for="music">آپلود موسیقی یا پادکست</label>
                                   <div class="input-group">
                                       <div class="custom-file">
-                                          <input type="file" class="custom-file-input" id="music" name="music">
+                                          <input type="file" class="custom-file-input" id="music" name="music" accept=".mp3">
                                           <label class="custom-file-label" for="music">موسیقی یا پادکست </label>
                                       </div>
                                       <div class="input-group-append">
