@@ -31,8 +31,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// دریافت اطلاعات از جدول articles
-$sql = "SELECT * FROM articles";
+// دریافت اطلاعات از جدول culture
+$sql = "SELECT * FROM culture";
 $result = $conn->query($sql);
 
 ?>
@@ -60,7 +60,7 @@ $result = $conn->query($sql);
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <a class="btn btn-success btn-lg" href="addarticles.php">افزودن رفتاروآداب جدید +</a>
+                    <a class="btn btn-success btn-lg" href="addculture.php">افزودن رفتاروآداب جدید +</a>
                     <div class="card-header">
                         <h3 class="card-title">رفتاروآداب سایت لنگوته</h3>
                     </div>
@@ -77,15 +77,15 @@ $result = $conn->query($sql);
                             </thead>
                             <tbody>
                                 <?php
-                                // نمایش رکوردهای جدول articles
+                                // نمایش رکوردهای جدول culture
                                 if ($result->num_rows > 0) {
                                     while ($row = $result->fetch_assoc()) {
                                         echo "<tr>";
                                         echo "<td>" . $row['title'] . "</td>";
                                         echo "<td>" . substr($row['content'], 0, 50) . "..." . "</td>"; // استفاده از substr برای نمایش ۵۰ کاراکتر اول
                                         echo "<td>" . $row['created_at'] . "</td>";
-                                        echo "<td><a href='editarticles.php?id=" . $row['id'] . "' class='btn btn-block btn-info btn-sm'>ویرایش</a></td>";
-                                        echo "<td><button data-url='deletearticles.php?id=" . $row['id'] . "' class='btn btn-block btn-danger btn-sm' onclick='confirmDelete(" . $row['id'] . ");'>حذف</button></td>";
+                                        echo "<td><a href='editculture.php?id=" . $row['id'] . "' class='btn btn-block btn-info btn-sm'>ویرایش</a></td>";
+                                        echo "<td><button data-url='deleteculture.php?id=" . $row['id'] . "' class='btn btn-block btn-danger btn-sm' onclick='confirmDelete(" . $row['id'] . ");'>حذف</button></td>";
                                         echo "</tr>";
                                     }
                                 } else {
@@ -121,8 +121,8 @@ $result = $conn->query($sql);
         var result = confirm("آیا میخواهید این رفتاروآداب حذف شود؟");
         console.log(result);
         if (result) {
-            // اگر کاربر تایید کرد، ارسال درخواست حذف به صفحه deletearticles.php
-            window.location.href = "deletearticles.php?id=" + id;
+            // اگر کاربر تایید کرد، ارسال درخواست حذف به صفحه deleteculture.php
+            window.location.href = "deleteculture.php?id=" + id;
         } else {
             console.log("حذف رکورد لغو شد.");
         }
