@@ -1,107 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- Meta Tags -->
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="keywords" content="Site keywords here">
-  <meta name="description" content="">
-  <meta name='copyright' content=''>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <!-- metaTAGS -->
+ <?php include 'metaTAGS.php';?>
 
-  <!-- Title -->
-  <title>درس چهار مکالمه</title>
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="images/favicon.png">
-
-  <!-- Web Font -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <!-- Font Awesome CSS -->
-      <link rel="stylesheet" href="css/font-awesome.min.css">
-  <!-- Nice Select CSS -->
-      <link rel="stylesheet" href="css/niceselect.css">
-  <!-- Fancy Box CSS -->
-      <link rel="stylesheet" href="css/jquery.fancybox.min.css">
-  <!-- Fancy Box CSS -->
-      <link rel="stylesheet" href="css/cube-portfolio.min.css">
-  <!-- Owl Carousel CSS -->
-      <link rel="stylesheet" href="css/owl.carousel.min.css">
-  <!-- Animate CSS -->
-      <link rel="stylesheet" href="css/animate.min.css">
-  <!-- Slick Nav CSS -->
-      <link rel="stylesheet" href="css/slicknav.min.css">
-      <!-- Magnific Popup -->
-  <link rel="stylesheet" href="css/magnific-popup.css">
-
-  <!-- Eduland Stylesheet -->
-      <link rel="stylesheet" href="css/normalize.css">
-      <link rel="stylesheet" href="style.css">
-      <link rel="stylesheet" href="css/responsive.css">
-      <!-- Eduland film -->
-      <link rel="stylesheet" href="css/film.css">
-  <!-- Eduland Colors -->
-  <link rel="stylesheet" href="css/colors/color1.css">
+ <!-- linksCSS -->
+ <?php include 'linksCSS.php';?>
+ <!-- Eduland film -->
+ <link rel="stylesheet" href="css/film.css">
 
 </head>
 <body>
-  <!-- Header -->
-  <header class="header">
-  			<!-- Header Inner -->
-  			<div class="header-inner overlay">
-  				<div class="container">
-  					<div class="row">
-  						<div class="col-lg-3 col-md-3 col-12">
-  							<!-- Logo -->
-  							<div class="logo">
-  								<a href="index.html"><img src="images/logo.png" alt="#"></a>
-  							</div>
-  							<!--/ End Logo -->
-  							<div class="mobile-menu"></div>
-  						</div>
-  						<div class="col-lg-9 col-md-9 col-12">
-  							<div class="menu-bar" >
-  								<nav class="navbar navbar-default">
-  									<div class="navbar-collapse">
-  										<!-- Main Menu -->
-  										<ul id="nav" class="nav menu navbar-nav">
-  											<li><a href="contact.html"><i class="fa fa-address-book"></i>ارتباط با ما</a> </li>
-  											<li><a href="events.html"><i class="fa fa-bullhorn"></i>مقالات</a></li>
-  											<li><a href="#"><i class="fa fa-clone"></i>صفحه ها</a>
-  												<ul class="dropdown">
-  													<li><a href="teachers.html">استادان</a></li>
-                                                      <li><a href="Social_learning.html">یادگیری اجتماعی</a></li>
-                                                      <li><a href="Test.html">آزمون</a></li>
-                                                      <li><a href="Progress_tracking.html">ردیابی پیشرفت</a></li>
-  												</ul>
-  											</li>
-  											<li><a href="Learning.html"><i class="fa fa-clone"></i>یادگیری با روش های مختلف</a></li>
-  											<li><a href="courses.html"><i class="fa fa-clone"></i>آموزش ها و درس ها</a></li>
-  											<li class="active"><a href="index.html"><i class="fa fa-home"></i>خانه</a></li>
-  										</ul>
-  										<!-- End Main Menu -->
-  									</div>
-  								</nav>
-  								<!-- Search Area -->
-  								<div class="search-area">
-  									<a href="#header" class="icon"><i class="fa fa-search"></i></a>
-  									<form class="search-form">
-  										<input type="text" placeholder="جستجو ..." name="search" style="direction:rtl;">
-  										<button value="search " type="submit"><i class="fa fa-search"></i></button>
-  									</form>
-  								</div>
-  								<!-- End Search Area-->
-  							</div>
-  						</div>
-  					</div>
-  				</div>
-  			</div>
-  			<!--/ End Header Inner -->
-  		</header>
-  		<!--/ End Header -->
+ <!-- header-->
+ <?php include 'header.php';?>
+
 
       <!-- Breadcrumb -->
 		<div class="breadcrumbs overlay" style="background-image:url('images/breadcrumb-bg.jpg')">
@@ -112,9 +24,9 @@
 					</div>
 					<div class="col-lg-6 col-md-6 col-12">
 						<ul class="bread-list">
-							<li><a href="index.html">خانه <i class="fa fa-angle-left"></i></a></li>
-							<li><a href="courses.html">آموزش و درس ها<i class="fa fa-angle-left"></i></a></li>
-              <li><a href="conversation.html">مکالمه<i class="fa fa-angle-left"></i></a></li>
+							<li><a href="index.php">خانه <i class="fa fa-angle-left"></i></a></li>
+							<li><a href="courses.php">آموزش و درس ها<i class="fa fa-angle-left"></i></a></li>
+              <li><a href="conversation.php">مکالمه<i class="fa fa-angle-left"></i></a></li>
 							<li class="active"><a href="#">درس چهار</a></li>
 						</ul>
 					</div>
