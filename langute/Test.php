@@ -92,7 +92,7 @@
 								<img src="images/test/speak.jpg" alt="#">
 							</div>
 							<div class="event-content">
-									<h3 class="event-title"<a href="questions.php?category=speaking">کوییز گفتار</a></h3>
+									<h3 class="event-title"><a href="questions.php?category=speaking">کوییز گفتار</a></h3>
 								<p>آزمون را شروع کنید و سطح توانایی خود در گفتاررا بسنجید</p>
 							</div>
 						</div>
