@@ -90,7 +90,7 @@
 						<div class="single-course">
 							<!-- Course Head -->
 							<div class="course-head overlay">
-								<img src="images/Lesson number/lesson-4.jpg" alt="#">
+								<img src="images/films/action.jpg" alt="#">
 								<a href="action.php" class="btn white primary">مشاهده فیلم ها</a>
 							</div>
 							<!-- Course Body -->
