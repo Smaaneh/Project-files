@@ -32,7 +32,7 @@
 									<!-- Button -->
 									<div class="button">
 										<a href="about.html" class="btn white">درباره ما</a>
-										<a href="courses.html" class="btn white primary">آموزش و درس های ما</a>
+										<a href="courses.php" class="btn white primary">آموزش و درس های ما</a>
 									</div>
 									<!--/ End Button -->
 								</div>
@@ -54,7 +54,7 @@
 						<div class="section-title bg">
 							<h2>آموزش ها <span>و درس ها</span></h2>
 							<p font-family: 'Vazir' direction:rtl; >.دز این سایت مقالاتی  برای یادگیری هر چه بهتر شما قرار داده شده است </p>
-							<div class="icon"><i class="fa fa-clone"></i></div>
+							<div class="icon"><i class="fa fa-book"></i></div>
 						</div>
 					</div>
 				</div>
@@ -65,7 +65,7 @@
 							<!-- Course Head -->
 							<div class="course-head overlay">
 								<img src="images/courses/course1.jpg" alt="#">
-								<a href="course-single.html" class="btn white primary">شروع آموزش</a>
+								<a href="speaking.php" class="btn white primary">شروع آموزش</a>
 							</div>
 							<!-- Course Body -->
 							<div class="course-body" style="direction:rtl;">
@@ -76,7 +76,7 @@
 										</div>
 									<span class="price">$350</span>
 								</div>
-								<h4 class="c-title"><a href="course-single.html">(speaking)گفتار</a></h4>
+								<h4 class="c-title"><a href="speaking.php">(speaking)گفتار</a></h4>
 								<p dir="rtl" align="right">با شروع این بخش شما در مهارت گفتار قوی خواهید شد </p>
 							</div>
 							<!-- Course Meta -->
@@ -107,7 +107,7 @@
 							<!-- Course Head -->
 							<div class="course-head overlay">
 								<img src="images/courses/course3.jpg" alt="#">
-								<a href="words.html" class="btn white primary">شروع آموزش</a>
+								<a href="words.php" class="btn white primary">شروع آموزش</a>
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
@@ -118,7 +118,7 @@
 									</div>
 									<span class="price">رایگان</span>
 								</div>
-								<h4 class="c-title"><a href="words.html">(vocabulary)واژگان</a></h4>
+								<h4 class="c-title"><a href="words.php">(vocabulary)واژگان</a></h4>
 								<p dir="rtl" align="right">عبارات ، جملات  و واژگان زبان انگلیسی</p>
 							</div>
 							<!-- Course Meta -->
@@ -149,7 +149,7 @@
 							<!-- Course Head -->
 							<div class="course-head overlay">
 								<img src="images/courses/course2.jpg" alt="#">
-								<a href="grammar.html" class="btn white primary">شروع آموزش</a>
+								<a href="grammar.php" class="btn white primary">شروع آموزش</a>
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
@@ -160,7 +160,7 @@
 									</div>
 									<span class="price">ت500</span>
 								</div>
-								<h4 class="c-title"><a href="grammar.html"> (grammar)گرامر و قواید دستور زبان</a></h4>
+								<h4 class="c-title"><a href="grammar.php"> (grammar)گرامر و قواید دستور زبان</a></h4>
 								<p dir="rtl" align="right">آموزش گرامر زبان انگلیسی از صفر تا صد</p>
 							</div>
 							<!-- Course Meta -->
@@ -191,7 +191,7 @@
 							<!-- Course Head -->
 							<div class="course-head overlay">
 								<img src="images/courses/course4.jpg" alt="#">
-								<a href="converstion.html" class="btn white primary">شروع آموزش</a>
+								<a href="converstion.php" class="btn white primary">شروع آموزش</a>
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
@@ -202,7 +202,7 @@
 										</div>
 									<span class="price"> 100 تومان</span>
 								</div>
-								<h4 style="text-align: right;" class="c-title" ><a href="converstion.html"> (conversion)مکالمه  </a></h4>
+								<h4 style="text-align: right;" class="c-title" ><a href="converstion.php"> (conversion)مکالمه  </a></h4>
 								<p dir="rtl" align="right">آموزش مکالمه زبان انگلیسی از صفر تا صد</p>
 							</div>
 							<!-- Course Meta -->
@@ -240,7 +240,7 @@
 						<!-- Single Feature -->
 						<div class="single-feature">
 							<div class="icon-img">
-								<img src="images/feature1.jpg" alt="#">
+								<img src="images/feature1.jpg" alt="cultures.php">
 								<i class="fa fa-clone"></i>
 							</div>
 							<div class="feature-content">
@@ -254,7 +254,7 @@
 						<!-- Single Feature -->
 						<div class="single-feature">
 							<div class="icon-img">
-								<img src="images/feature2.jpg" alt="#">
+								<img src="images/feature2.jpg" alt="bbok.php">
 								<i class="fa fa-book"></i>
 							</div>
 							<div class="feature-content">
@@ -268,7 +268,7 @@
 						<!-- Single Feature -->
 						<div class="single-feature">
 							<div class="icon-img">
-								<img src="images/feature1.jpg" alt="#">
+								<img src="images/feature1.jpg" alt="Music.php">
 								<i class="fa fa-music"></i>
 							</div>
 							<div class="feature-content">
@@ -282,7 +282,7 @@
 						<!-- Single Feature -->
 						<div class="single-feature">
 							<div class="icon-img">
-								<img src="images/feature3.jpg" alt="#">
+								<img src="images/feature3.jpg" alt="film.php">
 								<i class="fa fa-film"></i>
 							</div>
 							<div class="feature-content">
