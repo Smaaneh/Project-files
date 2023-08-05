@@ -3,7 +3,8 @@
 <head>
  <!-- metaTAGS -->
  <?php include 'metaTAGS.php';?>
-
+  <!-- Title -->
+  <title>درس چهار مکالمه</title>
  <!-- linksCSS -->
  <?php include 'linksCSS.php';?>
  <!-- Eduland film -->
