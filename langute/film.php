@@ -56,7 +56,7 @@
 						<div class="single-course">
 							<!-- Course Head -->
 							<div class="course-head overlay">
-								<img src="images/Lesson number/lesson-2.jpg" alt="#">
+								<img src="images/films/Animation.jpg" alt="#">
 								<a href="Animation.php" class="btn white primary">مشاهده انیمیشن ها</a>
 							</div>
 							<!-- Course Body -->
@@ -73,7 +73,7 @@
 						<div class="single-course">
 							<!-- Course Head -->
 							<div class="course-head overlay">
-								<img src="images/Lesson number/lesson-3.jpg" alt="#">
+								<img src="images/films/drama.jpg" alt="#">
 								<a href="drama.php" class="btn white primary">مشاهده فیلم ها</a>
 							</div>
 							<!-- Course Body -->
