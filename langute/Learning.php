@@ -97,7 +97,7 @@
 							</div>
 							<!-- Course Body -->
 							<div class="course-body">
-								<h4 class="c-title"><a href="course-single.html">رفتار، آداب</a></h4>
+								<h4 class="c-title"><a href="culture.php">رفتار، آداب</a></h4>
 								<p>رفتار و صحبت کردنمان با انگلیسی زبان ها باید چگونه باشد؟</p>
 							</div>
 						</div>
