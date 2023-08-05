@@ -36,6 +36,7 @@ $sql = "SELECT q.question_id, q.question_title, GROUP_CONCAT(o.option_text SEPAR
         MAX(CASE WHEN o.correct_option = 1 THEN o.option_text END) AS correct_option
         FROM questions q
         INNER JOIN options o ON q.question_id = o.question_id
+        WHERE q.category = 'grammer'
         GROUP BY q.question_id";
 
 $result = $conn->query($sql);
