@@ -142,13 +142,8 @@
         $targetFile = $targetDir . basename($_FILES["music"]["name"]);
         $videoFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
         $maxFileSize = 500 * 1024 * 1024; // حداکثر سایز موزیک: 500
-        // بررسی پسوند موزیک
-        $allowedExtensions = array("mp3", "RAW", "WAV", "WMA", "AAC", "OGG");
-        if (!in_array($musicFileType, $allowedExtensions)) {
-            echo '<div class="alert alert-danger text-center mb-3">فقط فایل‌های با پسوند "mp3", "RAW", "WAV", "WMA", "AAC", "OGG" مجاز هستند.</div>';
-        }
         // بررسی سایز موزیک
-        elseif ($_FILES["music"]["size"] > $maxFileSize) {
+        if ($_FILES["music"]["size"] > $maxFileSize) {
             echo '<div class="alert alert-danger text-center mb-3">سایز فایل ویدیو باید کمتر از 20 باشد.</div>';
         }
         // آپلود موزیک
