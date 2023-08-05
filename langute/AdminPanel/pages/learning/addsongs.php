@@ -141,7 +141,7 @@
         echo '<a href="' . $targetDir . '">Link</a>';
         $targetFile = $targetDir . basename($_FILES["music"]["name"]);
         $videoFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-        $maxFileSize = 30 * 1024 * 1024; // حداکثر سایز موزیک: 500
+        $maxFileSize = 500 * 1024 * 1024; // حداکثر سایز موزیک: 500
         // بررسی پسوند موزیک
         $allowedExtensions = array("mp3", "RAW", "WAV", "WMA", "AAC", "OGG");
         if (!in_array($musicFileType, $allowedExtensions)) {

@@ -1,4 +1,3 @@
-php
 <?php
 $servername = "localhost";  // نام سرور میزبان دیتابیس
 $username = "root";  // نام کاربری دیتابیس
