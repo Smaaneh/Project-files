@@ -110,7 +110,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="../azmon/Vocabulary.PHP" class="nav-link">
+                  <a href="../azmon/QVocabulary.php" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>واژگان</p>
                   </a>
@@ -122,13 +122,13 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="../azmon\Conversation.php" class="nav-link">
+                  <a href="../azmon\QConversation.php" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>مکالمه</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="../azmon/speeck.php" class="nav-link">
+                  <a href="../azmon/Qspeeck.php" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>گفتار</p>
                   </a>
