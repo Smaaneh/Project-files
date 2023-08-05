@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>مدیریت | سوالات گرامر</title>
+  <title>مدیریت | سوالات مکالمه</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSSlinks -->
@@ -15,7 +15,7 @@
 <?php include '../navbar.php';?>
 <!-- menu -->
   <?php include '../menu.php';?>
-<!-- main Qgrammer -->
+<!-- main QConversation -->
 <?php
 // اطلاعات اتصال به پایگاه داده
 $servername = "localhost"; // آدرس سرور پایگاه داده
@@ -34,10 +34,10 @@ if ($conn->connect_error) {
 // کوئری برای دریافت اطلاعات سوالات و گزینه‌ها
 $sql = "SELECT q.question_id, q.question_title, GROUP_CONCAT(o.option_text SEPARATOR ', ') AS options,
         MAX(CASE WHEN o.correct_option = 1 THEN o.option_text END) AS correct_option
-        FROM questions q
+        FROM questions q 
         INNER JOIN options o ON q.question_id = o.question_id
+        WHERE q.category = 'Conversation'
         GROUP BY q.question_id";
-
 $result = $conn->query($sql);
 ?>
 
@@ -48,12 +48,13 @@ $result = $conn->query($sql);
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>مدیریت سوالات گرامر</h1>
+                    <h1>مدیریت سوالات مکالمه</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="../HomeAdmin.html">خانه</a></li>
-                        <li class="breadcrumb-item active">سوالات گرامر</li>
+                        <li class="breadcrumb-item"><a href="azmon.php">آزمون</a></li>
+                        <li class="breadcrumb-item active">سوالات مکالمه</li>
                     </ol>
                 </div>
             </div>
@@ -64,7 +65,7 @@ $result = $conn->query($sql);
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <a class="btn btn-success btn-lg" href="addQgrammer.php">افزودن سوال جدید +</a>
+                    <a class="btn btn-success btn-lg" href="addQConversation.php">افزودن سوال جدید +</a>
                     <div class="card-header">
                         <h3 class="card-title">لیست کل سوال ها</h3>
                     </div>
@@ -87,8 +88,8 @@ $result = $conn->query($sql);
                                         echo "<td>" . $row['question_title'] . "</td>";
                                         echo "<td>" . $row['options'] . "</td>";
                                         echo "<td>" . $row['correct_option'] . "</td>";
-                                        echo "<td><a href='editQgrammer.php?question_id=" . $row['question_id'] . "' class='btn btn-block btn-info btn-sm'>ویرایش</a></td>";
-                                        echo "<td><button data-url='deleteQgrammer.php?id=" . $row['question_id'] . "' class='btn btn-danger btn-sm' onclick='confirmDelete(" . $row['question_id'] . ");'>حذف</button></td>";
+                                        echo "<td><a href='editQConversation.php?question_id=" . $row['question_id'] . "' class='btn btn-block btn-info btn-sm'>ویرایش</a></td>";
+                                        echo "<td><button data-url='deleteQConversation.php?id=" . $row['question_id'] . "' class='btn btn-danger btn-sm' onclick='confirmDelete(" . $row['question_id'] . ");'>حذف</button></td>";
                                         echo "</tr>";
                                     }
                                 } else {
@@ -113,8 +114,8 @@ $result = $conn->query($sql);
     function confirmDelete(id) {
         var result = confirm("آیا میخواهید این سوال حذف شود؟");
         if (result) {
-            // اگر کاربر تایید کرد، ارسال درخواست حذف به صفحه deleteQgrammer.php
-            window.location.href = "deleteQgrammer.php?id=" + id;
+            // اگر کاربر تایید کرد، ارسال درخواست حذف به صفحه deleteQConversation.php
+            window.location.href = "deleteQConversation.php?id=" + id;
         } else {
             console.log("حذف رکورد لغو شد.");
         }
