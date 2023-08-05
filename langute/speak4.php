@@ -26,9 +26,9 @@
 					</div>
 					<div class="col-lg-6 col-md-6 col-12">
 						<ul class="bread-list">
-							<li><a href="index.html">خانه <i class="fa fa-angle-left"></i></a></li>
-							<li><a href="courses.html">آموزش و درس ها<i class="fa fa-angle-left"></i></a></li>
-              <li><a href="speaking.html">گفتار<i class="fa fa-angle-left"></i></a></li>
+							<li><a href="index.php">خانه <i class="fa fa-angle-left"></i></a></li>
+							<li><a href="courses.php">آموزش و درس ها<i class="fa fa-angle-left"></i></a></li>
+              <li><a href="speaking.php">گفتار<i class="fa fa-angle-left"></i></a></li>
 							<li class="active"><a href="#">درس چهار</a></li>
 						</ul>
 					</div>
