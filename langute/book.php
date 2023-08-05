@@ -40,7 +40,7 @@
 						<div class="single-course">
 							<!-- Course Head -->
 							<div class="course-head overlay">
-								<img src="images\films/comedy.jpg" alt="#">
+								<img src="images/book/as.jpg" alt="#">
 								<a href="Romance.php" class="btn white primary">مشاهده و خواندن</a>
 							</div>
 							<!-- Course Body -->
@@ -56,7 +56,7 @@
 						<div class="single-course">
 							<!-- Course Head -->
 							<div class="course-head overlay">
-								<img src="images/Lesson number/lesson-2.jpg" alt="#">
+								<img src="images/book/e.jpg"" alt="#">
 								<a href="Science_fiction.php" class="btn white primary">مشاهده و خواندن</a>
 							</div>
 							<!-- Course Body -->
@@ -73,7 +73,7 @@
 						<div class="single-course">
 							<!-- Course Head -->
 							<div class="course-head overlay">
-								<img src="images/Lesson number/lesson-3.jpg" alt="#">
+								<img src="images/book/ang.jpg" alt="#">
 								<a href="Motivational_book.php" class="btn white primary">مشاهده و خواندن</a>
 							</div>
 							<!-- Course Body -->
@@ -90,7 +90,7 @@
 						<div class="single-course">
 							<!-- Course Head -->
 							<div class="course-head overlay">
-								<img src="images/Lesson number/lesson-4.jpg" alt="#">
+								<img src="images/book/ta.jpg" alt="#">
 								<a href="Humer_Book.php" class="btn white primary">مشاهده و خواندن</a>
 							</div>
 							<!-- Course Body -->
