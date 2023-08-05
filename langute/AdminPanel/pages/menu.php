@@ -71,7 +71,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="../learning/culture" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>رفتار/آداب</p>
                   </a>
