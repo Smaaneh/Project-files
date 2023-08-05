@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // استفاده از تراکنش‌ها برای انجام دو عملیات INSERT به صورت اتمیک
     $conn->autocommit(false);
 
-    // استخراج اطلاعات سوالات گرامری به دیتابیس
+    // استخراج اطلاعات سوالات گفتار به دیتابیس
     $sql = "INSERT INTO questions (category, question_title) VALUES ('speeck', '$questionTitle')";
     if ($conn->query($sql) === TRUE) {
         $questionId = $conn->insert_id;
@@ -103,7 +103,7 @@ $conn->close();
 
 <div class="container">
     <div class="col-lg-6 offset-lg-3 col-12">
-        <h2>افزودن سوال گرامری</h2>
+        <h2>افزودن سوال 'گفتار'</h2>
         <?php if (!empty($successMessage)): ?>
             <div class="alert alert-success"><?php echo $successMessage; ?></div>
         <?php endif; ?>
