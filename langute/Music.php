@@ -40,7 +40,7 @@
 						<div class="single-course">
 							<!-- Course Head -->
 							<div class="course-head overlay">
-								<img src="images/Lesson number/lesson-1.jpg" alt="#">
+								<img src="images/music/music (1).jpg" alt="#">
 								<a href="happy_music.php" class="btn white primary">دیدن صفحه</a>
 							</div>
 							<!-- Course Body -->
@@ -56,7 +56,7 @@
 						<div class="single-course">
 							<!-- Course Head -->
 							<div class="course-head overlay">
-								<img src="images/Lesson number/lesson-2.jpg" alt="#">
+								<img src="images/music/music (2).jpg" alt="#">
 								<a href="Motivational_podcasts.php" class="btn white primary">دیدن صفحه</a>
 							</div>
 							<!-- Course Body -->
@@ -73,7 +73,7 @@
 						<div class="single-course">
 							<!-- Course Head -->
 							<div class="course-head overlay">
-								<img src="images/Lesson number/lesson-3.jpg" alt="#">
+								<img src="images/music/music (3).jpg" alt="#">
 								<a href="sad_music.php" class="btn white primary">دیدن صفحه</a>
 							</div>
 							<!-- Course Body -->
@@ -90,7 +90,7 @@
 						<div class="single-course">
 							<!-- Course Head -->
 							<div class="course-head overlay">
-								<img src="images/Lesson number/lesson-4.jpg" alt="#">
+								<img src="images/music/music (4).jpg" alt="#">
 								<a href="science_podcasts.php" class="btn white primary">دیدن صفحه</a>
 							</div>
 							<!-- Course Body -->
