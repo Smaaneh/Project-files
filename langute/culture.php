@@ -49,17 +49,17 @@ if ($conn->connect_error) {
 
 // بررسی وجود پارامتر id در URL
 if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
-    $articleId = $_GET["id"];
+    $cultureId = $_GET["id"];
 
     // خواندن اطلاعات  با آیدی مورد نظر از دیتابیس
-    $sql = "SELECT * FROM culture WHERE id = $articleId";
+    $sql = "SELECT * FROM culture WHERE id = $cultureId";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        $articleTitle = $row["title"];
-        $articleContent = $row["content"];
-        $articleDate = $row["created_at"];
+        $cultureTitle = $row["title"];
+        $cultureContent = $row["content"];
+        $cultureDate = $row["created_at"];
 ?>
 
 <section class="teachers archive section">
@@ -67,7 +67,7 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
         <div class="row">
             <div class="col-lg-6 offset-lg-3 col-12">
                 <div class="section-title bg">
-                    <h2><?php echo $articleTitle; ?></h2>
+                    <h2><?php echo $cultureTitle; ?></h2>
                     <div class="icon"><i class="fa fa-book"></i></div>
                 </div>
             </div>
@@ -79,8 +79,8 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
         <div class="row">
             <div class="col-12">
                 <div class="article-content text-right">
-                    <?php echo $articleContent; ?>
-                    <p style="padding-right: 10px;">تاریخ ایجاد : <?php echo $articleDate; ?></p>
+                    <?php echo $cultureContent; ?>
+                    <p style="padding-right: 10px;">تاریخ ایجاد : <?php echo $cultureDate; ?></p>
                 </div>
             </div>
         </div>
@@ -89,10 +89,10 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
 
 <?php
     } else {
-        echo "s یافت نشد !";
+        echo " یافت نشد !";
     }
 } else {
-    echo "Invalid article ID.";
+    echo "Invalid culture ID.";
 }
 
 $conn->close();
