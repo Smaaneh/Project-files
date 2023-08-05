@@ -26,9 +26,9 @@
 					</div>
 					<div class="col-lg-6 col-md-6 col-12">
 						<ul class="bread-list">
-							<li><a href="index.html">خانه <i class="fa fa-angle-left"></i></a></li>
-                            <li><a href="Learning.html">یادگیری با روش های مختلف<i class="fa fa-angle-left"></i></a></li>
-                            <li><a href="film.html">فیلم و کارتن<i class="fa fa-angle-left"></i></a></li>
+							<li><a href="index.php">خانه <i class="fa fa-angle-left"></i></a></li>
+                            <li><a href="Learning.php">یادگیری با روش های مختلف<i class="fa fa-angle-left"></i></a></li>
+                            <li><a href="film.php">فیلم و کارتن<i class="fa fa-angle-left"></i></a></li>
 							<li class="active"><a href="#">فیلم های کمدی</a></li>
 						</ul>
 					</div>
