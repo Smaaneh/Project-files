@@ -30,7 +30,7 @@ if (isset($_GET['id'])) {
             $sql = "DELETE FROM options WHERE question_id = $question_id";
             if ($conn->query($sql) === TRUE) {
                 echo "<script>alert('سوال $question_title حذف شد.')</script>";
-                echo "<script>window.location.href = 'Qgrammar.php';</script>";
+                echo "<script>window.location.href = 'QVocabulary.php';</script>";
             } else {
                 echo "<script>alert('خطا در حذف رکورد.')</script>";
             }
