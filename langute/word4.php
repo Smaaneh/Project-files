@@ -67,7 +67,7 @@
           <ul class="bread-list">
             <li><a href="index.php">خانه <i class="fa fa-angle-left"></i></a></li>
             <li><a href="courses.php">آموزش و درس ها<i class="fa fa-angle-left"></i></a></li>
-            <li><a href="words.pho">واژگان<i class="fa fa-angle-left"></i></a></li>
+            <li><a href="words.php">واژگان<i class="fa fa-angle-left"></i></a></li>
             <li class="active"><a href="#">درس چهار<i class="fa fa-angle-left"></i></a></li>
           </ul>
         </div>
