@@ -66,7 +66,7 @@ $result = $conn->query($sql);
             <div class="text-center">
             <a href="<?php echo $row["PDF"]; ?>" target="_blank" class="btn white primary">خواندن PDF: <?php echo $row["Title"]; ?></a></div>
             <div class="text-center">
-            <a href="<?php echo $row["PDF"]; ?>" download class="btn white primary-">دانلود PDF: <?php echo $row["Title"]; ?></a>            </div>
+            <a href="<?php echo $row["PDF"]; ?>" download class="btn white primary-">دانلود PDF: <?php echo $row["Title"]; ?></a></div>
         </div>
     </div>
 <?php } ?>
