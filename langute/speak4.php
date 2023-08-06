@@ -85,7 +85,7 @@ if ($result->num_rows > 0) {
         <?php
     }
 } else {
-    echo "No videos found for lesson_id = 4";
+    echo "هیچ ودیویی برای درس چهار گفتار هنوز آپلود نشده لطفا از بقیه بخش های سایت لنگوته دیدن کنید";
 }
 
 $conn->close();
